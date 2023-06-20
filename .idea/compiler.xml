@@ -11,7 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="17">
-      <module name="AuthorizationServer" target="17" />
+      <module name="AuthorizationServer" target="16" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
