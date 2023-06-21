@@ -31,7 +31,7 @@ public class OrdersController {
 
 	@GetMapping("/orders")
 	public String getOrders(Model model,
-			@RegisteredOAuth2AuthorizedClient("users-client-oidc") OAuth2AuthorizedClient authorizedClient) {
+			@RegisteredOAuth2AuthorizedClient("final_project") OAuth2AuthorizedClient authorizedClient) {
 		
 		
 		String jwtAccessToken = authorizedClient.getAccessToken().getTokenValue();

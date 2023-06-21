@@ -8,13 +8,13 @@ spring:
     oauth2:
       client:
         registration:
-          users-client-oidc:
-            client-id: client1
-            client-secret: myClientSecretValue
+          final_project:
+            client-id: client
+            client-secret: secret
             scope: openid
             authorization-grant-type: authorization_code
-            redirect-uri: http://127.0.0.1:8080/login/oauth2/code/users-client-oidc
+            redirect-uri: http://127.0.0.1:8080/login/oauth2/code/final_project
         provider:
-          users-client-oidc:
+          final_project:
             issuer-uri: http://auth-server:8000
 
