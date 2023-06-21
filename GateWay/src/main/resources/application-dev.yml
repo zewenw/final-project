@@ -9,3 +9,7 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: http://auth-server:8000
+
+
+
+## this is the first version
