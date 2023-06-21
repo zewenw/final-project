@@ -1,0 +1,20 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: '@environment@'
+  security:
+    oauth2:
+      client:
+        registration:
+          users-client-oidc:
+            client-id: client1
+            client-secret: myClientSecretValue
+            scope: openid
+            authorization-grant-type: authorization_code
+            redirect-uri: http://127.0.0.1:8080/login/oauth2/code/users-client-oidc
+        provider:
+          users-client-oidc:
+            issuer-uri: http://auth-server:8000
+

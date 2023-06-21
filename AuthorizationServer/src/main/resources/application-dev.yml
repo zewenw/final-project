@@ -11,3 +11,8 @@ spring:
       idle-timeout: 500000
       max-lifetime: 540000
       connection-test-query: SELECT 1
+
+logging:
+  level:
+    root: info
+    org.springframework.security: trace

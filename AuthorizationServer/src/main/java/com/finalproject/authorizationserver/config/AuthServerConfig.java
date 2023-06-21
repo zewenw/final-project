@@ -72,25 +72,40 @@ public class AuthServerConfig {
 
     @Bean
     public RegisteredClientRepository registeredClientRepository() {
-
-        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-        JdbcRegisteredClientRepository registeredClientRepository =
-                new JdbcRegisteredClientRepository(jdbcTemplate);
-
-        RegisteredClient registeredClient = RegisteredClient.withId("e4a295f7-0a5f-4cbc-bcd3-d870243d1b05")
-                .clientId("client")
-                .clientSecret("{noop}secret")
+        RegisteredClient registeredClient = RegisteredClient.withId(UUID.randomUUID().toString())
+                .clientId("client1")
+                .clientSecret("{noop}myClientSecretValue")
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-                .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
+                .redirectUri("http://127.0.0.1:8080/login/oauth2/code/users-client-oidc")
+                .redirectUri("http://127.0.0.1:8080/authorized")
                 .scope(OidcScopes.OPENID)
-                .scope(OidcScopes.PROFILE)
-                .redirectUri("http://127.0.0.1:8080/callback")
+                .scope("read")
+                //.clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
                 .build();
-        registeredClientRepository.save(registeredClient);
 
-        return registeredClientRepository;
+
+        return new InMemoryRegisteredClientRepository(registeredClient);
+
+//        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+//        JdbcRegisteredClientRepository registeredClientRepository =
+//                new JdbcRegisteredClientRepository(jdbcTemplate);
+
+//        RegisteredClient registeredClient = RegisteredClient.withId("e4a295f7-0a5f-4cbc-bcd3-d870243d1b05")
+//                .clientId("client")
+//                .clientSecret("{noop}secret")
+//                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
+//                .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
+//                .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
+//                .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
+//                .scope(OidcScopes.OPENID)
+//                .scope(OidcScopes.PROFILE)
+//                .redirectUri("http://127.0.0.1:9002/login")
+//                .build();
+//        registeredClientRepository.save(registeredClient);
+
+//        return registeredClientRepository;
     }
 
     @Bean
@@ -126,6 +141,9 @@ public class AuthServerConfig {
 
     @Bean
     public AuthorizationServerSettings authorizationServerSettings() {
-        return AuthorizationServerSettings.builder().build();
+        return AuthorizationServerSettings
+                .builder()
+                .issuer("http://auth-server:8000")
+                .build();
     }
 }

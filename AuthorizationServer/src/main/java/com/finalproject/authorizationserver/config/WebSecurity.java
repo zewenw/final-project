@@ -8,6 +8,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -16,10 +18,11 @@ public class WebSecurity {
 
     @Bean
     public UserDetailsService userDetailsService(){
-        var userDetails = User.withUsername("user").password("{noop}123").authorities("read").build();
+        var userDetails = User.withUsername("user").password("{noop}123").roles("USER").build();
         var manager = new InMemoryUserDetailsManager();
         manager.createUser(userDetails);
         return manager;
+
     }
 
     @Bean

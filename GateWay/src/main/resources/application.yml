@@ -1,9 +1,7 @@
 server:
-  port: 9001
+  port: 8091
 
 spring:
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: http://localhost:9000/oauth2/token
+  profiles:
+    active: '@environment@'
+
