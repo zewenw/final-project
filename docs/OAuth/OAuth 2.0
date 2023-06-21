@@ -1,0 +1,20 @@
+# OAuth 2.0
+## Roles in OAuth 2.0
+Authorization Server: Issue token
+Resource Server: any kinds service that provide service to client can be treated as resource server
+Clients: on user's behalf to make a request to resource server
+Users: physical customers who own the resource
+## Client
+usually we distribute clientId and client secret to our trusted client
+- Credential Client: clients which can store secret securely
+- Public Client: clients which can't store secret securely
+## Access Token Type
+the token may denote an identifier used to retrieve the authorization information
+or may self-contain the authorization information in a verifiable manner(e.g., a token string consisting of some data 
+and signature) 
+## Grant Type
+- Code: Web-Application, Mobile Application which can store the credential securely
+- Client Credential: for two machine(such as resource server A need access to another resource server B)
+- PKEC-enhanced Authorization Code: for some single page javascript software which doesn't have ability to store
+  credential securely
+- Password(out-date): deprecated way to get access token. not for best practice
