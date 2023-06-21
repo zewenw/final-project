@@ -8,15 +8,18 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="AuthorizationServer" />
+        <module name="GateWay" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="17">
       <module name="AuthorizationServer" target="16" />
+      <module name="GateWay" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="AuthorizationServer" options="-parameters" />
+      <module name="GateWay" options="-parameters" />
     </option>
   </component>
 </project>

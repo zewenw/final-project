@@ -2,10 +2,8 @@ server:
   port: 9000
 
 spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/OAuth
-    username: postgres
-    password: 123
+  profiles:
+    active: '@environment@'
 
 logging:
   level:

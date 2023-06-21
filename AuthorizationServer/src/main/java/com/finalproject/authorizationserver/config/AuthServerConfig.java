@@ -72,9 +72,24 @@ public class AuthServerConfig {
 
     @Bean
     public RegisteredClientRepository registeredClientRepository() {
+
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
         JdbcRegisteredClientRepository registeredClientRepository =
                 new JdbcRegisteredClientRepository(jdbcTemplate);
+
+        RegisteredClient registeredClient = RegisteredClient.withId("e4a295f7-0a5f-4cbc-bcd3-d870243d1b05")
+                .clientId("client")
+                .clientSecret("{noop}secret")
+                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
+                .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
+                .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
+                .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
+                .scope(OidcScopes.OPENID)
+                .scope(OidcScopes.PROFILE)
+                .redirectUri("http://127.0.0.1:8080/callback")
+                .build();
+        registeredClientRepository.save(registeredClient);
+
         return registeredClientRepository;
     }
 
