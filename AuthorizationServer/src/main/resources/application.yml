@@ -1,5 +1,7 @@
 server:
   port: 8000
+authorization:
+  url: http://auth-server:${server.port}
 
 spring:
   profiles:
