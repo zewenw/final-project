@@ -14,12 +14,16 @@ import org.springframework.http.MediaType;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.oauth2.jwt.JwtDecoder;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.oauth2.core.oidc.endpoint.OidcParameterNames;
+import org.springframework.security.oauth2.jwt.*;
+import org.springframework.security.oauth2.server.authorization.OAuth2TokenType;
 import org.springframework.security.oauth2.server.authorization.client.JdbcRegisteredClientRepository;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
 import org.springframework.security.oauth2.server.authorization.config.annotation.web.configuration.OAuth2AuthorizationServerConfiguration;
 import org.springframework.security.oauth2.server.authorization.config.annotation.web.configurers.OAuth2AuthorizationServerConfigurer;
 import org.springframework.security.oauth2.server.authorization.settings.AuthorizationServerSettings;
+import org.springframework.security.oauth2.server.authorization.token.*;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 import org.springframework.security.web.util.matcher.MediaTypeRequestMatcher;
@@ -29,6 +33,7 @@ import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
+import java.util.Collection;
 import java.util.UUID;
 
 @Configuration
@@ -68,6 +73,37 @@ public class AuthServerConfig {
                 new JdbcRegisteredClientRepository(jdbcTemplate);
 
         return registeredClientRepository;
+    }
+
+    @Bean
+    public OAuth2TokenGenerator<?> tokenGenerator() {
+        JwtEncoder jwtEncoder = new NimbusJwtEncoder(jwkSource());
+        JwtGenerator jwtGenerator = new JwtGenerator(jwtEncoder);
+        jwtGenerator.setJwtCustomizer(jwtCustomizer());
+        OAuth2AccessTokenGenerator accessTokenGenerator = new OAuth2AccessTokenGenerator();
+        
+//        accessTokenGenerator.setAccessTokenCustomizer(oAuth2TokenCustomizer());
+        OAuth2RefreshTokenGenerator refreshTokenGenerator = new OAuth2RefreshTokenGenerator();
+        return new DelegatingOAuth2TokenGenerator(
+                jwtGenerator, accessTokenGenerator, refreshTokenGenerator);
+    }
+
+
+    @Bean
+    public OAuth2TokenCustomizer<JwtEncodingContext> jwtCustomizer() {
+        return context -> {
+            JwsHeader.Builder headers = context.getJwsHeader();
+            JwtClaimsSet.Builder claims = context.getClaims();
+            if (context.getTokenType().equals(OAuth2TokenType.ACCESS_TOKEN)) {
+                // Customize headers/claims for access_token
+                var authorities = context.getPrincipal().getAuthorities();
+                claims.claim("authorities", authorities);
+
+            } else if (context.getTokenType().getValue().equals(OidcParameterNames.ID_TOKEN)) {
+                // Customize headers/claims for id_token
+
+            }
+        };
     }
 
     @Bean

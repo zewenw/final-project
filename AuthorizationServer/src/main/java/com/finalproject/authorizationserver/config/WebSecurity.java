@@ -14,7 +14,10 @@ public class WebSecurity {
 
     @Bean
     public UserDetailsService userDetailsService(){
-        var userDetails = User.withUsername("user").password("{noop}123").roles("USER").build();
+        var userDetails = User
+                .withUsername("user")
+                .password("{noop}123")
+                .roles("USER").build();
         var manager = new InMemoryUserDetailsManager();
         manager.createUser(userDetails);
         return manager;

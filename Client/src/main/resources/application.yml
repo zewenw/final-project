@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 9002
 
 spring:
   profiles:
@@ -13,8 +13,8 @@ spring:
             client-secret: secret
             scope: openid
             authorization-grant-type: authorization_code
-            redirect-uri: http://127.0.0.1:8080/login/oauth2/code/final_project
+            redirect-uri: http://127.0.0.1:9002/login/oauth2/code/final_project
         provider:
           final_project:
-            issuer-uri: http://auth-server:8000
+            issuer-uri: http://auth-server:9000
 

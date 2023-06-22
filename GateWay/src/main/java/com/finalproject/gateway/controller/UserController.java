@@ -1,6 +1,7 @@
 package com.finalproject.gateway.controller;
 
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -9,6 +10,7 @@ public class UserController {
 
 
     @GetMapping("/status/check")
+//    @PreAuthorize("SCOPE_profile")
     public String status() {
         return "Working...";
     }
