@@ -1,4 +1,4 @@
-package com.finalproject.gateway.config;
+package com.finalproject.usermanagement.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

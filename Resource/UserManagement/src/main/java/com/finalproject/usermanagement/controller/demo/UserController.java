@@ -1,8 +1,6 @@
-package com.finalproject.gateway.controller;
+package com.finalproject.usermanagement.controller.demo;
 
 
-import org.springframework.security.access.prepost.PostAuthorize;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -16,7 +14,7 @@ public class UserController {
         return "Working...";
     }
 
-    @PreAuthorize("hasAuthority('ROLE_USER')")
+//    @PreAuthorize("hasAuthority('ROLE_USER')")
 //    @Secured("ROLE_USER")
     @DeleteMapping(path = "/{id}")
     public String deleteUser(@PathVariable String id) {
@@ -24,7 +22,7 @@ public class UserController {
     }
 
 
-    @PostAuthorize("returnObject.userId == 'aaa'")
+//    @PostAuthorize("returnObject.userId == 'aaa'")
     @GetMapping(path = "/{id}")
     public UserRest getUser(@PathVariable String id) {
         System.out.println("has been executed");

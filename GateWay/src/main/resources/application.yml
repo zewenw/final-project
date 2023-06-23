@@ -1,7 +1,16 @@
 server:
-  port: 9001
+  port: 80
 
 spring:
   profiles:
     active: '@environment@'
+  cloud:
+    gateway:
+      routes:
+        - id: user
+          uri: http://127.0.0.1:9003
+          predicates:
+            - Path=/helloworld/sayHello
+            - Method=GET,POST
+
 

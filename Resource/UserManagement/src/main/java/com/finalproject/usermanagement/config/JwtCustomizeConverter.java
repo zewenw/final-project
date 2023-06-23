@@ -1,14 +1,10 @@
-package com.finalproject.gateway.config;
+package com.finalproject.usermanagement.config;
 
-import com.nimbusds.jose.shaded.gson.internal.LinkedTreeMap;
-import com.nimbusds.jwt.JWT;
-import com.nimbusds.jwt.JWTClaimsSet;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.jwt.Jwt;
 
-import java.text.ParseException;
 import java.util.*;
 import java.util.stream.Collectors;
 

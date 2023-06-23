@@ -1,4 +1,4 @@
-package com.finalproject.gateway.controller;
+package com.finalproject.usermanagement.controller.demo;
 
 public class UserRest {
 
