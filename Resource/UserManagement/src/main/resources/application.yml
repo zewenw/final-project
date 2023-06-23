@@ -1,8 +1,12 @@
 server:
-  port: 9003
+  port: 0
 
 spring:
   profiles:
     active: '@environment@'
   application:
     name: user-management
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${instanceId:${random.value}}}

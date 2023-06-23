@@ -1,5 +1,5 @@
 server:
-  port: 9000
+  port: 0
 authorization:
   url: http://auth-server:${server.port}
 

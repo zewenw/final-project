@@ -1,8 +1,12 @@
 server:
-  port: 9004
+  port: 0
 
 spring:
   profiles:
     active: '@environment@'
   application:
     name: photo-sharing
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${instanceId:${random.value}}}
