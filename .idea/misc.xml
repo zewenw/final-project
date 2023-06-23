@@ -8,6 +8,7 @@
         <option value="$PROJECT_DIR$/Client/pom.xml" />
         <option value="$PROJECT_DIR$/Resource/pom.xml" />
         <option value="$PROJECT_DIR$/Resource/UserManagement/pom.xml" />
+        <option value="$PROJECT_DIR$/Resource/PhotoSharing/pom.xml" />
       </list>
     </option>
   </component>

@@ -8,6 +8,7 @@
     - test: 80
     - prod: 80
 - User: 9003
+- Photo: 9004
 ## Precautions
 - calls between resource server should use gRPC, no need to validate authorities
 

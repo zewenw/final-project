@@ -10,7 +10,12 @@ spring:
         - id: user
           uri: http://127.0.0.1:9003
           predicates:
-            - Path=/helloworld/sayHello
+            - Path=/user/sayHello
+            - Method=GET,POST
+        - id: photo
+          uri: http://127.0.0.1:9004
+          predicates:
+            - Path=/photo/sayHello
             - Method=GET,POST
 
 
