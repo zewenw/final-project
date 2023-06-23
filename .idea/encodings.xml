@@ -4,5 +4,6 @@
     <file url="file://$PROJECT_DIR$/AuthorizationServer/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Client/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/GateWay/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Resource/UserManagement/src/main/java" charset="UTF-8" />
   </component>
 </project>
