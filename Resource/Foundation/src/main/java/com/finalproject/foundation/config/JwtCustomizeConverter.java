@@ -1,4 +1,4 @@
-package com.finalproject.photosharing.config;
+package com.finalproject.foundation.config;
 
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.core.GrantedAuthority;
@@ -24,11 +24,6 @@ public class JwtCustomizeConverter implements Converter<Jwt, Collection<GrantedA
         }
         Collection<GrantedAuthority> returnValue = new ArrayList<>();
         for (Map<String, Object> authority : authorities) {
-//            Set<Map.Entry<String, Object>> entries = authority.entrySet();
-//            for (Map.Entry<String, Object> entry : entries) {
-//                SimpleGrantedAuthority grantedAuthority = new SimpleGrantedAuthority(entry.getValue().toString());
-//                returnValue.addAll(Collections.singleton(grantedAuthority));
-//            }
             Set<SimpleGrantedAuthority> roles = authority.entrySet().stream()
                     .filter(item -> item.getKey().contains("role"))
                     .map(entry -> new SimpleGrantedAuthority(entry.getValue().toString()))

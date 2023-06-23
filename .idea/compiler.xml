@@ -7,18 +7,20 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="AuthorizationServer" />
+        <module name="GateWay" />
         <module name="UserManagement" />
         <module name="PhotoSharing" />
-        <module name="AuthorizationServer" />
+        <module name="Foundation" />
         <module name="Client" />
         <module name="DiscoveryService" />
-        <module name="GateWay" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="17">
       <module name="AuthorizationServer" target="17" />
       <module name="Client" target="16" />
       <module name="DiscoveryService" target="17" />
+      <module name="Foundation" target="17" />
       <module name="GateWay" target="16" />
       <module name="PhotoSharing" target="17" />
       <module name="Resource" target="17" />
@@ -30,6 +32,7 @@
       <module name="AuthorizationServer" options="-parameters" />
       <module name="Client" options="-parameters" />
       <module name="DiscoveryService" options="-parameters" />
+      <module name="Foundation" options="-parameters" />
       <module name="GateWay" options="-parameters" />
       <module name="PhotoSharing" options="-parameters" />
       <module name="Resource" options="-parameters" />
