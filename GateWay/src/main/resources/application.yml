@@ -8,14 +8,20 @@ spring:
     gateway:
       routes:
         - id: user
-          uri: http://127.0.0.1:9003
+          uri: lb://user-management
           predicates:
             - Path=/user/sayHello
             - Method=GET,POST
         - id: photo
-          uri: http://127.0.0.1:9004
+          uri: lb://photo-sharing
           predicates:
             - Path=/photo/sayHello
             - Method=GET,POST
+  application:
+    name: gateway
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${instanceId:${random.value}}}
 
 

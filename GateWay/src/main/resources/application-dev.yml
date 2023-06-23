@@ -2,3 +2,8 @@ logging:
   level:
     root: info
     org.springframework.security: trace
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8999/eureka
