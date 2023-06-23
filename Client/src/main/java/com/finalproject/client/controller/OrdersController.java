@@ -6,7 +6,6 @@
 package com.finalproject.client.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -37,7 +36,7 @@ public class OrdersController {
 		String jwtAccessToken = authorizedClient.getAccessToken().getTokenValue();
 				System.out.println("jwtAccessToken =  " + jwtAccessToken);
 
-		String url = "http://127.0.0.1:8091/orders";
+		String url = "http://127.0.0.1/user/sayHello";
 	    
 	    HttpHeaders headers = new HttpHeaders();
 	    headers.add("Authorization", "Bearer " + jwtAccessToken);

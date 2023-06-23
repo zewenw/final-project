@@ -9,12 +9,16 @@ spring:
       client:
         registration:
           final_project:
-            client-id: client
-            client-secret: secret
+            clientId: client
+            clientSecret: secret
             scope: openid
-            authorization-grant-type: authorization_code
-            redirect-uri: http://127.0.0.1:9002/login/oauth2/code/final_project
+            authorizationGrantType: authorization_code
+            redirectUri: http://127.0.0.1:9002/login/oauth2/code/final_project
         provider:
           final_project:
             issuer-uri: http://auth-server:9000
+#            userInfoUri: http://auth-server:9000/userinfo
+#            tokenUri: http://auth-server:9000/oauth2/token
+#            authorizationUri: http://auth-server:9000/oauth2/authorize
+#            jwkSetUri: http://auth-server:9000/oauth2/jwks
 
