@@ -1,7 +1,7 @@
 # fine_grained_token: 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
 
 server:
-  port: 9001
+  port: 0
 
 spring:
   application:
@@ -16,4 +16,12 @@ spring:
           password: #23Xob616AK4
           clone-on-start: false
           default-label: master
+
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${instanceId:${random.value}}}
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8999/eureka
 
