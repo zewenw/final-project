@@ -1,8 +1,11 @@
 spring:
-  config:
-    import: optional:configserver:http://localhost:9001
+  application:
+    name: test-client
+  profiles:
+    active: dev
   cloud:
     config:
-      fail-fast: true
-  application:
-    name: test
+      enabled: false
+
+
+
