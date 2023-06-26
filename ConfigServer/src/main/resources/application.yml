@@ -1,4 +1,4 @@
-# fine_grained_token: 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
+# fine_grained_token: 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
 
 server:
   port: 0
@@ -11,10 +11,8 @@ spring:
     config:
       server:
         git:
-          uri: https://zewenw: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@github.com/zewenw/final_project_config
-          username: zewenw
-          password: #23Xob616AK4
-          clone-on-start: false
+          uri: https://zewenw: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@github.com/zewenw/final_project_config
+          clone-on-start: true
           default-label: master
 
 
