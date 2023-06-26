@@ -1,7 +1,6 @@
 ## Command used to remove file from commit history
-```git filter-branch --force --index-filter "git rm --cached
---ignore-unmatch docs/OAuth/keycloak-21.1.1.zip"
-```
+```git filter-branch --force --index-filter "git rm --cached --ignore-unmatch docs/OAuth/keycloak-21.1.1.zip"```
+
 after remove related commit history, maybe incur some conflict with current version so need pull 
 first, then use
 ```git push```
