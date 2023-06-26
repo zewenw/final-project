@@ -11,6 +11,8 @@
         <option value="$PROJECT_DIR$/Resource/PhotoSharing/pom.xml" />
         <option value="$PROJECT_DIR$/DiscoveryService/pom.xml" />
         <option value="$PROJECT_DIR$/Resource/Foundation/pom.xml" />
+        <option value="$PROJECT_DIR$/ConfigServer/pom.xml" />
+        <option value="$PROJECT_DIR$/TestModule/pom.xml" />
       </list>
     </option>
   </component>

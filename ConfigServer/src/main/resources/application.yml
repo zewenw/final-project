@@ -1,0 +1,19 @@
+# fine_grained_token: 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
+
+server:
+  port: 9001
+
+spring:
+  application:
+    name: config-server
+
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://zewenw: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@github.com/zewenw/final_project_config
+          username: zewenw
+          password: #23Xob616AK4
+          clone-on-start: false
+          default-label: master
+
