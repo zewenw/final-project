@@ -41,7 +41,7 @@ spring:
   application:
     name: test-client
   profiles:
-    active: dev
+    active: ${spring.profiles.active}
   cloud:
     config:
       enabled: false

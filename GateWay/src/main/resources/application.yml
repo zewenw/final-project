@@ -8,12 +8,12 @@ spring:
     gateway:
       routes:
         - id: user
-          uri: lb://user-management
+          uri: lb://user-management-client
           predicates:
             - Path=/user/sayHello
             - Method=GET,POST
         - id: photo
-          uri: lb://photo-sharing
+          uri: lb://photo-sharing-client
           predicates:
             - Path=/photo/sayHello
             - Method=GET,POST

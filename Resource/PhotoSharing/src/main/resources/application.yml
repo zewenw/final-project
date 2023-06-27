@@ -5,7 +5,11 @@ spring:
   profiles:
     active: '@environment@'
   application:
-    name: photo-sharing
+    name: photo-sharing-client
+  cloud:
+    config:
+      enabled: false
+
 
 eureka:
   instance:

@@ -3,10 +3,10 @@ server:
 
 spring:
   profiles:
-    active: '@environment@'
+    active: dev
   application:
-    name: user-management
+    name: user-management-client
 
-eureka:
-  instance:
-    instance-id: ${spring.application.name}:${instanceId:${random.value}}}
+#eureka:
+#  instance:
+#    instance-id: ${spring.application.name}:${instanceId:${random.value}}}
