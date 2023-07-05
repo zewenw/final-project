@@ -10,13 +10,15 @@ spring:
         - id: user
           uri: lb://user-management-client
           predicates:
-            - Path=/user/sayHello
-            - Method=GET,POST
+            - Path=/user/*
         - id: photo
           uri: lb://photo-sharing-client
           predicates:
-            - Path=/photo/sayHello
-            - Method=GET,POST
+            - Path=/photo/*
+        - id: oauth
+          uri: lb://authenrization-client
+          predicates:
+            - Path=/oauth/*
   application:
     name: gateway-client
 
