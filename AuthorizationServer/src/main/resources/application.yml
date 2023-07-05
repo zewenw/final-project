@@ -1,9 +1,12 @@
 server:
   port: 9000
-authorization:
-  url: http://auth-server:${server.port}
+
 
 spring:
+  application:
+    name: authenrization-client
   profiles:
     active: '@environment@'
-
+  cloud:
+    config:
+      enabled: false

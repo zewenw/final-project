@@ -54,4 +54,10 @@ Sure! Here's the provided schedule formatted as a Markdown table:
 | Week 12      | Develop Photo-Sharing System and write Final Report     | Final Report and Code          |
 | Week 13      | Viva                                                  |                                |
 
-Please note that the table formatting may vary depending on the Markdown renderer you are using.
+### Boot Sequence
+1. DiscoveryServiceApplication
+2. ConfigServerApplication
+3. AuthorizationServerApplication
+4. GateWayApplication
+5. UserManagementApplication
+6. Others Server Components
