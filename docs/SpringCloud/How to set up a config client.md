@@ -32,7 +32,7 @@ spring:
       discovery:
         enabled: true
         service-id: config-server
-      profile: @environment@
+      profile: ${spring.profiles.active}
 
 
 eureka:

@@ -18,10 +18,5 @@ spring:
             - Path=/photo/sayHello
             - Method=GET,POST
   application:
-    name: gateway
-
-eureka:
-  instance:
-    instance-id: ${spring.application.name}:${instanceId:${random.value}}}
-
+    name: gateway-client
 
