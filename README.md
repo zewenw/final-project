@@ -35,7 +35,7 @@ me to implement the whole picture.
 | ElasticSearch  | [https://www.elastic.co/](https://www.elastic.co/)           |
 
 ### TimeTable
-Sure! Here's the provided schedule formatted as a Markdown table:
+
 
 | Week         | Task                                                  | Delivery                       |
 |--------------|-------------------------------------------------------|--------------------------------|
