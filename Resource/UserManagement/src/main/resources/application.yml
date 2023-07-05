@@ -6,7 +6,3 @@ spring:
     active: '@environment@'
   application:
     name: user-management-client
-
-#eureka:
-#  instance:
-#    instance-id: ${spring.application.name}:${instanceId:${random.value}}}

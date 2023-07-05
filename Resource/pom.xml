@@ -19,6 +19,7 @@
 
     <modules>
         <module>UserManagement</module>
+        <module>PhotoSharing</module>
     </modules>
 
 

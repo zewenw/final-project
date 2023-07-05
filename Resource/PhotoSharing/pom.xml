@@ -7,11 +7,13 @@
         <artifactId>Resource</artifactId>
         <version>${revision}</version>
     </parent>
+
     <groupId>com.finalproject</groupId>
     <artifactId>PhotoSharing</artifactId>
     <version>${revision}</version>
     <name>PhotoSharing</name>
     <description>photo sharing project</description>
+
     <properties>
         <java.version>17</java.version>
     </properties>

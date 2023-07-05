@@ -7,6 +7,7 @@
         <artifactId>Resource</artifactId>
         <version>${revision}</version>
     </parent>
+
     <groupId>com.finalproject</groupId>
     <artifactId>UserManagement</artifactId>
     <version>${revision}</version>
