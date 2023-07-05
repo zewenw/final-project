@@ -1,15 +1,24 @@
 # How to set up a config client
 
+### Prerequisite
+if module or component isn't a client of eureka, should add eureka client dependency first
+```xml
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+</dependency>
+```
+
 1. pom.xml introduces dependences
 
 ```xml
 <dependency>
-<groupId>org.springframework.cloud</groupId>
-<artifactId>spring-cloud-starter-bootstrap</artifactId>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-bootstrap</artifactId>
 </dependency>
 <dependency>
-<groupId>org.springframework.cloud</groupId>
-<artifactId>spring-cloud-starter-config</artifactId>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-config</artifactId>
 </dependency>
 ```
 
@@ -23,7 +32,7 @@ spring:
       discovery:
         enabled: true
         service-id: config-server
-      profile: dev
+      profile: @environment@
 
 
 eureka:
