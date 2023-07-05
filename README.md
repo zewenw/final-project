@@ -36,6 +36,9 @@ me to implement the whole picture.
 
 ### TimeTable
 Sure! Here's the provided schedule formatted as a Markdown table:
+- **week 3**
+    - [x] spring config
+    - [] redis with authorization server and resource server and toolkit
 
 | Week         | Task                                                  | Delivery                       |
 |--------------|-------------------------------------------------------|--------------------------------|
