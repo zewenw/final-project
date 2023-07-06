@@ -14,15 +14,22 @@ import org.springframework.http.MediaType;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.oauth2.core.AuthorizationGrantType;
+import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
+import org.springframework.security.oauth2.core.oidc.OidcScopes;
 import org.springframework.security.oauth2.core.oidc.endpoint.OidcParameterNames;
+import org.springframework.security.oauth2.jose.jws.SignatureAlgorithm;
 import org.springframework.security.oauth2.jwt.*;
 import org.springframework.security.oauth2.server.authorization.OAuth2TokenType;
 import org.springframework.security.oauth2.server.authorization.client.JdbcRegisteredClientRepository;
+import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
 import org.springframework.security.oauth2.server.authorization.config.annotation.web.configuration.OAuth2AuthorizationServerConfiguration;
 import org.springframework.security.oauth2.server.authorization.config.annotation.web.configurers.OAuth2AuthorizationServerConfigurer;
 import org.springframework.security.oauth2.server.authorization.settings.AuthorizationServerSettings;
+import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
+import org.springframework.security.oauth2.server.authorization.settings.OAuth2TokenFormat;
+import org.springframework.security.oauth2.server.authorization.settings.TokenSettings;
 import org.springframework.security.oauth2.server.authorization.token.*;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
@@ -33,7 +40,7 @@ import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
-import java.util.Collection;
+import java.time.Duration;
 import java.util.UUID;
 
 @Configuration
@@ -42,7 +49,9 @@ public class AuthServerConfig {
     @Value("${authorization.url}")
     private String authServerUrl;
 
-
+    /**
+     * filter chain configuration
+     */
     @Bean
     @Order(Ordered.HIGHEST_PRECEDENCE)
     public SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity http)
@@ -50,6 +59,7 @@ public class AuthServerConfig {
         OAuth2AuthorizationServerConfiguration.applyDefaultSecurity(http);
         http.getConfigurer(OAuth2AuthorizationServerConfigurer.class)
                 .oidc(Customizer.withDefaults());	// Enable OpenID Connect 1.0
+
         http
                 // Redirect to the login page when not authenticated from the
                 // authorization endpoint
@@ -66,11 +76,44 @@ public class AuthServerConfig {
         return http.build();
     }
 
+    /**
+     * registered client
+     */
     @Bean
     public RegisteredClientRepository registeredClientRepository(DataSource dataSource) {
+
+        RegisteredClient gatewayClient = RegisteredClient.withId("messaging_gateway_oidc")
+                .clientId("gateway_client")
+                .clientSecret("{noop}gateway_client_secret")
+                .clientAuthenticationMethods(s -> {
+                    s.add(ClientAuthenticationMethod.CLIENT_SECRET_POST);
+                    s.add(ClientAuthenticationMethod.CLIENT_SECRET_BASIC);
+                })
+                .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
+                .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
+                .redirectUri("http://127.0.0.1/login/oauth2/code/messaging_gateway_oidc")
+                .scope(OidcScopes.OPENID)
+                .scope(OidcScopes.PROFILE)
+                .scope(OidcScopes.EMAIL)
+                .scope("read")
+                .clientSettings(ClientSettings.builder()
+                        .requireAuthorizationConsent(false) //No authorization required
+                        .requireProofKey(false)
+                        .build())
+                .tokenSettings(TokenSettings.builder()
+                        .accessTokenFormat(OAuth2TokenFormat.SELF_CONTAINED) // Generate JWT token
+                        .idTokenSignatureAlgorithm(SignatureAlgorithm.RS256)//idTokenSignatureAlgorithm：signature algorithm
+                        .accessTokenTimeToLive(Duration.ofSeconds(30 * 60))//accessTokenTimeToLive: access_token validity period
+                        .refreshTokenTimeToLive(Duration.ofSeconds(60 * 60))//refreshTokenTimeToLive: refresh_token validity period
+                        .reuseRefreshTokens(true)//reuseRefreshTokens: Whether to reuse refresh tokens
+                        .build())
+                .build();
+
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
         JdbcRegisteredClientRepository registeredClientRepository =
                 new JdbcRegisteredClientRepository(jdbcTemplate);
+
+//        registeredClientRepository.save(gatewayClient);
 
         return registeredClientRepository;
     }
@@ -89,6 +132,10 @@ public class AuthServerConfig {
     }
 
 
+    /**
+     * permission control
+     * @return
+     */
     @Bean
     public OAuth2TokenCustomizer<JwtEncodingContext> jwtCustomizer() {
         return context -> {

@@ -1,24 +1,60 @@
 server:
   port: 80
+  servlet:
+    session:
+      cookie:
+        name: GATEWAY-CLIENT
 
 spring:
+  application:
+    name: gateway-client
   profiles:
     active: '@environment@'
+#route forwarding
   cloud:
     gateway:
       routes:
         - id: user
           uri: lb://user-management-client
           predicates:
-            - Path=/user/*
+            - Path=/user/**
+          filters:
+            - TokenRelay
+            - StripPrefix=1
         - id: photo
           uri: lb://photo-sharing-client
           predicates:
-            - Path=/photo/*
-        - id: oauth
-          uri: lb://authenrization-client
-          predicates:
-            - Path=/oauth/*
-  application:
-    name: gateway-client
+            - Path=/photo/**
+          filters:
+            - TokenRelay
+            - StripPrefix=1
+  session:
+    redis:
+      flush-mode: on_save # session refresh mode
+      namespace: gateway:session # namespace for keys used to store sessions
+# Todo then move to the corresponding environment configuration file
+  data:
+    redis:
+      host: localhost
+      port: 6379
+  security:
+    oauth2:
+      client:
+        registration:
+          messaging_gateway_oidc:
+            provider: messaging_gateway_oidc
+            clientId: gateway_client
+            clientSecret: gateway_client_secret
+            scope:
+              - openid
+              - profile
+            authorizationGrantType: authorization_code
+            redirectUri: "{baseUrl}/login/oauth2/code/{registrationId}"
+        provider:
+          messaging_gateway_oidc:
+            issuer-uri: http://auth-server:9000
+            userInfoUri: http://auth-server:9000/userinfo
+            tokenUri: http://auth-server:9000/oauth2/token
+            authorizationUri: http://auth-server:9000/oauth2/authorize
+            jwkSetUri: http://auth-server:9000/oauth2/jwks
 

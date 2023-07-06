@@ -19,7 +19,7 @@ public class WebSecurity {
         UserDetails john = User.builder()
                 .username("john")
                 .password("{noop}test123")
-                .roles("EMPLOYEE")
+                .roles("EMPLOYEE", "USER")
                 .build();
 
         UserDetails mary = User.builder()

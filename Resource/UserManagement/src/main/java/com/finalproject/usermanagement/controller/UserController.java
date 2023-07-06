@@ -1,12 +1,17 @@
-package com.finalproject.usermanagement.controller.demo;
+package com.finalproject.usermanagement.controller;
 
 
+import com.finalproject.usermanagement.controller.demo.UserRest;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/users")
 public class UserController {
 
+    @GetMapping("/sayHello")
+    public String sayHello(){
+        return "user management --- users";
+    }
 
     @GetMapping("/status/check")
 //    @Scope("SCOPE_profile")
