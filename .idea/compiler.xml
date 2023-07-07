@@ -13,7 +13,6 @@
         <module name="PhotoSharing" />
         <module name="Foundation" />
         <module name="ConfigServer" />
-        <module name="Client" />
         <module name="DiscoveryService" />
         <module name="TestModule" />
       </profile>

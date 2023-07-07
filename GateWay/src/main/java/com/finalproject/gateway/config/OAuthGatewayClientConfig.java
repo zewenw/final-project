@@ -20,12 +20,4 @@ public class OAuthGatewayClientConfig {
         return http.build();
     }
 
-//    @Bean
-//    public SecurityFilterChain securityWebFilterChain(HttpSecurity http) throws Exception {
-//        http
-//                .authorizeHttpRequests(auth -> auth.anyRequest().authenticated())
-//                .oauth2Login(Customizer.withDefaults())
-//                .cors(cors -> cors.disable());
-//        return http.build();
-//    }
 }

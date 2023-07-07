@@ -1,11 +1,6 @@
 server:
   port: 8999
 
-
-spring:
-  profiles:
-    active: dev
-
 eureka:
   client:
     register-with-eureka: false

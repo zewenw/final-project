@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AuthorizationServer/AuthorizationServer.iml" filepath="$PROJECT_DIR$/AuthorizationServer/AuthorizationServer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Client/Client.iml" filepath="$PROJECT_DIR$/Client/Client.iml" />
       <module fileurl="file://$PROJECT_DIR$/ConfigServer/ConfigServer.iml" filepath="$PROJECT_DIR$/ConfigServer/ConfigServer.iml" />
       <module fileurl="file://$PROJECT_DIR$/DiscoveryService/DiscoveryService.iml" filepath="$PROJECT_DIR$/DiscoveryService/DiscoveryService.iml" />
       <module fileurl="file://$PROJECT_DIR$/Resource/Foundation/Foundation.iml" filepath="$PROJECT_DIR$/Resource/Foundation/Foundation.iml" />
