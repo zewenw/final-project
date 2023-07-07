@@ -12,7 +12,7 @@
     <artifactId>UserManagement</artifactId>
     <version>${revision}</version>
     <name>UserManagement</name>
-    <description>Demo project for Spring Boot</description>
+    <description>User management module</description>
 
     <dependencies>
         <dependency>

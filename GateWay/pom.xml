@@ -20,6 +20,17 @@
         <spring-cloud.version>2022.0.3</spring-cloud.version>
     </properties>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <!--SpringCloud Gateway-->
@@ -82,30 +93,28 @@
         </dependency>
     </dependencies>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <profiles>
-        <!-- 开发环境 -->
+        <!-- local env -->
+        <profile>
+            <id>local</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <environment>local</environment>
+            </properties>
+        </profile>
+        <!-- develop env -->
         <profile>
             <id>dev</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
                 <environment>dev</environment>
             </properties>
         </profile>
-        <!-- 测试环境 -->
+        <!-- test env -->
         <profile>
             <id>test</id>
             <activation>
@@ -115,7 +124,7 @@
                 <environment>test</environment>
             </properties>
         </profile>
-        <!-- 预发环境 -->
+        <!-- pre-production env -->
         <profile>
             <id>pre</id>
             <activation>
@@ -125,7 +134,7 @@
                 <environment>pre</environment>
             </properties>
         </profile>
-        <!-- 生产环境 -->
+        <!-- production env -->
         <profile>
             <id>prod</id>
             <activation>
@@ -136,7 +145,6 @@
             </properties>
         </profile>
     </profiles>
-
 
     <build>
         <plugins>
