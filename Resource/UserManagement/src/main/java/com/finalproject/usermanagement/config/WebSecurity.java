@@ -1,6 +1,7 @@
 package com.finalproject.usermanagement.config;
 
 import com.finalproject.foundation.config.JwtCustomizeConverter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -8,12 +9,19 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+
+import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity(securedEnabled = true, prePostEnabled = true)
 public class WebSecurity {
+
+
+    @Autowired
+    private DataSource dataSource;
 
     @Bean
     SecurityFilterChain configure(HttpSecurity httpSecurity) throws Exception{
@@ -40,6 +48,14 @@ public class WebSecurity {
         JwtAuthenticationConverter jwtAuthenticationConverter = new JwtAuthenticationConverter();
         jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(new JwtCustomizeConverter());
         return jwtAuthenticationConverter;
+    }
+
+
+    @Bean
+    public JdbcUserDetailsManager jdbcUserDetailsManager() {
+        JdbcUserDetailsManager userDetailsManager = new JdbcUserDetailsManager();
+        userDetailsManager.setDataSource(dataSource);
+        return userDetailsManager;
     }
 
 }
