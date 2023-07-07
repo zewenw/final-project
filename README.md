@@ -42,20 +42,20 @@ Sure! Here's the provided schedule formatted as a Markdown table:
 
 | Week         | Task                                                  | Delivery                       |
 |--------------|-------------------------------------------------------|--------------------------------|
-| Week 0(12  – 16 June)      | Research                                              | Project Description            |
-| Week 1(19  – 23 June)     | Build base architecture and Integrate OAuth 2.0        |                                |
-| Week 2(26  – 30 June)    | Integrate Spring Security, PostgreSQL, Redis, and Hibernate | Preliminary Report        |
-| Week 3(3  – 7 July)     | Integrate Docker and K8S, deploy all components to AWS EC2 as docker image |                                |
-| Week 4(10  – 14 July)     | Develop a Role-based permission function and build CI/CD pipeline environment (Jenkins) |                                |
-| Week 5(17  – 21 July)     | Build log collection platform and ElasticSearch, Learn Scrum |                                |
-| Week 6(24  – 28 July)       | Build Monitor System, develop collect metrics from Reusable Component, and write Interim Report | Interim Report         |
-| Week 7(31  – 4 Aug)       | Learn ReactJs and develop Front UI                     |                                |
-| Week 8(7  – 11 Aug)       | Learn ReactJs and develop Front UI                     |                                |
-| Week 9(14  – 18 Aug)      | Learn ReactJs, develop Front UI, and finalize Report Template | Final Report Template   |
-| Week 10(21  – 25 Aug)     | Develop Photo-Sharing System                           |                                |
-| Week 11(28  – 1 Sep)      | Develop Photo-Sharing System                           |                                |
-| Week 12(4  – 8 Sep)      | Develop Photo-Sharing System and write Final Report     | Final Report and Code          |
-| Week 13(11  – 15 Sep)     | Viva                                                  |                                |
+| Week 0(12  – 16 June)| Research                                              | Project Description            |
+| Week 1(19  – 23 June)| Build base architecture and Integrate OAuth 2.0        |                                |
+| Week 2(26  – 30 June)| Integrate Spring Security, PostgreSQL, Redis, and Hibernate | Preliminary Report        |
+| Week 3(3  – 7 July)| Integrate Docker and K8S, deploy all components to AWS EC2 as docker image |                                |
+| Week 4(10  – 14 July)| Develop a Role-based permission function and build CI/CD pipeline environment (Jenkins) |                                |
+| Week 5(17  – 21 July)| Build log collection platform and ElasticSearch, Learn Scrum |                                |
+| Week 6(24  – 28 July)| Build Monitor System, develop collect metrics from Reusable Component, and write Interim Report | Interim Report         |
+| Week 7(31  – 4 Aug)| Learn ReactJs and develop Front UI                     |                                |
+| Week 8(7  – 11 Aug)| Learn ReactJs and develop Front UI                     |                                |
+| Week 9(14  – 18 Aug)| Learn ReactJs, develop Front UI, and finalize Report Template | Final Report Template   |
+| Week 10(21  – 25 Aug)| Develop Photo-Sharing System                           |                                |
+| Week 11(28  – 1 Sep)| Develop Photo-Sharing System                           |                                |
+| Week 12(4  – 8 Sep)| Develop Photo-Sharing System and write Final Report     | Final Report and Code          |
+| Week 13(11  – 15 Sep)| Viva                                                  |                                |
 
 ### Boot Sequence
 1. DiscoveryServiceApplication
