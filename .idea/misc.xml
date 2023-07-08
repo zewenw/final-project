@@ -17,6 +17,7 @@
         <option value="$PROJECT_DIR$/config_server/pom.xml" />
         <option value="$PROJECT_DIR$/discovery_service/pom.xml" />
         <option value="$PROJECT_DIR$/resource/foundation/.flattened-pom.xml" />
+        <option value="$PROJECT_DIR$/test_module/pom.xml" />
       </list>
     </option>
   </component>
