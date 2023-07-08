@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-
+    <!--resource is a parent pom project, so it doesn't need a parent-->
     <groupId>com.finalproject</groupId>
     <artifactId>Resource</artifactId>
     <version>0.0.2-SNAPSHOT</version>
@@ -46,11 +46,6 @@
     </dependencyManagement>
 
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-parent</artifactId>-->
-<!--            <version>3.1.1</version>-->
-<!--        </dependency>-->
     </dependencies>
 
     <profiles>
@@ -108,7 +103,7 @@
 
     <build>
         <plugins>
-            <!--多模块Maven项目统一修改版本号-->
+            <!-- for simplify version control in multi-module project-->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
