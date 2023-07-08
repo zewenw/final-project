@@ -1,16 +1,16 @@
-spring:
-  cloud:
-    config:
-      fail-fast: true
-      discovery:
-        enabled: true
-        service-id: config-server
-      profile: ${spring.profiles.active}
+#spring:
+#  cloud:
+#    config:
+#      fail-fast: true
+#      discovery:
+#        enabled: true
+#        service-id: config-server
+#      profile: ${spring.profiles.active}
 
 
-eureka:
-  instance:
-    instance-id: ${spring.application.name}:${instanceId:${random.value}}}
-  client:
-    service-url:
-      defaultZone: http://127.0.0.1:8999/eureka
+#eureka:
+#  instance:
+#    instance-id: ${spring.application.name}:${instanceId:${random.value}}}
+#  client:
+#    service-url:
+#      defaultZone: http://127.0.0.1:8999/eureka
