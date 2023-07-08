@@ -30,7 +30,7 @@
       <module name="Foundation (1)" target="17" />
       <module name="Foundation (2)" target="17" />
       <module name="GateWay" target="16" />
-      <module name="gateway" target="16" />
+      <module name="gateway" target="17" />
       <module name="photo_sharing" target="17" />
       <module name="PhotoSharing" target="17" />
       <module name="resource" target="17" />

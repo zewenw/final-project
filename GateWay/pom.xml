@@ -13,7 +13,7 @@
     <artifactId>gateway</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>gateway</name>
-    <description>Gateway Component</description>
+    <description>gateway component</description>
 
     <properties>
         <java.version>17</java.version>
@@ -155,7 +155,7 @@
                 <configuration>
                     <!--use buildpack so without Dockerfile we can still build image-->
                     <image>
-                        <name>owen8527/${project.artifactId}:${project.version}</name>
+                        <name>owen8527/${project.artifactId}</name>
                     </image>
                 </configuration>
             </plugin>

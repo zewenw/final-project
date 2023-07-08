@@ -159,7 +159,7 @@
                 <configuration>
                     <!--use buildpack so without Dockerfile we can still build image-->
                     <image>
-                        <name>owen8527/${project.artifactId}:${project.version}</name>
+                        <name>owen8527/${project.artifactId}</name>
                     </image>
                 </configuration>
             </plugin>
