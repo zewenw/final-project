@@ -10,9 +10,9 @@
     </parent>
 
     <groupId>com.finalproject</groupId>
-    <artifactId>GateWay</artifactId>
+    <artifactId>gateway</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>GateWay</name>
+    <name>gateway</name>
     <description>Gateway Component</description>
 
     <properties>

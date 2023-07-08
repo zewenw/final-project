@@ -11,9 +11,9 @@
     </parent>
 
     <groupId>com.finalproject</groupId>
-    <artifactId>DiscoveryService</artifactId>
+    <artifactId>discovery_service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>DiscoveryService</name>
+    <name>discovery_service</name>
     <description>eureka service register server</description>
 
     <properties>

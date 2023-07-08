@@ -7,26 +7,36 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="AuthorizationServer" />
-        <module name="GateWay" />
-        <module name="UserManagement" />
-        <module name="PhotoSharing" />
-        <module name="Foundation" />
-        <module name="ConfigServer" />
-        <module name="DiscoveryService" />
-        <module name="TestModule" />
+        <module name="authorization_server" />
+        <module name="photo_sharing" />
+        <module name="test_module" />
+        <module name="config_server" />
+        <module name="discovery_service" />
+        <module name="foundation" />
+        <module name="user_management" />
+        <module name="gateway" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="17">
+      <module name="authorization_server" target="17" />
       <module name="AuthorizationServer" target="17" />
       <module name="Client" target="16" />
+      <module name="config_server" target="17" />
       <module name="ConfigServer" target="17" />
+      <module name="discovery_service" target="17" />
       <module name="DiscoveryService" target="17" />
+      <module name="foundation" target="17" />
       <module name="Foundation" target="17" />
+      <module name="Foundation (1)" target="17" />
+      <module name="Foundation (2)" target="17" />
       <module name="GateWay" target="16" />
+      <module name="gateway" target="16" />
+      <module name="photo_sharing" target="17" />
       <module name="PhotoSharing" target="17" />
+      <module name="resource" target="17" />
       <module name="Resource" target="17" />
-      <module name="TestModule" target="17" />
+      <module name="test_module" target="17" />
+      <module name="user_management" target="17" />
       <module name="UserManagement" target="17" />
     </bytecodeTargetLevel>
   </component>
@@ -40,8 +50,12 @@
       <module name="GateWay" options="-parameters" />
       <module name="PhotoSharing" options="" />
       <module name="Resource" options="" />
-      <module name="TestModule" options="-parameters" />
       <module name="UserManagement" options="" />
+      <module name="authorization_server" options="-parameters" />
+      <module name="config_server" options="-parameters" />
+      <module name="discovery_service" options="-parameters" />
+      <module name="gateway" options="-parameters" />
+      <module name="test_module" options="-parameters" />
     </option>
   </component>
 </project>

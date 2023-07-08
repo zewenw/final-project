@@ -5,16 +5,16 @@
     <modelVersion>4.0.0</modelVersion>
     <!--resource is a parent pom project, so it doesn't need a parent-->
     <groupId>com.finalproject</groupId>
-    <artifactId>Resource</artifactId>
+    <artifactId>resource</artifactId>
     <version>0.0.2-SNAPSHOT</version>
-    <name>Resource</name>
+    <name>resource</name>
     <packaging>pom</packaging>
     <description>Resource Components</description>
 
     <modules>
-        <module>Foundation</module>
-        <module>UserManagement</module>
-        <module>PhotoSharing</module>
+        <module>foundation</module>
+        <module>user_management</module>
+        <module>photo_sharing</module>
     </modules>
 
 

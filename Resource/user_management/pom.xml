@@ -4,24 +4,20 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.finalproject</groupId>
-        <artifactId>Resource</artifactId>
+        <artifactId>resource</artifactId>
         <version>0.0.2-SNAPSHOT</version>
     </parent>
 
     <groupId>com.finalproject</groupId>
-    <artifactId>PhotoSharing</artifactId>
+    <artifactId>user_management</artifactId>
     <version>${revision}</version>
-    <name>PhotoSharing</name>
-    <description>photo sharing project</description>
-
-    <properties>
-        <java.version>17</java.version>
-    </properties>
+    <name>user_management</name>
+    <description>user management module</description>
 
     <dependencies>
         <dependency>
             <groupId>com.finalproject</groupId>
-            <artifactId>Foundation</artifactId>
+            <artifactId>foundation</artifactId>
             <version>${revision}</version>
         </dependency>
         <dependency>
@@ -36,7 +32,9 @@
         </dependency>
     </dependencies>
 
+
     <build>
+        <finalName>user-management</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

@@ -7,6 +7,8 @@ MAINTAINER eazybytes.com
 # Add the application's jar to the container
 COPY target/discovery-service.jar discovery-service.jar
 
+EXPOSE 8999
+
 #execute the application:wq
 
 ENTRYPOINT ["java","-jar","/discovery-service.jar"]
