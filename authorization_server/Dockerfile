@@ -5,8 +5,8 @@ FROM openjdk:17-jdk-slim as build
 MAINTAINER eazybytes.com
 
 # Add the application's jar to the container
-COPY target/test-module.jar test-module.jar
+COPY target/auth-server.jar auth-server.jar
 
 #execute the application:wq
 
-ENTRYPOINT ["java","-jar","/test-module.jar"]
+ENTRYPOINT ["java","-jar","/auth-server.jar"]
