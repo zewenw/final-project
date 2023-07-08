@@ -53,13 +53,20 @@
     </dependencyManagement>
 
     <build>
-        <finalName>config-server</finalName>
+        <finalName>config_server</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!--use buildpack so without Dockerfile we can still build image-->
+                    <image>
+                        <name>owen8527/${project.artifactId}:${project.version}</name>
+                    </image>
+                </configuration>
             </plugin>
         </plugins>
     </build>
+
 
 </project>

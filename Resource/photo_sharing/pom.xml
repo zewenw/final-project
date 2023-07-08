@@ -37,18 +37,16 @@
     </dependencies>
 
     <build>
+        <finalName>photo_sharing</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>3.1.1</version>
                 <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
+                    <!--use buildpack so without Dockerfile we can still build image-->
+                    <image>
+                        <name>owen8527/${project.artifactId}:${project.version}</name>
+                    </image>
                 </configuration>
             </plugin>
         </plugins>
