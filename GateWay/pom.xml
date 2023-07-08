@@ -147,19 +147,16 @@
     </profiles>
 
     <build>
-        <finalName>gateway-server</finalName>
+        <finalName>gateway</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>3.1.1</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>16</source>
-                    <target>16</target>
+                    <!--use buildpack so without Dockerfile we can still build image-->
+                    <image>
+                        <name>owen8527/${project.artifactId}:${project.version}</name>
+                    </image>
                 </configuration>
             </plugin>
         </plugins>
