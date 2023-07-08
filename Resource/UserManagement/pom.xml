@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.finalproject</groupId>
         <artifactId>Resource</artifactId>
-        <version>${revision}</version>
+        <version>0.0.2-SNAPSHOT</version>
     </parent>
 
     <groupId>com.finalproject</groupId>
@@ -34,6 +34,7 @@
 
 
     <build>
+        <finalName>user-management</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

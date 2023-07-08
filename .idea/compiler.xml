@@ -36,12 +36,12 @@
       <module name="Client" options="-parameters" />
       <module name="ConfigServer" options="-parameters" />
       <module name="DiscoveryService" options="-parameters" />
-      <module name="Foundation" options="-parameters" />
+      <module name="Foundation" options="" />
       <module name="GateWay" options="-parameters" />
-      <module name="PhotoSharing" options="-parameters" />
-      <module name="Resource" options="-parameters" />
+      <module name="PhotoSharing" options="" />
+      <module name="Resource" options="" />
       <module name="TestModule" options="-parameters" />
-      <module name="UserManagement" options="-parameters" />
+      <module name="UserManagement" options="" />
     </option>
   </component>
 </project>

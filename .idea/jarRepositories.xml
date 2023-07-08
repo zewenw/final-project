@@ -22,9 +22,19 @@
       <option name="url" value="https://repo.maven.apache.org/maven2/" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="local-repo" />
+      <option name="name" value="local-repo" />
+      <option name="url" value="file:///H:/tool/maven/repository/" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="snapshots" />
       <option name="name" value="libs-snapshot" />
       <option name="url" value="https://repo1.maven.org/maven2/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="local-repo" />
+      <option name="name" value="local-repo" />
+      <option name="url" value="$MAVEN_REPOSITORY$/" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="central" />
