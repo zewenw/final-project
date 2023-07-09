@@ -79,6 +79,6 @@ services:
       - "local_redis:172.25.64.1"
     environment:
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery_service:8999/eureka
-
+      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUERURI: http://authorization_server:9000
 networks:
   final-project-network:
