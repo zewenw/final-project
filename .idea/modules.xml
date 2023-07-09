@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/authorization_server/authorization_server.iml" filepath="$PROJECT_DIR$/authorization_server/authorization_server.iml" />
       <module fileurl="file://$PROJECT_DIR$/config_server/config_server.iml" filepath="$PROJECT_DIR$/config_server/config_server.iml" />
-      <module fileurl="file://$PROJECT_DIR$/discovery_service/discovery_service.iml" filepath="$PROJECT_DIR$/discovery_service/discovery_service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka_server/eureka_server.iml" filepath="$PROJECT_DIR$/eureka_server/eureka_server.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/final_project.iml" filepath="$PROJECT_DIR$/.idea/final_project.iml" />
       <module fileurl="file://$PROJECT_DIR$/resource/foundation/foundation.iml" filepath="$PROJECT_DIR$/resource/foundation/foundation.iml" />
       <module fileurl="file://$PROJECT_DIR$/gateway/gateway.iml" filepath="$PROJECT_DIR$/gateway/gateway.iml" />

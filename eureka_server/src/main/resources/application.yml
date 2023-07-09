@@ -1,6 +1,10 @@
 server:
   port: 8999
 
+spring:
+  application:
+    name: eureka_server
+
 eureka:
   client:
     register-with-eureka: false
@@ -10,4 +14,3 @@ logging:
   level:
     com.netflix.eureka: off
     com.netflix.discovery: off
-
