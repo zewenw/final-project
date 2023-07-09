@@ -53,3 +53,8 @@ spring:
             authorizationUri: ${SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_AUTHORIZATIONURI}
             jwkSetUri: ${SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_JWKSETURI}
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: *

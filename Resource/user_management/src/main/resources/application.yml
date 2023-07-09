@@ -6,3 +6,9 @@ spring:
     active: local
   application:
     name: user-management-client
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: *

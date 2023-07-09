@@ -5,24 +5,40 @@ services:
   eureka_server:
     image: owen8527/eureka_server:latest
     mem_limit: 700m
+    hostname: eureka_server
     ports:
       - "8999:8999"
     networks:
-      - final-project-network
+      - app
 
   config_server:
-    depends_on:
-      - discovery_service
     image: owen8527/config_server:latest
     mem_limit: 700m
     ports:
       - "9001:9001"
+    depends_on:
+      - eureka_server
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 15s
+        max_attempts: 3
+        window: 120s
     networks:
-      - final-project-network
+      - app
     extra_hosts:
       - "redis:172.25.64.1"
-    environment:
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka_server:8999/eureka
+#    environment:
+#      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka_server:8999/eureka
+#    links:
+#      - eureka_server
+networks:
+  app:
+    driver: bridge
+
+
+
+
 
 #  authorization_server:
 #    depends_on:
@@ -79,5 +95,3 @@ services:
 #      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka_server:8999/eureka
 #      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUERURI: http://authorization_server:9000
 
-networks:
-  final-project-network:

@@ -5,8 +5,8 @@ FROM openjdk:17-jdk-slim as build
 MAINTAINER eazybytes.com
 
 # Add the application's jar to the container
-COPY target/gateway-server.jar gateway-server.jar
+COPY target/gateway.jar gateway.jar
 
 #execute the application:wq
 
-ENTRYPOINT ["java","-jar","/gateway-server.jar"]
+ENTRYPOINT ["java","-jar","/gateway.jar"]

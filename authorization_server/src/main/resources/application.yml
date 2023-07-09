@@ -9,3 +9,9 @@ spring:
   cloud:
     config:
       enabled: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: *
