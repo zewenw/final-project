@@ -24,7 +24,7 @@ services:
     extra_hosts:
       - "redis:172.25.64.1"
     environment:
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery_service:8999/eureka
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery_service:8999/eureka
 
   authorization_server:
     depends_on:
@@ -40,7 +40,7 @@ services:
       - "local_postgre:172.25.64.1"
       - "local_eureka:172.25.64.1"
     environment:
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery_service:8999/eureka
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery_service:8999/eureka
 
 
   gateway:
@@ -55,14 +55,12 @@ services:
     networks:
       - final-project-network
     environment:
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery_service:8999/eureka
-      - SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_ISSUERURI: http://authorization_server:9000
-      - SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_USERINFOURI: http://authorization_server:9000/userinfo
-      - SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_TOKENURI: http://authorization_server:9000/token
-      - SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_AUTHORIZATIONURI: http://authorization_server:9000/oauth2/authorize
-      - SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_JWKSETURI: http://authorization_server:9000/oauth2/jwks
-  #    network_mode:
-#      - host
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery_service:8999/eureka
+      SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_ISSUERURI: http://authorization_server:9000
+      SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_USERINFOURI: http://authorization_server:9000/userinfo
+      SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_TOKENURI: http://authorization_server:9000/token
+      SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_AUTHORIZATIONURI: http://authorization_server:9000/oauth2/authorize
+      SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_JWKSETURI: http://authorization_server:9000/oauth2/jwks
 
   user_management:
     depends_on:
@@ -80,7 +78,7 @@ services:
       - "local_postgre:172.25.64.1"
       - "local_redis:172.25.64.1"
     environment:
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery_service:8999/eureka
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery_service:8999/eureka
 
 networks:
   final-project-network:
