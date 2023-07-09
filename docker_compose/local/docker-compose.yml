@@ -26,8 +26,8 @@ services:
         window: 120s
     networks:
       - app
-    extra_hosts:
-      - "redis:172.25.64.1"
+#    extra_hosts:
+#      - "redis:172.25.64.1"
 #    environment:
 #      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka_server:8999/eureka
 #    links:
