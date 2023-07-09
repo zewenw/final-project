@@ -5,8 +5,8 @@ FROM openjdk:17-jdk-slim as build
 MAINTAINER eazybytes.com
 
 # Add the application's jar to the container
-COPY target/authorization_server.jar authorization_server.jar
+COPY target/eureka_server.jar eureka_server.jar
 
 #execute the application:wq
 
-ENTRYPOINT ["java","-jar","/authorization_server.jar"]
+ENTRYPOINT ["java","-jar","/eureka_server.jar"]

@@ -5,8 +5,8 @@ FROM openjdk:17-jdk-slim as build
 MAINTAINER eazybytes.com
 
 # Add the application's jar to the container
-COPY target/config-server.jar config-server.jar
+COPY target/config_server.jar config_server.jar
 
 #execute the application:wq
 
-ENTRYPOINT ["java","-jar","/config-server.jar"]
+ENTRYPOINT ["java","-jar","/config_server.jar"]
