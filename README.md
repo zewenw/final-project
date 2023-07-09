@@ -58,9 +58,9 @@ Sure! Here's the provided schedule formatted as a Markdown table:
 | Week 13(11  – 15 Sep)| Viva                                                  |                                |
 
 ### Boot Sequence
-1. DiscoveryServiceApplication
-2. ConfigServerApplication
-3. AuthorizationServerApplication
-4. GateWayApplication
-5. UserManagementApplication
+1. DiscoveryServiceApplication port: 8999
+2. ConfigServerApplication port: 9001
+3. AuthorizationServerApplication port: 9000
+4. GateWayApplication port: 80
+5. UserManagementApplication port: 10001
 6. Others Server Components
