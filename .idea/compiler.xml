@@ -8,7 +8,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="authorization_server" />
-        <module name="photo_sharing" />
         <module name="test_module" />
         <module name="config_server" />
         <module name="discovery_service" />

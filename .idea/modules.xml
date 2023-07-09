@@ -8,7 +8,6 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/final_project.iml" filepath="$PROJECT_DIR$/.idea/final_project.iml" />
       <module fileurl="file://$PROJECT_DIR$/resource/foundation/foundation.iml" filepath="$PROJECT_DIR$/resource/foundation/foundation.iml" />
       <module fileurl="file://$PROJECT_DIR$/gateway/gateway.iml" filepath="$PROJECT_DIR$/gateway/gateway.iml" />
-      <module fileurl="file://$PROJECT_DIR$/resource/photo_sharing/photo_sharing.iml" filepath="$PROJECT_DIR$/resource/photo_sharing/photo_sharing.iml" />
       <module fileurl="file://$PROJECT_DIR$/resource/resource.iml" filepath="$PROJECT_DIR$/resource/resource.iml" />
       <module fileurl="file://$PROJECT_DIR$/test_module/test_module.iml" filepath="$PROJECT_DIR$/test_module/test_module.iml" />
       <module fileurl="file://$PROJECT_DIR$/resource/user_management/user_management.iml" filepath="$PROJECT_DIR$/resource/user_management/user_management.iml" />

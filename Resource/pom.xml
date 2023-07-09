@@ -14,7 +14,6 @@
     <modules>
         <module>foundation</module>
         <module>user_management</module>
-        <module>photo_sharing</module>
     </modules>
 
 
