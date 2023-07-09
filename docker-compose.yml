@@ -9,8 +9,6 @@ services:
       - "8999:8999"
     networks:
       - final-project-network
-    environment:
-      -
 
   config_server:
     depends_on:
