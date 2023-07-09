@@ -21,13 +21,13 @@ spring:
           filters:
             - TokenRelay
             - StripPrefix=1
-        - id: photo
-          uri: lb://photo-sharing-client
-          predicates:
-            - Path=/photo/**
-          filters:
-            - TokenRelay
-            - StripPrefix=1
+#        - id: photo
+#          uri: lb://photo-sharing-client
+#          predicates:
+#            - Path=/photo/**
+#          filters:
+#            - TokenRelay
+#            - StripPrefix=1
   session:
     redis:
       flush-mode: on_save # session refresh mode
@@ -47,9 +47,9 @@ spring:
             redirectUri: "{baseUrl}/login/oauth2/code/{registrationId}"
         provider:
           messaging_gateway_oidc:
-            issuer-uri: http://auth-server:9000
-            userInfoUri: http://auth-server:9000/userinfo
-            tokenUri: http://auth-server:9000/oauth2/token
-            authorizationUri: http://auth-server:9000/oauth2/authorize
-            jwkSetUri: http://auth-server:9000/oauth2/jwks
+            issuer-uri: ${SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_ISSUERURI}
+            userInfoUri: ${SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_USERINFOURI}
+            tokenUri: ${SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_TOKENURI}
+            authorizationUri: ${SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_AUTHORIZATIONURI}
+            jwkSetUri: ${SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_JWKSETURI}
 

@@ -59,8 +59,22 @@ Sure! Here's the provided schedule formatted as a Markdown table:
 
 ### Boot Sequence
 1. DiscoveryServiceApplication port: 8999
+
+   `docker run -d -p 8999:8999 --name discovery_service owen8527/discovery_service`
 2. ConfigServerApplication port: 9001
+
+​		`docker run -d -p 9001:9001 --name config_server owen8527/config_server`
+
 3. AuthorizationServerApplication port: 9000
+
+​		`docker run -d -p 9000:9000 --name authorization_server owen8527/authorization_server`
+
 4. GateWayApplication port: 80
-5. UserManagementApplication port: 10001
-6. Others Server Components
+
+​		`docker run -d -p 80:80 --name gateway owen8527/gateway`
+
+4. UserManagementApplication port: 10001
+
+   `docker run -d -p 10001:10001 --name user_management owen8527/user_management`
+
+5. Others Server Components

@@ -1,0 +1,86 @@
+version: "3.8"
+
+services:
+
+  discovery_service:
+    image: owen8527/discovery_service:latest
+    mem_limit: 700m
+    ports:
+      - "8999:8999"
+    networks:
+      - final-project-network
+    environment:
+      -
+
+  config_server:
+    depends_on:
+      - discovery_service
+    image: owen8527/config_server:latest
+    mem_limit: 700m
+    ports:
+      - "9001:9001"
+    networks:
+      - final-project-network
+    extra_hosts:
+      - "redis:172.25.64.1"
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery_service:8999/eureka
+
+  authorization_server:
+    depends_on:
+      - config_server
+      - discovery_service
+    image: owen8527/authorization_server:latest
+    mem_limit: 700m
+    ports:
+      - "9000:9000"
+    networks:
+      - final-project-network
+    extra_hosts:
+      - "local_postgre:172.25.64.1"
+      - "local_eureka:172.25.64.1"
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery_service:8999/eureka
+
+
+  gateway:
+    depends_on:
+      - authorization_server
+      - config_server
+      - discovery_service
+    image: owen8527/gateway:latest
+    mem_limit: 700m
+    ports:
+      - "80:80"
+    networks:
+      - final-project-network
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery_service:8999/eureka
+      - SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_ISSUERURI: http://authorization_server:9000
+      - SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_USERINFOURI: http://authorization_server:9000/userinfo
+      - SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_TOKENURI: http://authorization_server:9000/token
+      - SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_AUTHORIZATIONURI: http://authorization_server:9000/oauth2/authorize
+      - SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_JWKSETURI: http://authorization_server:9000/oauth2/jwks
+  #    network_mode:
+#      - host
+
+  user_management:
+    depends_on:
+      - gateway
+      - authorization_server
+      - config_server
+      - discovery_service
+    image: owen8527/user_management:latest
+    mem_limit: 700m
+    ports:
+      - "10001:10001"
+    networks:
+      - final-project-network
+    extra_hosts:
+      - "local_postgre:172.25.64.1"
+      - "local_redis:172.25.64.1"
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery_service:8999/eureka
+
+networks:
+  final-project-network:

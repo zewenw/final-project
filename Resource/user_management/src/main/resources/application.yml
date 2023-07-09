@@ -3,6 +3,6 @@ server:
 
 spring:
   profiles:
-    active: '@environment@'
+    active: local
   application:
     name: user-management-client
