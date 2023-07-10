@@ -68,7 +68,28 @@ services:
     networks:
       - finalproject
 
-
+  usermodule:
+    image: owen8527/usermodule:latest
+    mem_limit: 700m
+    hostname: usermodule
+    depends_on:
+      - gateway
+      - authserver
+      - configserver
+      - eurekaserver
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 15s
+        max_attempts: 3
+        window: 120s
+    ports:
+      - "10001:10001"
+    networks:
+      - finalproject
+    extra_hosts:
+      - "local_postgre:10.235.194.152"
+      - "local_redis:10.235.194.152"
 
 networks:
   finalproject:
@@ -78,23 +99,4 @@ networks:
 
 
 
-
-#  user_management:
-#    depends_on:
-#      - gateway
-#      - authorization_server
-#      - config_server
-#      - eureka_server
-#    image: owen8527/user_management:latest
-#    mem_limit: 700m
-#    ports:
-#      - "10001:10001"
-#    networks:
-#      - final-project-network
-#    extra_hosts:
-#      - "local_postgre:172.25.64.1"
-#      - "local_redis:172.25.64.1"
-#    environment:
-#      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka_server:8999/eureka
-#      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUERURI: http://authorization_server:9000
 

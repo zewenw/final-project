@@ -4,7 +4,7 @@ spring:
       fail-fast: true
       discovery:
         enabled: true
-        service-id: config-server
+        service-id: configserver
       profile: ${spring.profiles.active}
 
 

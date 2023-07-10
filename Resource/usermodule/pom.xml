@@ -11,8 +11,8 @@
     <groupId>com.finalproject</groupId>
     <artifactId>usermodule</artifactId>
     <version>${revision}</version>
-    <name>user_management</name>
-    <description>user management module</description>
+    <name>usermodule</name>
+    <description>user module</description>
 
     <properties>
         <java.version>17</java.version>
