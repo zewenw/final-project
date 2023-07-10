@@ -1,10 +1,10 @@
-package com.finalproject.usermanagement;
+package com.finalproject.usermodule;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class UserManagementApplicationTests {
+class UserModuleApplicationTests {
 
     @Test
     void contextLoads() {
