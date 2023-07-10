@@ -49,6 +49,27 @@ services:
       - "local_postgre:10.235.194.152"
       - "local_eureka:10.235.194.152"
 
+  gateway:
+    image: owen8527/gateway:latest
+    mem_limit: 700m
+    hostname: gateway
+    ports:
+      - "80:80"
+    depends_on:
+      - authserver
+      - configserver
+      - eurekaserver
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 15s
+        max_attempts: 3
+        window: 120s
+    networks:
+      - finalproject
+
+
+
 networks:
   finalproject:
 #    driver: bridge
@@ -57,27 +78,7 @@ networks:
 
 
 
-#
-#
-#  gateway:
-#    depends_on:
-#      - authorization_server
-#      - config_server
-#      - eureka_server
-#    image: owen8527/gateway:latest
-#    mem_limit: 700m
-#    ports:
-#      - "80:80"
-#    networks:
-#      - final-project-network
-#    environment:
-#      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka_server:8999/eureka
-#      SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_ISSUERURI: http://authorization_server:9000
-#      SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_USERINFOURI: http://authorization_server:9000/userinfo
-#      SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_TOKENURI: http://authorization_server:9000/token
-#      SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_AUTHORIZATIONURI: http://authorization_server:9000/oauth2/authorize
-#      SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_JWKSETURI: http://authorization_server:9000/oauth2/jwks
-#
+
 #  user_management:
 #    depends_on:
 #      - gateway
