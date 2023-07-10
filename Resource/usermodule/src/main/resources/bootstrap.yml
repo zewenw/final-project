@@ -14,3 +14,4 @@ eureka:
   client:
     service-url:
       defaultZone: http://eurekaserver:8999/eureka/
+#      defaultZone: http://127.0.0.1:8999/eureka/
