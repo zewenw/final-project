@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+
+  eurekaserver:
+    image: owen8527/eurekaserver:latest
+    mem_limit: 700m
+    hostname: eurekaserver
+    ports:
+      - "8999:8999"
+#    healthcheck:
+#      test: [ "CMD", "curl", "-f", "http://eurekaserver:8999/actuator/health" ]
+#      interval: 10s
+#      timeout: 5s
+#      retries: 5
+    networks:
+      - app
+
+  demomodule:
+    image: owen8527/demomodule:latest
+    mem_limit: 700m
+    ports:
+      - "12306:12306"
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 15s
+        max_attempts: 3
+        window: 120s
+    networks:
+      - app
+#    extra_hosts:
+#      - "redis:172.25.64.1"
+#    environment:
+#      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka_server:8999/eureka
+#    links:
+#      - eureka_server
+networks:
+  app:

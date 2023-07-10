@@ -1,15 +1,12 @@
 server:
-  port: 8080
+  port: 12306
 
 
 spring:
   application:
-    name: test-client
+    name: demomodule
   profiles:
     active: @environment@
-#  cloud:
-#    config:
-#      enabled: false
 
 eureka:
   instance:
@@ -17,4 +14,3 @@ eureka:
   client:
     service-url:
       defaultZone: http://eurekaserver:8999/eureka/
-
