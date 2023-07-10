@@ -58,6 +58,16 @@
                 <environment>local</environment>
             </properties>
         </profile>
+        <!-- local env -->
+        <profile>
+            <id>localdocker</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <environment>local</environment>
+            </properties>
+        </profile>
         <!-- develop env -->
         <profile>
             <id>dev</id>

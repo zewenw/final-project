@@ -8,7 +8,16 @@ spring:
     name: usermodule
 
 management:
+  info:
+    env:
+      enabled: true
   endpoints:
     web:
       exposure:
         include: "*"
+
+info:
+  app:
+    name: usermodule
+    description: user management module for customer and administrator
+    version: 0.0.1SNAPTHOT
