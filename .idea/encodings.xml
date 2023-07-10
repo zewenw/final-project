@@ -4,8 +4,11 @@
     <file url="file://$PROJECT_DIR$/authserver/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/authserver/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/configserver/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/configserver/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demomodule/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demomodule/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/eurekaserver/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eurekaserver/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gateway/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/resource/foundation/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/resource/foundation/src/main/resources" charset="UTF-8" />
