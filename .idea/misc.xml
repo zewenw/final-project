@@ -4,7 +4,6 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/AuthorizationServer/pom.xml" />
-        <option value="$PROJECT_DIR$/GateWay/pom.xml" />
         <option value="$PROJECT_DIR$/Resource/pom.xml" />
         <option value="$PROJECT_DIR$/Resource/UserManagement/pom.xml" />
         <option value="$PROJECT_DIR$/Resource/PhotoSharing/pom.xml" />
@@ -19,9 +18,9 @@
         <option value="$PROJECT_DIR$/resource/foundation/.flattened-pom.xml" />
         <option value="$PROJECT_DIR$/eurekaserver/pom.xml" />
         <option value="$PROJECT_DIR$/demomodule/pom.xml" />
-        <option value="$PROJECT_DIR$/authserver/pom.xml" />
-        <option value="$PROJECT_DIR$/configserver/pom.xml" />
         <option value="$PROJECT_DIR$/resource/usermodule/pom.xml" />
+        <option value="$PROJECT_DIR$/GateWay/pom.xml" />
+        <option value="$PROJECT_DIR$/authserver/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

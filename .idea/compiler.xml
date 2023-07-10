@@ -7,8 +7,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="eurekaserver" />
         <module name="demomodule" />
+        <module name="eurekaserver" />
         <module name="usermodule" />
         <module name="authserver" />
         <module name="foundation" />
@@ -17,50 +17,23 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="17">
-      <module name="AuthorizationServer" target="17" />
       <module name="authserver" target="17" />
-      <module name="Client" target="16" />
       <module name="configserver" target="17" />
-      <module name="ConfigServer" target="17" />
       <module name="demomodule" target="17" />
-      <module name="discovery_service" target="17" />
-      <module name="DiscoveryService" target="17" />
-      <module name="eureka_server" target="17" />
       <module name="eurekaserver" target="17" />
       <module name="foundation" target="17" />
-      <module name="Foundation" target="17" />
-      <module name="Foundation (1)" target="17" />
-      <module name="Foundation (2)" target="17" />
-      <module name="GateWay" target="16" />
       <module name="gateway" target="17" />
-      <module name="photo_sharing" target="17" />
-      <module name="PhotoSharing" target="17" />
       <module name="resource" target="17" />
-      <module name="Resource" target="17" />
-      <module name="test_module" target="17" />
-      <module name="UserManagement" target="17" />
       <module name="usermodule" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="AuthorizationServer" options="-parameters" />
-      <module name="Client" options="-parameters" />
-      <module name="ConfigServer" options="-parameters" />
-      <module name="DiscoveryService" options="-parameters" />
-      <module name="Foundation" options="" />
-      <module name="GateWay" options="-parameters" />
-      <module name="PhotoSharing" options="" />
-      <module name="Resource" options="" />
-      <module name="UserManagement" options="" />
       <module name="authserver" options="-parameters" />
       <module name="configserver" options="-parameters" />
       <module name="demomodule" options="-parameters" />
-      <module name="discovery_service" options="-parameters" />
-      <module name="eureka_server" options="-parameters" />
       <module name="eurekaserver" options="-parameters" />
       <module name="gateway" options="-parameters" />
-      <module name="test_module" options="-parameters" />
     </option>
   </component>
 </project>

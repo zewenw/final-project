@@ -1,4 +1,4 @@
-package com.finalproject.authorizationserver.config;
+package com.finalproject.authserver.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

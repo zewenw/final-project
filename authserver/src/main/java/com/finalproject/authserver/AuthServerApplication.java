@@ -1,4 +1,4 @@
-package com.finalproject.authorizationserver;
+package com.finalproject.authserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,10 +8,10 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 @SpringBootApplication
 @EnableDiscoveryClient
 @RefreshScope
-public class AuthorizationServerApplication {
+public class AuthServerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(AuthorizationServerApplication.class, args);
+        SpringApplication.run(AuthServerApplication.class, args);
     }
 
 }

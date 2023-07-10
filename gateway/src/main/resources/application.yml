@@ -47,11 +47,11 @@ spring:
             redirectUri: "{baseUrl}/login/oauth2/code/{registrationId}"
         provider:
           messaging_gateway_oidc:
-            issuer-uri: http://authserver:9000
-            userInfoUri: http://authserver:9000/userinfo
-            tokenUri: http://authserver:9000/token
-            authorizationUri: http://authserver:9000/oauth2/authorize
-            jwkSetUri: http://authserver:9000/oauth2/jwks
+            issuer-uri: http://auth-server:9000
+            userInfoUri: http://auth-server:9000/userinfo
+            tokenUri: http://auth-server:9000/oauth2/token
+            authorizationUri: http://auth-server:9000/oauth2/authorize
+            jwkSetUri: http://auth-server:9000/oauth2/jwks
 
 management:
   endpoints:

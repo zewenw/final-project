@@ -1,4 +1,4 @@
-package com.finalproject.authorizationserver.controller;
+package com.finalproject.authserver.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
