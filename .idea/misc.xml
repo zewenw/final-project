@@ -19,6 +19,7 @@
         <option value="$PROJECT_DIR$/resource/foundation/.flattened-pom.xml" />
         <option value="$PROJECT_DIR$/eurekaserver/pom.xml" />
         <option value="$PROJECT_DIR$/demomodule/pom.xml" />
+        <option value="$PROJECT_DIR$/authserver/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

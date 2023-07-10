@@ -3,11 +3,11 @@ server:
   servlet:
     session:
       cookie:
-        name: GATEWAY-CLIENT
+        name: GATEWAY
 
 spring:
   application:
-    name: gateway-client
+    name: gateway
   profiles:
     active: '@environment@'
 #route forwarding
@@ -15,7 +15,7 @@ spring:
     gateway:
       routes:
         - id: user
-          uri: lb://user-management-client
+          uri: lb://usermodule
           predicates:
             - Path=/user/**
           filters:
@@ -47,14 +47,14 @@ spring:
             redirectUri: "{baseUrl}/login/oauth2/code/{registrationId}"
         provider:
           messaging_gateway_oidc:
-            issuer-uri: ${SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_ISSUERURI}
-            userInfoUri: ${SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_USERINFOURI}
-            tokenUri: ${SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_TOKENURI}
-            authorizationUri: ${SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_AUTHORIZATIONURI}
-            jwkSetUri: ${SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_JWKSETURI}
+            issuer-uri: http://authserver:9000
+            userInfoUri: http://authserver:9000/userinfo
+            tokenUri: http://authserver:9000/token
+            authorizationUri: http://authserver:9000/oauth2/authorize
+            jwkSetUri: http://authserver:9000/oauth2/jwks
 
 management:
   endpoints:
     web:
       exposure:
-        include: *
+        include: "*"

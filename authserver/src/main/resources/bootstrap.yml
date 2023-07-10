@@ -8,3 +8,9 @@ spring:
       profile: ${spring.profiles.active}
 
 
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${instanceId:${random.value}}}
+  client:
+    serviceUrl:
+      defaultZone: http://eurekaserver:8999/eureka/

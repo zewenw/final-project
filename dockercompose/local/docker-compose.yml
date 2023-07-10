@@ -14,6 +14,7 @@ services:
   configserver:
     image: owen8527/configserver:latest
     mem_limit: 700m
+    hostname: configserver
     ports:
       - "9001:9001"
     depends_on:
@@ -26,12 +27,28 @@ services:
         window: 120s
     networks:
       - finalproject
-#    extra_hosts:
-#      - "redis:172.25.64.1"
-#    environment:
-#      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka_server:8999/eureka
-#    links:
-#      - eureka_server
+
+  authserver:
+    image: owen8527/authserver:latest
+    mem_limit: 700m
+    hostname: authserver
+    ports:
+      - "9000:9000"
+    depends_on:
+      - configserver
+      - eurekaserver
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 15s
+        max_attempts: 3
+        window: 120s
+    networks:
+      - finalproject
+    extra_hosts:
+      - "local_postgre:172.25.64.1"
+      - "local_eureka:172.25.64.1"
+
 networks:
   finalproject:
 #    driver: bridge
@@ -40,21 +57,6 @@ networks:
 
 
 
-#  authorization_server:
-#    depends_on:
-#      - config_server
-#      - eureka_server
-#    image: owen8527/authorization_server:latest
-#    mem_limit: 700m
-#    ports:
-#      - "9000:9000"
-#    networks:
-#      - final-project-network
-#    extra_hosts:
-#      - "local_postgre:172.25.64.1"
-#      - "local_eureka:172.25.64.1"
-#    environment:
-#      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka_server:8999/eureka
 #
 #
 #  gateway:
