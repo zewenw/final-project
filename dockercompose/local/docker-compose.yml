@@ -1,0 +1,97 @@
+version: "3.8"
+
+services:
+
+  eurekaserver:
+    image: owen8527/eurekaserver:latest
+    mem_limit: 700m
+    hostname: eurekaserver
+    ports:
+      - "8999:8999"
+    networks:
+      - finalproject
+
+  configserver:
+    image: owen8527/configserver:latest
+    mem_limit: 700m
+    ports:
+      - "9001:9001"
+    depends_on:
+      - eurekaserver
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 15s
+        max_attempts: 3
+        window: 120s
+    networks:
+      - finalproject
+#    extra_hosts:
+#      - "redis:172.25.64.1"
+#    environment:
+#      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka_server:8999/eureka
+#    links:
+#      - eureka_server
+networks:
+  finalproject:
+#    driver: bridge
+
+
+
+
+
+#  authorization_server:
+#    depends_on:
+#      - config_server
+#      - eureka_server
+#    image: owen8527/authorization_server:latest
+#    mem_limit: 700m
+#    ports:
+#      - "9000:9000"
+#    networks:
+#      - final-project-network
+#    extra_hosts:
+#      - "local_postgre:172.25.64.1"
+#      - "local_eureka:172.25.64.1"
+#    environment:
+#      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka_server:8999/eureka
+#
+#
+#  gateway:
+#    depends_on:
+#      - authorization_server
+#      - config_server
+#      - eureka_server
+#    image: owen8527/gateway:latest
+#    mem_limit: 700m
+#    ports:
+#      - "80:80"
+#    networks:
+#      - final-project-network
+#    environment:
+#      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka_server:8999/eureka
+#      SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_ISSUERURI: http://authorization_server:9000
+#      SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_USERINFOURI: http://authorization_server:9000/userinfo
+#      SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_TOKENURI: http://authorization_server:9000/token
+#      SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_AUTHORIZATIONURI: http://authorization_server:9000/oauth2/authorize
+#      SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_MESSAGING_GATEWAY_OIDC_JWKSETURI: http://authorization_server:9000/oauth2/jwks
+#
+#  user_management:
+#    depends_on:
+#      - gateway
+#      - authorization_server
+#      - config_server
+#      - eureka_server
+#    image: owen8527/user_management:latest
+#    mem_limit: 700m
+#    ports:
+#      - "10001:10001"
+#    networks:
+#      - final-project-network
+#    extra_hosts:
+#      - "local_postgre:172.25.64.1"
+#      - "local_redis:172.25.64.1"
+#    environment:
+#      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka_server:8999/eureka
+#      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUERURI: http://authorization_server:9000
+

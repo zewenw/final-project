@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    config:
+      fail-fast: true
+      discovery:
+        enabled: true
+        service-id: configserver
+      profile: ${spring.profiles.active}
+
+

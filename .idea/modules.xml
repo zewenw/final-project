@@ -2,16 +2,14 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/authorization_server/authorization_server.iml" filepath="$PROJECT_DIR$/authorization_server/authorization_server.iml" />
-      <module fileurl="file://$PROJECT_DIR$/config_server/config_server.iml" filepath="$PROJECT_DIR$/config_server/config_server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/config_server/configserver.iml" filepath="$PROJECT_DIR$/config_server/configserver.iml" />
       <module fileurl="file://$PROJECT_DIR$/demomodule/demomodule.iml" filepath="$PROJECT_DIR$/demomodule/demomodule.iml" />
       <module fileurl="file://$PROJECT_DIR$/eurekaserver/eurekaserver.iml" filepath="$PROJECT_DIR$/eurekaserver/eurekaserver.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/final_project.iml" filepath="$PROJECT_DIR$/.idea/final_project.iml" />
       <module fileurl="file://$PROJECT_DIR$/resource/foundation/foundation.iml" filepath="$PROJECT_DIR$/resource/foundation/foundation.iml" />
       <module fileurl="file://$PROJECT_DIR$/gateway/gateway.iml" filepath="$PROJECT_DIR$/gateway/gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/resource/resource.iml" filepath="$PROJECT_DIR$/resource/resource.iml" />
-      <module fileurl="file://$PROJECT_DIR$/test_module/test_module.iml" filepath="$PROJECT_DIR$/test_module/test_module.iml" />
-      <module fileurl="file://$PROJECT_DIR$/resource/user_management/user_management.iml" filepath="$PROJECT_DIR$/resource/user_management/user_management.iml" />
+      <module fileurl="file://$PROJECT_DIR$/resource/user_management/usermodule.iml" filepath="$PROJECT_DIR$/resource/user_management/usermodule.iml" />
     </modules>
   </component>
 </project>

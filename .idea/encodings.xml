@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/authorization_server/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/config_server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/authserver/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/configserver/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demomodule/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/eurekaserver/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gateway/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/resource/foundation/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/resource/foundation/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/resource/user_management/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/resource/user_management/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/resource/usermodule/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/resource/usermodule/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/test_module/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/test_module/src/main/resources" charset="UTF-8" />
   </component>
