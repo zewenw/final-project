@@ -3,7 +3,7 @@ I want to build the whole base component for most web applicaiton, not only the 
 CI/CD component, like jenkins server, gitlab. but it depends on how much I can do beacuse there is not enough time for
 me to implement the whole picture.
 ### Architecture
-![Alt Text](docs/architecture.jpg)
+<img src="docs/architecture.jpg" alt="Alt Text" style="zoom:50%;" />
 
 ### Tech Stack
 
@@ -58,23 +58,14 @@ Sure! Here's the provided schedule formatted as a Markdown table:
 | Week 13(11  – 15 Sep)| Viva                                                  |                                |
 
 ### Boot Sequence
-1. DiscoveryServiceApplication port: 8999
+1. eurekaserver port: 9001
 
-   `docker run -d -p 8999:8999 --name discovery_service owen8527/discovery_service`
-2. ConfigServerApplication port: 9001
+2. configserver port: 8999
 
-​		`docker run -d -p 9001:9001 --name config_server owen8527/config_server`
+3. authserver port: 9000
 
-3. AuthorizationServerApplication port: 9000
+4. gateway port: 80
 
-​		`docker run -d -p 9000:9000 --name authorization_server owen8527/authorization_server`
-
-4. GateWayApplication port: 80
-
-​		`docker run -d -p 80:80 --name gateway owen8527/gateway`
-
-4. UserManagementApplication port: 10001
-
-   `docker run -d -p 10001:10001 --name user_management owen8527/user_management`
+4. usermodule port: 10001
 
 5. Others Server Components

@@ -46,8 +46,8 @@ services:
     networks:
       - finalproject
     extra_hosts:
-      - "local_postgre:172.25.64.1"
-      - "local_eureka:172.25.64.1"
+      - "local_postgre:10.235.194.152"
+      - "local_eureka:10.235.194.152"
 
 networks:
   finalproject:
