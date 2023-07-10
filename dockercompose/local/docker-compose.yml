@@ -22,7 +22,7 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
-        delay: 15s
+        delay: 5s
         max_attempts: 3
         window: 120s
     networks:
@@ -40,14 +40,13 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
-        delay: 15s
-        max_attempts: 3
-        window: 120s
+        delay: 10s
+        max_attempts: 5
+        window: 150s
     networks:
       - finalproject
     extra_hosts:
       - "local_postgre:10.235.194.152"
-      - "local_eureka:10.235.194.152"
 
   gateway:
     image: owen8527/gateway:latest
@@ -62,11 +61,13 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
-        delay: 15s
-        max_attempts: 3
-        window: 120s
+        delay: 10s
+        max_attempts: 7
+        window: 180s
     networks:
       - finalproject
+    extra_hosts:
+      - "local_redis:10.235.194.152"
 
   usermodule:
     image: owen8527/usermodule:latest
@@ -80,9 +81,9 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
-        delay: 15s
-        max_attempts: 3
-        window: 120s
+        delay: 10s
+        max_attempts: 10
+        window: 200s
     ports:
       - "10001:10001"
     networks:
