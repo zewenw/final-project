@@ -6,6 +6,7 @@ services:
     image: owen8527/eurekaserver:latest
     mem_limit: 700m
     hostname: eurekaserver
+    container_name: eurekaserver
     ports:
       - "8999:8999"
     networks:
@@ -15,6 +16,7 @@ services:
     image: owen8527/configserver:latest
     mem_limit: 700m
     hostname: configserver
+    container_name: configserver
     ports:
       - "9001:9001"
     depends_on:
@@ -32,6 +34,7 @@ services:
     image: owen8527/authserver:latest
     mem_limit: 700m
     hostname: authserver
+    container_name: authserver
     ports:
       - "9000:9000"
     depends_on:
@@ -52,6 +55,7 @@ services:
     image: owen8527/gateway:latest
     mem_limit: 700m
     hostname: gateway
+    container_name: gateway
     ports:
       - "80:80"
     depends_on:
@@ -73,6 +77,7 @@ services:
     image: owen8527/usermodule:latest
     mem_limit: 700m
     hostname: usermodule
+    container_name: usermodule
     depends_on:
       - gateway
       - authserver
@@ -94,7 +99,7 @@ services:
 
 networks:
   finalproject:
-#    driver: bridge
+    driver: bridge
 
 
 
