@@ -2,15 +2,19 @@ package com.finalproject.user.controller.user;
 
 
 import com.finalproject.user.controller.demo.UserRest;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/user")
 public class UserController {
+
+    @Value("${custom.id}")
+    private String id;
 
     @GetMapping("/sayHello")
     public String sayHello(){
-        return "user management --- users";
+        return "user management....id is " + id;
     }
 
     @GetMapping("/status/check")

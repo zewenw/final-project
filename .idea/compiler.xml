@@ -9,11 +9,11 @@
         <outputRelativeToContentRoot value="true" />
         <module name="demomodule" />
         <module name="eurekaserver" />
-        <module name="usermodule" />
         <module name="authserver" />
         <module name="photo" />
         <module name="foundation" />
         <module name="configserver" />
+        <module name="user" />
         <module name="gateway" />
       </profile>
     </annotationProcessing>
@@ -26,6 +26,7 @@
       <module name="gateway" target="17" />
       <module name="photo" target="17" />
       <module name="resource" target="17" />
+      <module name="user" target="17" />
       <module name="usermodule" target="17" />
     </bytecodeTargetLevel>
   </component>

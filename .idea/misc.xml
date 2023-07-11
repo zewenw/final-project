@@ -22,6 +22,7 @@
         <option value="$PROJECT_DIR$/GateWay/pom.xml" />
         <option value="$PROJECT_DIR$/authserver/pom.xml" />
         <option value="$PROJECT_DIR$/resource/photo/pom.xml" />
+        <option value="$PROJECT_DIR$/resource/user/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
