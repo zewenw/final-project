@@ -13,7 +13,7 @@
 
     <modules>
         <module>foundation</module>
-        <module>usermodule</module>
+        <module>user</module>
         <module>photo</module>
     </modules>
 

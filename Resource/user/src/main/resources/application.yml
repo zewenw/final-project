@@ -6,7 +6,7 @@ spring:
   profiles:
     active: local
   application:
-    name: usermodule
+    name: user
 
 management:
   endpoint:
@@ -21,8 +21,8 @@ management:
       enabled: true
 info:
   app:
-    name: usermodule
-    description: usermodule server component
+    name: user
+    description: user server component
     version: 0.0.1-SNAPSHOT
 
 custom:
