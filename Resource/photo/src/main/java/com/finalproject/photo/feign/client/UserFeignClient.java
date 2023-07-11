@@ -1,4 +1,4 @@
-package com.finalproject.photo.service.feign.client;
+package com.finalproject.photo.feign.client;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
