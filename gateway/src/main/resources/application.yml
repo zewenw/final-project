@@ -15,19 +15,19 @@ spring:
     gateway:
       routes:
         - id: user
-          uri: lb://usermodule
+          uri: lb://user
           predicates:
             - Path=/user/**
           filters:
             - TokenRelay
             - StripPrefix=1
-#        - id: photo
-#          uri: lb://photo-sharing-client
-#          predicates:
-#            - Path=/photo/**
-#          filters:
-#            - TokenRelay
-#            - StripPrefix=1
+        - id: photo
+          uri: lb://photo
+          predicates:
+            - Path=/photo/**
+          filters:
+            - TokenRelay
+            - StripPrefix=1
   session:
     redis:
       flush-mode: on_save # session refresh mode

@@ -1,4 +1,4 @@
-package com.finalproject.foundation.config;
+package com.finalproject.photo.config;
 
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.core.GrantedAuthority;

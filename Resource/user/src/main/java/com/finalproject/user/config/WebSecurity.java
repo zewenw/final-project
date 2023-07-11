@@ -1,6 +1,5 @@
 package com.finalproject.user.config;
 
-import com.finalproject.foundation.config.JwtCustomizeConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,6 +30,7 @@ public class WebSecurity {
         httpSecurity.authorizeHttpRequests(auth ->
                 auth
                         .requestMatchers("/actuator/**").permitAll()
+                        .requestMatchers("/feign/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/users/status/check")
                         //Scope need prefix
 //                        .hasAnyAuthority("SCOPE_profile")
