@@ -4,13 +4,15 @@ server:
   port: 9001
 
 spring:
+  profiles:
+    active: git
   application:
     name: configserver
   cloud:
     config:
       server:
         git:
-          uri: https://zewenw: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@github.com/zewenw/final_project_config
+          uri: https://github.com/zewenw/final_project_config.git
           clone-on-start: true
           default-label: master
   devtools:
