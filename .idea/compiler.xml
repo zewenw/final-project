@@ -11,6 +11,7 @@
         <module name="eurekaserver" />
         <module name="usermodule" />
         <module name="authserver" />
+        <module name="photo" />
         <module name="foundation" />
         <module name="configserver" />
         <module name="gateway" />
@@ -23,6 +24,7 @@
       <module name="eurekaserver" target="17" />
       <module name="foundation" target="17" />
       <module name="gateway" target="17" />
+      <module name="photo" target="17" />
       <module name="resource" target="17" />
       <module name="usermodule" target="17" />
     </bytecodeTargetLevel>

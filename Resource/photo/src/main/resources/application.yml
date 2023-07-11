@@ -1,0 +1,29 @@
+server:
+  port: 10002
+  shutdown: graceful
+
+spring:
+  profiles:
+    active: local
+  application:
+    name: photo
+
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  info:
+    env:
+      enabled: true
+info:
+  app:
+    name: photo
+    description: photo server component
+    version: 0.0.1-SNAPSHOT
+
+custom:
+  id: 4

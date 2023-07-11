@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    config:
+      fail-fast: true
+      discovery:
+        enabled: true
+        service-id: configserver
+      profile: ${spring.profiles.active}
+
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  #    instance-id: ${spring.application.name}:${instanceId:${random.value}}}
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8999/eureka/

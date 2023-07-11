@@ -1,0 +1,42 @@
+# fine_grained_token: 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
+
+server:
+  port: 9001
+
+spring:
+  application:
+    name: configserver
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://zewenw: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@github.com/zewenw/final_project_config
+          clone-on-start: true
+          default-label: master
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: target\classes\config\application.yml
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  #    instance-id: ${spring.application.name}:${instanceId:${random.value}}}
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8999/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  info:
+    env:
+      enabled: true
+
+info:
+  app:
+    name: configserver
+    description: config server component
+    version: 0.0.1-SNAPSHOT

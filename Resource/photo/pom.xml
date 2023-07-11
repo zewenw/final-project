@@ -9,10 +9,10 @@
     </parent>
 
     <groupId>com.finalproject</groupId>
-    <artifactId>usermodule</artifactId>
-    <version>${revision}</version>
-    <name>usermodule</name>
-    <description>user module</description>
+    <artifactId>photo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>photo</name>
+    <description>photo module</description>
 
     <properties>
         <java.version>17</java.version>
@@ -33,9 +33,8 @@
         </dependency>
     </dependencies>
 
-
     <build>
-        <finalName>usermodule</finalName>
+        <finalName>photo</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
