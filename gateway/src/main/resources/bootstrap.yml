@@ -10,7 +10,8 @@ spring:
 
 eureka:
   instance:
-    instance-id: ${spring.application.name}:${instanceId:${random.value}}}
+#    instance-id: ${spring.application.name}:${instanceId:${random.value}}}
+    prefer-ip-address: true
   client:
     serviceUrl:
       defaultZone: http://127.0.0.1:8999/eureka/

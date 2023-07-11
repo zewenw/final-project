@@ -5,6 +5,10 @@ server:
 spring:
   application:
     name: eurekaserver
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: target\classes\config\application.yml
 
 eureka:
   client:
