@@ -4,6 +4,7 @@ import com.finalproject.foundation.config.JwtCustomizeConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -17,6 +18,7 @@ import javax.sql.DataSource;
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity(securedEnabled = true, prePostEnabled = true)
+@Order(1)
 public class WebSecurity {
 
 
@@ -24,10 +26,11 @@ public class WebSecurity {
     private DataSource dataSource;
 
     @Bean
-    SecurityFilterChain configure(HttpSecurity httpSecurity) throws Exception{
+    SecurityFilterChain configure(HttpSecurity httpSecurity) throws Exception {
 
         httpSecurity.authorizeHttpRequests(auth ->
                 auth
+                        .requestMatchers("/actuator/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/users/status/check")
                         //Scope need prefix
 //                        .hasAnyAuthority("SCOPE_profile")
