@@ -26,6 +26,20 @@ info:
     version: 0.0.1-SNAPSHOT
 
 resilience4j:
+  ratelimiter:
+    configs:
+      default:
+        registerHealthIndicator: true
+        limitForPeriod: 1
+        limitRefreshPeriod: 5000
+        timeoutDuration: 5s
+#        eventConsumerBufferSize: 100
+    instances:
+      defaultRateLimiter:
+        limitForPeriod: 1
+        limitRefreshPeriod: 5000ms
+        timeoutDuration: 3s
+
   retry:
     configs:
       default:
@@ -42,7 +56,7 @@ resilience4j:
 
   circuitbreaker:
     instances:
-# this should be correspond to the specific service which is invoked by this service
+      # this should be correspond to the specific service which is invoked by this service
       detailsForUserApp:
         registerHealthIndicator: true
         slidingWindowSize: 10
