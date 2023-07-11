@@ -25,4 +25,4 @@ info:
   app:
     name: authserver
     description: auther server component
-    version: 0.0.1SNAPSHOT
+    version: 0.0.1-SNAPSHOT
