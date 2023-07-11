@@ -58,9 +58,9 @@ Sure! Here's the provided schedule formatted as a Markdown table:
 | Week 13(11  – 15 Sep)| Viva                                                  |                                |
 
 ### Boot Sequence
-1. eurekaserver port: 9001
+1. eurekaserver port: 8999
 
-2. configserver port: 8999
+2. configserver port: 9001
 
 3. authserver port: 9000
 
