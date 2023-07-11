@@ -20,4 +20,11 @@ management:
     web:
       exposure:
         include: "*"
-
+  info:
+    env:
+      enabled: true
+info:
+  app:
+    name: eurekaserver
+    description: eureka server component
+    version: 0.0.1-SNAPSHOT
