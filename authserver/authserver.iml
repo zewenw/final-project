@@ -14,7 +14,9 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
-        <datasource-mapping />
+        <datasource-mapping>
+          <factory-entry name="authserver" />
+        </datasource-mapping>
         <naming-strategy-map />
       </configuration>
     </facet>
@@ -196,5 +198,6 @@
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter-config:4.0.3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-config-client:4.0.3" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.15.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.springframework.boot:spring-boot-devtools:3.1.0" level="project" />
   </component>
 </module>

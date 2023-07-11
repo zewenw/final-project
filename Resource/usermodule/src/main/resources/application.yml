@@ -12,7 +12,14 @@ management:
     web:
       exposure:
         include: "*"
-
+  info:
+    env:
+      enabled: true
+info:
+  app:
+    name: usermodule
+    description: usermodule server component
+    version: 0.0.1-SNAPSHOT
 
 custom:
   id: 4
