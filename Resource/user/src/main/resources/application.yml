@@ -25,5 +25,7 @@ info:
     description: user server component
     version: 0.0.1-SNAPSHOT
 
-custom:
-  id: 4
+logging:
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
+
