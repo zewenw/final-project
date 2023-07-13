@@ -44,8 +44,8 @@ services:
       restart_policy:
         condition: on-failure
         delay: 10s
-        max_attempts: 5
-        window: 150s
+        max_attempts: 3
+        window: 120s
     networks:
       - finalproject
     extra_hosts:
@@ -65,9 +65,9 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
-        delay: 10s
-        max_attempts: 7
-        window: 180s
+        delay: 15s
+        max_attempts: 3
+        window: 120s
     networks:
       - finalproject
     extra_hosts:
@@ -86,9 +86,9 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
-        delay: 10s
-        max_attempts: 10
-        window: 200s
+        delay: 20s
+        max_attempts: 3
+        window: 120
     ports:
       - "10001:10001"
     networks:
@@ -110,9 +110,9 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
-        delay: 10s
-        max_attempts: 10
-        window: 200s
+        delay: 25s
+        max_attempts: 3
+        window: 120s
     ports:
       - "10001:10001"
     networks:
