@@ -23,3 +23,8 @@ info:
     name: authserver
     description: auther server component
     version: 0.0.1-SNAPSHOT
+
+logging:
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
+
