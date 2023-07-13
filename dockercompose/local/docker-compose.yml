@@ -1,12 +1,28 @@
 version: "3.8"
 
 services:
+  zipkin:
+    image: openzipkin/zipkin
+    mem_limit: 700m
+    hostname: zipkin
+    ports:
+      - "9411:9411"
+    networks:
+      - finalproject
 
   eurekaserver:
     image: owen8527/eurekaserver:latest
     mem_limit: 700m
     hostname: eurekaserver
     container_name: eurekaserver
+    depends_on:
+      - eurekaserver
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
     ports:
       - "8999:8999"
     networks:
