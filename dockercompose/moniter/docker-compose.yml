@@ -1,0 +1,170 @@
+version: "3.8"
+
+services:
+
+  grafana:
+    image: "grafana/grafana:latest"
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=password
+    networks:
+      - finalproject
+    depends_on:
+      - prometheus
+
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - finalproject
+
+  zipkin:
+    image: openzipkin/zipkin
+    mem_limit: 700m
+    hostname: zipkin
+    ports:
+      - "9411:9411"
+    networks:
+      - finalproject
+
+  eurekaserver:
+    image: owen8527/eurekaserver:latest
+    mem_limit: 700m
+    hostname: eurekaserver
+    container_name: eurekaserver
+    depends_on:
+      - eurekaserver
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    ports:
+      - "8999:8999"
+    networks:
+      - finalproject
+
+  configserver:
+    image: owen8527/configserver:latest
+    mem_limit: 700m
+    hostname: configserver
+    container_name: configserver
+    ports:
+      - "9001:9001"
+    depends_on:
+      - eurekaserver
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 3
+        window: 120s
+    networks:
+      - finalproject
+
+  authserver:
+    image: owen8527/authserver:latest
+    mem_limit: 700m
+    hostname: authserver
+    container_name: authserver
+    ports:
+      - "9000:9000"
+    depends_on:
+      - configserver
+      - eurekaserver
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 20s
+        max_attempts: 3
+        window: 120s
+    networks:
+      - finalproject
+    extra_hosts:
+      - "local_postgre:10.235.194.152"
+
+  gateway:
+    image: owen8527/gateway:latest
+    mem_limit: 700m
+    hostname: gateway
+    container_name: gateway
+    ports:
+      - "80:80"
+    depends_on:
+      - authserver
+      - configserver
+      - eurekaserver
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 30s
+        max_attempts: 3
+        window: 120s
+    networks:
+      - finalproject
+    extra_hosts:
+      - "local_redis:10.235.194.152"
+
+  user:
+    image: owen8527/user:latest
+    mem_limit: 700m
+    hostname: user
+    container_name: user
+    depends_on:
+      - gateway
+      - authserver
+      - configserver
+      - eurekaserver
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 40s
+        max_attempts: 3
+        window: 120
+    ports:
+      - "10001:10001"
+    networks:
+      - finalproject
+    extra_hosts:
+      - "local_postgre:10.235.194.152"
+      - "local_redis:10.235.194.152"
+
+  photo:
+    image: owen8527/photo:latest
+    mem_limit: 700m
+    hostname: photo
+    container_name: photo
+    depends_on:
+      - gateway
+      - authserver
+      - configserver
+      - eurekaserver
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 40s
+        max_attempts: 3
+        window: 120s
+    ports:
+      - "10001:10001"
+    networks:
+      - finalproject
+    extra_hosts:
+      - "local_postgre:10.235.194.152"
+      - "local_redis:10.235.194.152"
+
+networks:
+  finalproject:
+    driver: bridge
+
+
+
+
+
+

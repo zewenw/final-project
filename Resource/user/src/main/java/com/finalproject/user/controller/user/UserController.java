@@ -3,6 +3,7 @@ package com.finalproject.user.controller.user;
 
 import com.finalproject.user.controller.demo.UserRest;
 import com.finalproject.user.service.UserService;
+import io.micrometer.core.annotation.Timed;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ public class UserController {
 
 
     @GetMapping("/sayHello")
+    @Timed(value = "sayHello", description = "this is the sayHello method")
     public String sayHello() {
         logger.info("user component, say hello, method start");
         String id = userService.getId();
