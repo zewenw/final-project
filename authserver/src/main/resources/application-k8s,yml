@@ -1,0 +1,43 @@
+spring:
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE}
+  datasource:
+    url: jdbc:postgresql://postgres:5432/OAuth
+    username: postgres
+    password: 123
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 100
+      connection-timeout: 60000
+      minimum-idle: 10
+      idle-timeout: 500000
+      max-lifetime: 540000
+      connection-test-query: SELECT 1
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: target\classes\config\application.yml
+
+authorization:
+  url: http://authserver-service:${server.port}
+
+logging:
+  level:
+    root: info
+    org.springframework.security: trace
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: http://zipkin-service:9411/api/v2/spans
+
+eureka:
+  instance:
+    #    instance-id: ${spring.application.name}:${instanceId:${random.value}}}
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://eurekaserver-service/eureka

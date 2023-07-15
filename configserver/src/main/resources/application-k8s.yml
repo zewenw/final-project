@@ -1,10 +1,14 @@
+spring:
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE}
+
 management:
   tracing:
     sampling:
       probability: 1.0
   zipkin:
     tracing:
-      endpoint: http://localhost:9411/api/v2/spans
+      endpoint: http://zipkin-service:9411/api/v2/spans
 
 
 eureka:
@@ -13,4 +17,4 @@ eureka:
   #    instance-id: ${spring.application.name}:${instanceId:${random.value}}}
   client:
     service-url:
-      defaultZone: http://127.0.0.1:8999/eureka
+      defaultZone: http://eurekaserver-service:8999/eureka

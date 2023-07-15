@@ -1,7 +1,6 @@
-# fine_grained_token: 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
-
 server:
   port: 9001
+  shutdown: graceful
 
 spring:
   profiles:
@@ -19,14 +18,6 @@ spring:
     restart:
       enabled: true
       additional-paths: target\classes\config\application.yml
-
-eureka:
-  instance:
-    prefer-ip-address: true
-  #    instance-id: ${spring.application.name}:${instanceId:${random.value}}}
-  client:
-    service-url:
-      defaultZone: http://127.0.0.1:8999/eureka
 
 management:
   endpoints:

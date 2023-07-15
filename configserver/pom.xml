@@ -86,6 +86,16 @@
                 <environment>local</environment>
             </properties>
         </profile>
+        <!-- k8s env -->
+        <profile>
+            <id>k8s</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <environment>local</environment>
+            </properties>
+        </profile>
         <!-- develop env -->
         <profile>
             <id>dev</id>

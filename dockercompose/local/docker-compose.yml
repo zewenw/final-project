@@ -31,8 +31,8 @@ services:
   configserver:
     image: owen8527/configserver:latest
     mem_limit: 700m
-    hostname: configserver
-    container_name: configserver
+    hostname: configserver.yml
+    container_name: configserver.yml
     ports:
       - "9001:9001"
     depends_on:
