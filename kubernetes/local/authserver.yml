@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: accounts-deployment
+  name: authserver-deployment
   labels:
     app: authserver
 spec:
@@ -40,6 +40,21 @@ spec:
                 configMapKeyRef:
                   name: finalproject-configmap
                   key: AUTHORIZATION_URL
+            - name: SPRING_DATASOURCE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: finalproject-configmap
+                  key: SPRING_DATASOURCE_URL
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: finalproject-configmap
+                  key: SPRING_DATASOURCE_USERNAME
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: finalproject-configmap
+                  key: SPRING_DATASOURCE_PASSWORD
 
 
 ---
