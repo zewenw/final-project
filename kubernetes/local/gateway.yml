@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gateway-deployment
+  labels:
+    app: gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gateway
+  template:
+    metadata:
+      labels:
+        app: gateway
+    spec:
+      containers:
+        - name: gateway
+          image: owen8527/gateway:latest
+          ports:
+            - containerPort: 80
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              valueFrom:
+                configMapKeyRef:
+                  name: finalproject-configmap
+                  key: SPRING_PROFILES_ACTIVE
+            - name: MANAGEMENT_ZIPKIN_TRACING_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: finalproject-configmap
+                  key: MANAGEMENT_ZIPKIN_TRACING_ENDPOINT
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+              valueFrom:
+                configMapKeyRef:
+                  name: finalproject-configmap
+                  key: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+            - name: AUTHORIZATION_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: finalproject-configmap
+                  key: AUTHORIZATION_URL
+            - name: SPRING_DATA_REDIS_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: finalproject-configmap
+                  key: SPRING_DATA_REDIS_HOST
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gateway-service
+spec:
+  selector:
+    app: gateway
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

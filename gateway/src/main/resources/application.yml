@@ -4,14 +4,17 @@ server:
     session:
       cookie:
         name: GATEWAY
+  shutdown: graceful
 
 spring:
   application:
     name: gateway
   profiles:
     active: '@environment@'
-#route forwarding
   cloud:
+    config:
+      enabled: true
+  #route forwarding
     gateway:
       routes:
         - id: user
@@ -32,26 +35,6 @@ spring:
     redis:
       flush-mode: on_save # session refresh mode
       namespace: gateway:session # namespace for keys used to store sessions
-  security:
-    oauth2:
-      client:
-        registration:
-          messaging_gateway_oidc:
-            provider: messaging_gateway_oidc
-            clientId: gateway_client
-            clientSecret: gateway_client_secret
-            scope:
-              - openid
-              - profile
-            authorizationGrantType: authorization_code
-            redirectUri: "{baseUrl}/login/oauth2/code/{registrationId}"
-        provider:
-          messaging_gateway_oidc:
-            issuer-uri: http://auth-server:9000
-            userInfoUri: http://auth-server:9000/userinfo
-            tokenUri: http://auth-server:9000/oauth2/token
-            authorizationUri: http://auth-server:9000/oauth2/authorize
-            jwkSetUri: http://auth-server:9000/oauth2/jwks
 
 management:
   endpoints:

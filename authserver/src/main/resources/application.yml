@@ -1,5 +1,6 @@
 server:
   port: 9000
+  shutdown: graceful
 
 spring:
   application:
@@ -8,7 +9,7 @@ spring:
     active: '@environment@'
   cloud:
     config:
-      enabled: false
+      enabled: true
 
 management:
   endpoints:
