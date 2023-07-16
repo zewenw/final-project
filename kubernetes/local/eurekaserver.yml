@@ -25,8 +25,11 @@ spec:
                 configMapKeyRef:
                   name: finalproject-configmap
                   key: SPRING_PROFILES_ACTIVE
-
-
+            - name: MANAGEMENT_ZIPKIN_TRACING_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: finalproject-configmap
+                  key: MANAGEMENT_ZIPKIN_TRACING_ENDPOINT
 ---
 apiVersion: v1
 kind: Service
