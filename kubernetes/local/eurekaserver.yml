@@ -30,6 +30,17 @@ spec:
                 configMapKeyRef:
                   name: finalproject-configmap
                   key: MANAGEMENT_ZIPKIN_TRACING_ENDPOINT
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+              valueFrom:
+                configMapKeyRef:
+                  name: finalproject-configmap
+                  key: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+            - name: EUREKA_APPLICATION_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: finalproject-configmap
+                  key: EUREKA_APPLICATION_NAME
+
 ---
 apiVersion: v1
 kind: Service

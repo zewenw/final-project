@@ -12,17 +12,6 @@ spring:
       enabled: true
       additional-paths: target\classes\config\application.yml
 
-eureka:
-  client:
-    register-with-eureka: false
-    fetch-registry: false
-    service-url:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-  instance:
-    hostname: ${spring.application.name}
-
-
-
 management:
   endpoints:
     web:
