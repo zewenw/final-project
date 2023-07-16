@@ -25,6 +25,23 @@ spec:
                 configMapKeyRef:
                   name: finalproject-configmap
                   key: SPRING_PROFILES_ACTIVE
+            - name: MANAGEMENT_ZIPKIN_TRACING_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: finalproject-configmap
+                  key: MANAGEMENT_ZIPKIN_TRACING_ENDPOINT
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+              valueFrom:
+                configMapKeyRef:
+                  name: finalproject-configmap
+                  key: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+            - name: AUTHORIZATION_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: finalproject-configmap
+                  key: AUTHORIZATION_URL
+
+
 ---
 apiVersion: v1
 kind: Service

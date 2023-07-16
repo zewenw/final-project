@@ -3,10 +3,12 @@ kind: ConfigMap
 metadata:
   name: finalproject-configmap
 data:
-  # SPRING_ZIPKIN_BASEURL: http://zipkin-service:9411/
   MANAGEMENT_ZIPKIN_TRACING_ENDPOINT: http://zipkin-service:9411/api/v2/spans
   SPRING_PROFILES_ACTIVE: k8s
 #  SPRING_CONFIG_IMPORT: configserver:http://configserver-service:8071/
   EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver-service:8999/eureka/
+  AUTHORIZATION_URL: http://authserver-service:9000
+#  eureka server
   EUREKA_APPLICATION_NAME: eurekaserver
-#  ACCOUNTS_APPLICATION_NAME: accounts
+#  auth server
+  SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-service:5432/OAuth
