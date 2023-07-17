@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: photo-deployment
+  labels:
+    app: photo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: photo
+  template:
+    metadata:
+      labels:
+        app: photo
+    spec:
+      containers:
+        - name: photo
+          image: owen8527/photo:latest
+          ports:
+            - containerPort: 10002
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              valueFrom:
+                configMapKeyRef:
+                  name: finalproject-configmap
+                  key: SPRING_PROFILES_ACTIVE
+            - name: MANAGEMENT_ZIPKIN_TRACING_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: finalproject-configmap
+                  key: MANAGEMENT_ZIPKIN_TRACING_ENDPOINT
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+              valueFrom:
+                configMapKeyRef:
+                  name: finalproject-configmap
+                  key: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+            - name: AUTHORIZATION_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: finalproject-configmap
+                  key: AUTHORIZATION_URL
+            - name: SPRING_DATA_REDIS_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: finalproject-configmap
+                  key: SPRING_DATA_REDIS_HOST
+            - name: SPRING_DATASOURCE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: finalproject-configmap
+                  key: SPRING_DATASOURCE_URL
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: finalproject-configmap
+                  key: SPRING_DATASOURCE_USERNAME
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: finalproject-configmap
+                  key: SPRING_DATASOURCE_PASSWORD
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: photo-service
+spec:
+  selector:
+    app: gateway
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 10002
+      targetPort: 10002
