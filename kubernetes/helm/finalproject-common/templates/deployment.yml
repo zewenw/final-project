@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: { { .Values.deploymentLabel } }
-          image: "{ { .Values.image.repository } }:{ { .Values.image.tag } }"
+          image: { { .Values.image.repository } }:{ { .Values.image.tag } }
           ports:
             - containerPort: { { .Values.containerPort } }
               protocol: TCP
