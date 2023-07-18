@@ -12,6 +12,10 @@
 
 - `helm dependency build`
 
+- generate the actual kubernetes deployment yaml file. should call this cammand within the same folder
+
+`helm template .`
+
 
 
 
