@@ -1,0 +1,27 @@
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+deploymentName: configserver-deployment
+deploymentLabel: configserver
+appName: configserver
+
+replicaCount: 1
+
+image:
+  repository: owen8527/configserver
+  tag: latest
+
+containerPort: 9001
+
+service:
+  type: LoadBalancer
+  port: 9001
+  targetPort: 9001
+
+profile_enabled: true
+zipkin_enabled: true
+eureka_enabled: true
+auth_enabled: false
+config_enabled: false
+redis_enabled: false
+datasource_enabled: false
