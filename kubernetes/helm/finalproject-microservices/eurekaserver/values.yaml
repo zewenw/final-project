@@ -22,6 +22,5 @@ profile_enabled: true
 zipkin_enabled: true
 eureka_enabled: true
 auth_enabled: false
-config_enabled: false
 redis_enabled: false
 datasource_enabled: false
