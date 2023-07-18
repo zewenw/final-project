@@ -3,6 +3,7 @@
 
 deploymentName: eurekaserver-deployment
 deploymentLabel: eurekaserver
+serviceName: eurekaserver-service
 appName: eurekaserver
 
 replicaCount: 1

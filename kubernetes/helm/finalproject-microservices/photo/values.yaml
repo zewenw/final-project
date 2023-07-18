@@ -3,6 +3,7 @@
 
 deploymentName: photo-deployment
 deploymentLabel: photo
+serviceName: photo-service
 appName: photo
 
 replicaCount: 1

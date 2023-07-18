@@ -3,6 +3,7 @@
 
 deploymentName: gateway-deployment
 deploymentLabel: gateway
+serviceName: gateway-service
 appName: gateway
 
 replicaCount: 1

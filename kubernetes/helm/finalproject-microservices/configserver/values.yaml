@@ -3,6 +3,7 @@
 
 deploymentName: configserver-deployment
 deploymentLabel: configserver
+serviceName: configserver-service
 appName: configserver
 
 replicaCount: 1

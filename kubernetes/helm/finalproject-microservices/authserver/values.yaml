@@ -3,6 +3,7 @@
 
 deploymentName: authserver-deployment
 deploymentLabel: authserver
+serviceName: authserver-service
 appName: authserver
 
 replicaCount: 1

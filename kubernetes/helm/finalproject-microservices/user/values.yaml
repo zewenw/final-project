@@ -3,6 +3,7 @@
 
 deploymentName: user-deployment
 deploymentLabel: user
+serviceName: user-service
 appName: user
 
 replicaCount: 1

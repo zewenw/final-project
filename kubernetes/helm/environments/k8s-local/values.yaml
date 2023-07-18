@@ -1,6 +1,6 @@
 global:
   configMapName: finalproject-configmap
-  springActiveProfile: dev
+  springActiveProfile: k8s
   managementZipkinTracingEndpoint: http://zipkin-service:9411/api/v2/spans
   eurekaClientServiceUrlDefaultZone: http://eurekaserver-service:8999/eureka/
   authorizationUrl: http://authserver-service:9000
