@@ -3,7 +3,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: { { .Values.global.configMapName } }
-  namespace: finalproject-helm
+  namespace: docker-desktop
 data:
   SPRING_PROFILES_ACTIVE: { { .Values.global.springActiveProfile } }
   MANAGEMENT_ZIPKIN_TRACING_ENDPOINT: { { .Values.global.managementZipkinTracingEndpoint } }

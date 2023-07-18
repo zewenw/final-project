@@ -51,3 +51,4 @@ dependencies:
   - name: photo
     version: 0.1.0
     repository: file://../../finalproject-microservices/photo
+

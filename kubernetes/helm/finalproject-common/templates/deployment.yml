@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: { { .Values.deploymentName } }
-  namespace: finalproject-helm
+  namespace: docker-desktop
   labels:
     app: { { .Values.deploymentLabel } }
 spec:
