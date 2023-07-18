@@ -35,12 +35,6 @@ spec:
                 configMapKeyRef:
                   name: finalproject-configmap
                   key: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
-            - name: EUREKA_APPLICATION_NAME
-              valueFrom:
-                configMapKeyRef:
-                  name: finalproject-configmap
-                  key: EUREKA_APPLICATION_NAME
-
 ---
 apiVersion: v1
 kind: Service
