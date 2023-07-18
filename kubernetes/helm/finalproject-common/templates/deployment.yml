@@ -1,84 +1,84 @@
-{ { - define "common.deployment" - } }
+{{- define "common.deployment" -}}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: { { .Values.deploymentName } }
+  name: {{ .Values.deploymentName }}
   namespace: docker-desktop
   labels:
-    app: { { .Values.deploymentLabel } }
+    app: {{ .Values.deploymentLabel }}
 spec:
-  replicas: { { .Values.replicaCount } }
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: { { .Values.deploymentLabel } }
+      app: {{ .Values.deploymentLabel }}
   template:
     metadata:
       labels:
-        app: { { .Values.deploymentLabel } }
+        app: {{ .Values.deploymentLabel }}
     spec:
       containers:
-        - name: { { .Values.deploymentLabel } }
-          image: { { .Values.image.repository } }:{ { .Values.image.tag } }
+        - name: {{ .Values.deploymentLabel }}
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
           ports:
-            - containerPort: { { .Values.containerPort } }
+            - containerPort: {{ .Values.containerPort }}
               protocol: TCP
           env:
           #            profile
-          { { - if .Values.profile_enabled } }
+          {{- if .Values.profile_enabled }}
           - name: SPRING_PROFILES_ACTIVE
             valueFrom:
               configMapKeyRef:
-                name: { { .Values.global.configMapName } }
+                name: {{ .Values.global.configMapName }}
                 key: SPRING_PROFILES_ACTIVE
-          { { - end } }
+          {{- end }}
           #          zipkin
-          { { - if .Values.zipkin_enabled } }
+          {{- if .Values.zipkin_enabled }}
           - name: MANAGEMENT_ZIPKIN_TRACING_ENDPOINT
             valueFrom:
               configMapKeyRef:
-                name: { { .Values.global.configMapName } }
+                name: {{ .Values.global.configMapName }}
                 key: MANAGEMENT_ZIPKIN_TRACING_ENDPOINT
-          { { - end } }
+          {{- end }}
           #          eureka
-          { { - if .Values.eureka_enabled } }
+          {{- if .Values.eureka_enabled }}
           - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
             valueFrom:
               configMapKeyRef:
-                name: { { .Values.global.configMapName } }
+                name: {{ .Values.global.configMapName }}
                 key: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
-          { { - end } }
+          {{- end }}
           #          auth
-          { { - if .Values.auth_enabled } }
+          {{- if .Values.auth_enabled }}
           - name: AUTHORIZATION_URL
             valueFrom:
               configMapKeyRef:
-                name: { { .Values.global.configMapName } }
+                name: {{ .Values.global.configMapName }}
                 key: AUTHORIZATION_URL
-          { { - end } }
+          {{- end }}
           #          redis
-          { { - if .Values.redis_enabled } }
+          {{- if .Values.redis_enabled }}
           - name: SPRING_DATA_REDIS_HOST
             valueFrom:
               configMapKeyRef:
-                name: { { .Values.global.configMapName } }
+                name: {{ .Values.global.configMapName }}
                 key: SPRING_DATA_REDIS_HOST
-          { { - end } }
+          {{- end }}
           #          datasource postgreSQL
-          { { - if .Values.datasource_enabled } }
+          {{- if .Values.datasource_enabled }}
           - name: SPRING_DATASOURCE_URL
             valueFrom:
               configMapKeyRef:
-                name: { { .Values.global.configMapName } }
+                name: {{ .Values.global.configMapName }}
                 key: SPRING_DATASOURCE_URL
           - name: SPRING_DATASOURCE_USERNAME
             valueFrom:
               configMapKeyRef:
-                name: { { .Values.global.configMapName } }
+                name: {{ .Values.global.configMapName }}
                 key: SPRING_DATASOURCE_USERNAME
           - name: SPRING_DATASOURCE_PASSWORD
             valueFrom:
               configMapKeyRef:
-                name: { { .Values.global.configMapName } }
+                name: {{ .Values.global.configMapName }}
                 key: SPRING_DATASOURCE_PASSWORD
-          { { - end } }
-  { { - end - } }
+          {{- end }}
+{{- end -}}
