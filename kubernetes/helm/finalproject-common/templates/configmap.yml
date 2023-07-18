@@ -12,5 +12,5 @@ data:
   SPRING_DATA_REDIS_HOST: {{ .Values.global.springDataRedisHost }}
   SPRING_DATASOURCE_URL: {{ .Values.global.springDatasourceUrl }}
   SPRING_DATASOURCE_USERNAME: {{ .Values.global.springDatasourceUsername }}
-  SPRING_DATASOURCE_PASSWORD: {{ .Values.global.springDatasourcePassword }}
+  SPRING_DATASOURCE_PASSWORD: "{{ .Values.global.springDatasourcePassword }}"
 {{- end -}}
