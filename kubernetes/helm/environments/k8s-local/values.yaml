@@ -1,0 +1,10 @@
+global:
+  configMapName: finalproject-configmap
+  springActiveProfile: dev
+  managementZipkinTracingEndpoint: http://zipkin-service:9411/api/v2/spans
+  eurekaClientServiceUrlDefaultZone: http://eurekaserver-service:8999/eureka/
+  authorizationUrl: http://authserver-service:9000
+  springDataRedisHost: redis-service
+  springDatasourceUrl: jdbc:postgresql://postgres-service:5432/OAuth
+  springDatasourceUsername: postgres
+  springDatasourcePassword: "123"
