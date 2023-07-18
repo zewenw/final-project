@@ -4,14 +4,14 @@ metadata:
   name: finalproject-configmap
 data:
   SPRING_PROFILES_ACTIVE: k8s
-#  zipkin
+  #  zipkin
   MANAGEMENT_ZIPKIN_TRACING_ENDPOINT: http://zipkin-service:9411/api/v2/spans
-#  eureka server
+  #  eureka server
   EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver-service:8999/eureka/
   AUTHORIZATION_URL: http://authserver-service:9000
-#  auth server
+  # redis
+  SPRING_DATA_REDIS_HOST: redis-service
+  #  auth server
   SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-service:5432/OAuth
   SPRING_DATASOURCE_USERNAME: postgres
   SPRING_DATASOURCE_PASSWORD: "123"
-# redis
-  SPRING_DATA_REDIS_HOST: redis-service

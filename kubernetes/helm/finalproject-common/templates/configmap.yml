@@ -5,8 +5,12 @@ metadata:
   name: { { .Values.global.configMapName } }
   namespace: finalproject-helm
 data:
-  MANAGEMENT_ZIPKIN_TRACING_ENDPOINT: { { .Values.global.zipkinBaseURL } }
-  SPRING_PROFILES_ACTIVE: { { .Values.global.activeProfile } }
-  SPRING_CONFIG_IMPORT: { { .Values.global.configServerURL } }
-  EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: { { .Values.global.eurekaServerURL } }
+  SPRING_PROFILES_ACTIVE: { { .Values.global.springActiveProfile } }
+  MANAGEMENT_ZIPKIN_TRACING_ENDPOINT: { { .Values.global.managementZipkinTracingEndpoint } }
+  EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: { { .Values.global.eurekaClientServiceUrlDefaultZone } }
+  AUTHORIZATION_URL: { { .Values.global.authorizationUrl } }
+  SPRING_DATA_REDIS_HOST: { { .Values.global.springDataRedisHost } }
+  SPRING_DATASOURCE_URL: { { .Values.global.springDatasourceUrl } }
+  SPRING_DATASOURCE_USERNAME: { { .Values.global.springDatasourceUsername } }
+  SPRING_DATASOURCE_PASSWORD: { { .Values.global.springDatasourcePassword } }
   { { - end - } }
