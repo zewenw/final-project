@@ -1,8 +1,13 @@
 # Helm
 
 - `helm create <chart-name>`
+- install specific chart, the command should be called where the chart folder located
 
-- `helm install xxx-deployment xxx-chartname`
+`helm install xxx-deployment xxx-chartname`
+
+- `uninstall chart
+
+`helm uninstall xxx-deployment`
 
 - `helm upgrade xxx-deployment xxx-chartname`
 
@@ -16,9 +21,9 @@
 
 `helm template .`
 
-
-
-
+- `helm history xxx-deployment`
+- `helm rollback xxx-deployment version-number`
+- `helm list` this command lists all of the releases for a specified namespace
 
 
 

@@ -1,0 +1,6 @@
+dependencies:
+- name: finalproject-common
+  repository: file://../../finalproject-common
+  version: 0.1.0
+digest: sha256:dcdcea63e2c960d73cd332be2d2a0ba455c8d17a1ff35daa9d8577c2368d409d
+generated: "2023-07-18T20:23:03.1937899+01:00"
