@@ -55,14 +55,6 @@ spec:
                 name: { { .Values.global.configMapName } }
                 key: AUTHORIZATION_URL
           { { - end } }
-#          config
-          { { - if .Values.config_enabled } }
-          - name: SPRING_CONFIG_IMPORT
-            valueFrom:
-              configMapKeyRef:
-                name: { { .Values.global.configMapName } }
-                key: SPRING_CONFIG_IMPORT
-          { { - end } }
 #          redis
           { { - if .Values.redis_enabled } }
           - name: SPRING_DATA_REDIS_HOST
