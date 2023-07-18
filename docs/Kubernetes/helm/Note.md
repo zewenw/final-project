@@ -1,16 +1,16 @@
 # Helm
 
-`helm create <chart-name>`
+- `helm create <chart-name>`
 
-`helm install xxx-deployment xxx-chartname`
+- `helm install xxx-deployment xxx-chartname`
 
-`helm upgrade xxx-deployment xxx-chartname`
+- `helm upgrade xxx-deployment xxx-chartname`
 
-`helm ls`
+- `helm ls`
 
-`helm uninstall xxx-deployment`
+- `helm uninstall xxx-deployment`
 
-`helm dependency build`
+- `helm dependency build`
 
 
 
