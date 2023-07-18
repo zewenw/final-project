@@ -30,24 +30,24 @@ dependencies:
 
   - name: eurekaserver
     version: 0.1.0
-    repository: file://../../finalproject-microservices
+    repository: file://../../finalproject-microservices/eurekaserver
 
   - name: configserver
     version: 0.1.0
-    repository: file://../../finalproject-microservices
+    repository: file://../../finalproject-microservices/configserver
 
   - name: authserver
     version: 0.1.0
-    repository: file://../../finalproject-microservices
+    repository: file://../../finalproject-microservices/authserver
 
   - name: gateway
     version: 0.1.0
-    repository: file://../../finalproject-microservices
+    repository: file://../../finalproject-microservices/gateway
 
   - name: user
     version: 0.1.0
-    repository: file://../../finalproject-microservices
+    repository: file://../../finalproject-microservices/user
 
   - name: photo
     version: 0.1.0
-    repository: file://../../finalproject-microservices
+    repository: file://../../finalproject-microservices/photo
