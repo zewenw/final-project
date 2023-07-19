@@ -30,6 +30,7 @@ public class WebSecurity {
         httpSecurity.authorizeHttpRequests(auth ->
                 auth
                         .requestMatchers("/actuator/**").permitAll()
+                        .requestMatchers("/swagger/api-docs/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/users/status/check")
                         //Scope need prefix
 //                        .hasAnyAuthority("SCOPE_profile")
