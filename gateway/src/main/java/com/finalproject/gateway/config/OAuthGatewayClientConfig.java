@@ -13,7 +13,6 @@ public class OAuthGatewayClientConfig {
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
         http
                 .authorizeExchange(authorize -> authorize
-                        .pathMatchers("/swagger/api-docs/**").permitAll()
                         .anyExchange().authenticated()
                 )
                 .oauth2Login(Customizer.withDefaults())
