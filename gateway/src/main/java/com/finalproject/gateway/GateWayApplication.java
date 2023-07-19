@@ -5,10 +5,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
+import org.springframework.web.reactive.config.EnableWebFlux;
 
 @EnableDiscoveryClient
 @SpringBootApplication
 @EnableWebFluxSecurity
+@EnableWebFlux
 @RefreshScope
 public class GateWayApplication {
 

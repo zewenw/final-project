@@ -17,20 +17,26 @@ spring:
   #route forwarding
     gateway:
       routes:
-        - id: user
+        - id: user-service
           uri: lb://user
           predicates:
             - Path=/user/**
           filters:
             - TokenRelay
             - StripPrefix=1
-        - id: photo
+        - id: photo-service
           uri: lb://photo
           predicates:
             - Path=/photo/**
           filters:
             - TokenRelay
             - StripPrefix=1
+        - id: openapi
+          uri: http://localhost:${server.port}
+          predicates:
+            - Path=/swagger/api-docs/**
+          filters:
+            - RewritePath=/swagger/api-docs/(?<path>.*), /$\{path}/swagger/api-docs
   session:
     redis:
       flush-mode: on_save # session refresh mode
@@ -53,3 +59,11 @@ info:
 logging:
   pattern:
     level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
+
+springdoc:
+  swagger-ui:
+    urls:
+      - name: user
+        url: /swagger/api-docs/user
+      - name: photo
+        url: /swagger/api-docs/photo
