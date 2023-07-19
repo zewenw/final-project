@@ -6,11 +6,19 @@ spring:
   application:
     name: demomodule
   profiles:
-    active: @environment@
+    active: '@environment@'
 
-eureka:
-  instance:
-    instance-id: ${spring.application.name}:${instanceId:${random.value}}}
-  client:
-    service-url:
-      defaultZone: http://eurekaserver:8999/eureka/
+
+
+#eureka:
+#  instance:
+#    instance-id: ${spring.application.name}:${instanceId:${random.value}}}
+#  client:
+#    service-url:
+#      defaultZone: http://eurekaserver:8999/eureka/
+springdoc:
+  swagger-ui:
+    path: /swagger/swagger-ui/index.html
+  api-docs:
+    enabled: true
+    path: /swagger/api-docs
