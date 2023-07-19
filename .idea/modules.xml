@@ -7,11 +7,11 @@
       <module fileurl="file://$PROJECT_DIR$/demomodule/demomodule.iml" filepath="$PROJECT_DIR$/demomodule/demomodule.iml" />
       <module fileurl="file://$PROJECT_DIR$/eurekaserver/eurekaserver.iml" filepath="$PROJECT_DIR$/eurekaserver/eurekaserver.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/final_project.iml" filepath="$PROJECT_DIR$/.idea/final_project.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Resource/Foundation/foundation.iml" filepath="$PROJECT_DIR$/Resource/Foundation/foundation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/foundation/foundation.iml" filepath="$PROJECT_DIR$/foundation/foundation.iml" />
       <module fileurl="file://$PROJECT_DIR$/gateway/gateway.iml" filepath="$PROJECT_DIR$/gateway/gateway.iml" />
-      <module fileurl="file://$PROJECT_DIR$/resource/photo/photo.iml" filepath="$PROJECT_DIR$/resource/photo/photo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/photo/photo.iml" filepath="$PROJECT_DIR$/photo/photo.iml" />
       <module fileurl="file://$PROJECT_DIR$/resource/resource.iml" filepath="$PROJECT_DIR$/resource/resource.iml" />
-      <module fileurl="file://$PROJECT_DIR$/resource/user/user.iml" filepath="$PROJECT_DIR$/resource/user/user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/user/user.iml" filepath="$PROJECT_DIR$/user/user.iml" />
     </modules>
   </component>
 </project>

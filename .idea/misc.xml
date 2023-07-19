@@ -11,7 +11,6 @@
         <option value="$PROJECT_DIR$/Resource/Foundation/pom.xml" />
         <option value="$PROJECT_DIR$/ConfigServer/pom.xml" />
         <option value="$PROJECT_DIR$/TestModule/pom.xml" />
-        <option value="$PROJECT_DIR$/resource/pom.xml" />
         <option value="$PROJECT_DIR$/authorization_server/pom.xml" />
         <option value="$PROJECT_DIR$/config_server/pom.xml" />
         <option value="$PROJECT_DIR$/discovery_service/pom.xml" />
@@ -23,6 +22,9 @@
         <option value="$PROJECT_DIR$/authserver/pom.xml" />
         <option value="$PROJECT_DIR$/resource/photo/pom.xml" />
         <option value="$PROJECT_DIR$/resource/user/pom.xml" />
+        <option value="$PROJECT_DIR$/photo/pom.xml" />
+        <option value="$PROJECT_DIR$/user/pom.xml" />
+        <option value="$PROJECT_DIR$/foundation/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

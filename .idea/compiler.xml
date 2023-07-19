@@ -11,8 +11,8 @@
         <module name="eurekaserver" />
         <module name="authserver" />
         <module name="photo" />
-        <module name="foundation" />
         <module name="configserver" />
+        <module name="foundation" />
         <module name="user" />
         <module name="gateway" />
       </profile>
@@ -22,7 +22,7 @@
       <module name="configserver" target="17" />
       <module name="demomodule" target="17" />
       <module name="eurekaserver" target="17" />
-      <module name="foundation" target="17" />
+      <module name="foundation" target="1.6" />
       <module name="gateway" target="17" />
       <module name="photo" target="17" />
       <module name="resource" target="17" />
@@ -37,6 +37,8 @@
       <module name="demomodule" options="-parameters" />
       <module name="eurekaserver" options="-parameters" />
       <module name="gateway" options="-parameters" />
+      <module name="photo" options="-parameters" />
+      <module name="user" options="-parameters" />
     </option>
   </component>
 </project>

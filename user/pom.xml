@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-
     <modelVersion>4.0.0</modelVersion>
-    <!--resource is a parent pom project, so it doesn't need a parent-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.1.0</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
     <groupId>com.finalproject</groupId>
-    <artifactId>resource</artifactId>
+    <artifactId>user</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>resource</name>
-    <packaging>pom</packaging>
-    <description>Resource Components</description>
-
-    <modules>
-    </modules>
-
+    <name>user</name>
+    <description>user component</description>
 
     <properties>
-        <revision>0.0.1-SNAPSHOT</revision>
         <java.version>17</java.version>
         <spring-cloud.version>2022.0.3</spring-cloud.version>
-        <maven.compiler.target>17</maven.compiler.target>
-        <maven.compiler.source>17</maven.compiler.source>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencyManagement>
@@ -32,17 +31,20 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-parent</artifactId>
-                <version>3.1.1</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
+        <dependency>
+            <groupId>com.finalproject</groupId>
+            <artifactId>foundation</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <profiles>
@@ -109,16 +111,19 @@
     </profiles>
 
     <build>
+        <finalName>user</finalName>
         <plugins>
-            <!-- for simplify version control in multi-module project-->
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>versions-maven-plugin</artifactId>
-                <version>2.8.1</version>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <generateBackupPoms>false</generateBackupPoms>
+                    <!--use buildpack so without Dockerfile we can still build image-->
+                    <image>
+                        <name>owen8527/${project.artifactId}</name>
+                    </image>
                 </configuration>
             </plugin>
         </plugins>
     </build>
+
 </project>

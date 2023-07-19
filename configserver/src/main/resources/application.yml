@@ -4,7 +4,7 @@ server:
 
 spring:
   profiles:
-    active: git
+    active: "@environment@"
   application:
     name: configserver
   cloud:
