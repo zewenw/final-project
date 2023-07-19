@@ -1,0 +1,24 @@
+dependencies:
+- name: finalproject-common
+  repository: file://../../finalproject-common
+  version: 0.1.0
+- name: eurekaserver
+  repository: file://../../finalproject-microservices/eurekaserver
+  version: 0.1.0
+- name: configserver
+  repository: file://../../finalproject-microservices/configserver
+  version: 0.1.0
+- name: authserver
+  repository: file://../../finalproject-microservices/authserver
+  version: 0.1.0
+- name: gateway
+  repository: file://../../finalproject-microservices/gateway
+  version: 0.1.0
+- name: user
+  repository: file://../../finalproject-microservices/user
+  version: 0.1.0
+- name: photo
+  repository: file://../../finalproject-microservices/photo
+  version: 0.1.0
+digest: sha256:fcec4fee946b02d9744474ae11e5836642c97de8fe8822c28d6447066959a5fa
+generated: "2023-07-19T12:06:51.2704285+01:00"
