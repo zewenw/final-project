@@ -4,11 +4,7 @@
 
 #### Pre-requirements
 
-1. add **auth-server** point to 127.0.0.1 in hosts file
-2. `docker run -d -p 9411:9411 openzipkin/zipkin`
-3. change active profile to local
-4. start redis, postgresql
-5. start other service in order
+execute finalproject_local.bat 
 
 ### Desktop k8s Environment
 
