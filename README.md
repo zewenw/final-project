@@ -3,13 +3,6 @@ I want to build the whole base component for most web applicaiton, not only the 
 CI/CD component, like jenkins server, gitlab. but it depends on how much I can do beacuse there is not enough time for
 me to implement the whole picture.
 
-## Local Environment
-
-1. `docker run -d -p 9411:9411 openzipkin/zipkin`
-2. change active profile to local
-3. start redis, postgresql
-4. start other service in order
-
 ### Architecture
 <img src="docs/architecture.jpg" alt="Alt Text" style="zoom:50%;" />
 
