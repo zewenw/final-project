@@ -37,6 +37,13 @@ me to implement the whole picture.
 
 ### TimeTable
 
+**New Features**
+
+- spring config
+- swagger
+- kubernetes helm
+- zipkin
+
 **To-do Lists**
 
 - automate refresh config
