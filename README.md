@@ -1,7 +1,18 @@
 # final_project
 I want to build the whole base component for most web applicaiton, not only the function component, but also including
-CI/CD component, like jenkins server, gitlab. but it depends on how much I can do beacuse there is not enough time for
-me to implement the whole picture.
+CI/CD component, like Jenkins server, GitLab. 
+
+### The Challenges of Microservices Architecture
+
+1. Size of Each Microservice
+2. Resource Management and allocation
+3. Service discovery
+4. Monitor
+5. Log
+6. Central Configuration
+7. Availability & Resilience & Fault tolerance
+8. Access & Permission Control
+9. Routing
 
 ### Architecture
 <img src="docs/architecture.jpg" alt="Alt Text" style="zoom:50%;" />
