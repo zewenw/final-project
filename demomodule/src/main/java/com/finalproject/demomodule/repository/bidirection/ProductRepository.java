@@ -1,14 +1,16 @@
-package com.finalproject.demomodule.repository;
+package com.finalproject.demomodule.repository.bidirection;
 
-import com.finalproject.demomodule.entity.Product;
+import com.finalproject.demomodule.entity.bidirection.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Repository("bidirectionalProductRepository")
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
     // Define Named JPQL query
@@ -16,7 +18,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     List<Product> findByDescription(@Param("description") String description);
 
-    List<Product> findAllOrderByNameASC();
+//    List<Product> findAllOrderByNameASC();
 
 
     //native SQL query position and naming
@@ -29,10 +31,10 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
 
     //JPQL query position and naming
-    @Query("select p from Product p where p.name = ?1 or p.description = ?2")
+    @Query("select p from biProduct p where p.name = ?1 or p.description = ?2")
     Product findByNameOrDescriptionJPQLIndexParam(String name, String description);
 
-    @Query("select p from Product p where p.name = :name or p.description = :description")
+    @Query("select p from biProduct p where p.name = :name or p.description = :description")
     Product findByNameOrDescriptionJPQLNamedParam(@Param("name") String name, @Param("description") String description);
 
     //naming convention query

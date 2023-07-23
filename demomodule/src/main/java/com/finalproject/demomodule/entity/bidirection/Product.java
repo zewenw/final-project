@@ -1,4 +1,4 @@
-package com.finalproject.demomodule.entity;
+package com.finalproject.demomodule.entity.bidirection;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -8,7 +8,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Entity
+@Entity(name = "biProduct")
 @Builder
 @Getter
 @Setter
@@ -26,32 +26,32 @@ import java.time.LocalDateTime;
         }
 )
 
-@NamedQueries(
-        {
-                @NamedQuery(
-                        name = "Product.findAllOrderByNameDesc",
-                        query = "SELECT p from Product p ORDER By p.name DESC"
-                ),
-                @NamedQuery(
-                        name = "Product.findByPrice",
-                        query = "SELECT p from Product p where p.price = :price"
-                )
-        }
-)
-@NamedNativeQueries(
-        {
-                @NamedNativeQuery(
-                        name = "Product.findByDescription",
-                        query = "select * from products p where p.description = :description",
-                        resultClass = Product.class
-                ),
-                @NamedNativeQuery(
-                        name = "Product.findAllOrderByNameASC",
-                        query = "select * from products order by name asc",
-                        resultClass = Product.class
-                )
-        }
-)
+//@NamedQueries(
+//        {
+//                @NamedQuery(
+//                        name = "Product.findAllOrderByNameDesc",
+//                        query = "SELECT p from Product p ORDER By p.name DESC"
+//                ),
+//                @NamedQuery(
+//                        name = "Product.findByPrice",
+//                        query = "SELECT p from Product p where p.price = :price"
+//                )
+//        }
+//)
+//@NamedNativeQueries(
+//        {
+//                @NamedNativeQuery(
+//                        name = "Product.findByDescription",
+//                        query = "select * from products p where p.description = :description",
+//                        resultClass = Product.class
+//                ),
+//                @NamedNativeQuery(
+//                        name = "Product.findAllOrderByNameASC",
+//                        query = "select * from products order by name asc",
+//                        resultClass = Product.class
+//                )
+//        }
+//)
 public class Product {
 
     @Id

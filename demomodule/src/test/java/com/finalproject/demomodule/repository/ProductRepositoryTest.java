@@ -1,6 +1,7 @@
 package com.finalproject.demomodule.repository;
 
-import com.finalproject.demomodule.entity.Product;
+import com.finalproject.demomodule.entity.unidirection.Product;
+import com.finalproject.demomodule.repository.unidirection.ProductRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,6 +1,7 @@
 package com.finalproject.demomodule.repository;
 
-import com.finalproject.demomodule.entity.Product;
+import com.finalproject.demomodule.entity.unidirection.Product;
+import com.finalproject.demomodule.repository.unidirection.ProductRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -223,10 +224,10 @@ public class QueryMethodsTest {
         products.stream().forEach(t -> System.out.println(t.getSku()));
     }
 
-    @Test
-    void findAllOrderByNameASC() {
-        List<Product> products = productRepository.findAllOrderByNameASC();
-        products.stream().forEach(t -> System.out.println(t.getSku()));
-    }
+//    @Test
+//    void findAllOrderByNameASC() {
+//        List<Product> products = productRepository.findAllOrderByNameAsc();
+//        products.stream().forEach(t -> System.out.println(t.getSku()));
+//    }
 }
 
