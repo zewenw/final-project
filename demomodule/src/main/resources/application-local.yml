@@ -25,3 +25,8 @@ spring:
       enabled: true
       additional-paths: target\classes\config\application.yml
 
+logging:
+  level:
+    org.hibernate.type.descriptor.sql: trace
+    org.hibernate.SQL: debug
+
