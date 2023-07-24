@@ -9,10 +9,14 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 @Configuration
 public class OAuthGatewayClientConfig {
 
+//    @Autowired
+//    private CustomizedAuthorizationManager customizedAuthorizationManager;
+
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
         http
                 .authorizeExchange(authorize -> authorize
+//                        .anyExchange().access(customizedAuthorizationManager)
                         .anyExchange().authenticated()
                 )
                 .oauth2Login(Customizer.withDefaults())
