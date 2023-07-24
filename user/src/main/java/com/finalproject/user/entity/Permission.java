@@ -1,11 +1,17 @@
 package com.finalproject.user.entity;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -14,7 +20,6 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 @Table(
         name = "permissions",
         schema = "public",
@@ -48,9 +53,35 @@ public class Permission {
     private String permissionDescription;
 
     @CreationTimestamp
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime dateCreated;
+
     @UpdateTimestamp
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime lastUpdated;
 
+    @ManyToMany(mappedBy = "permissions", fetch = FetchType.EAGER)
+    @ToString.Exclude
+    private Set<Role> roles = new HashSet<>();
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Permission permission = (Permission) o;
+
+        return permissionCode.equals(permission.permissionCode);
+    }
+
+    @Override
+    public int hashCode() {
+        return permissionCode != null ? permissionCode.hashCode() : 0;
+    }
 }

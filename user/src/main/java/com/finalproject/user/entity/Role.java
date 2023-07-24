@@ -1,5 +1,9 @@
 package com.finalproject.user.entity;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -14,6 +18,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@ToString
 
 @Entity
 @Table(name = "role",
@@ -44,8 +49,13 @@ public class Role {
     private String roleDescription;
 
     @CreationTimestamp
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime dateCreated;
+
     @UpdateTimestamp
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime lastUpdated;
 
 
@@ -59,5 +69,25 @@ public class Role {
                     name = "permission_id", referencedColumnName = "id"
             )
     )
+    @ToString.Exclude
     private Set<Permission> permissions = new HashSet<>();
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Role role = (Role) o;
+
+        return roleCode.equals(role.roleCode);
+    }
+
+    @Override
+    public int hashCode() {
+        return roleCode != null ? roleCode.hashCode() : 0;
+    }
 }

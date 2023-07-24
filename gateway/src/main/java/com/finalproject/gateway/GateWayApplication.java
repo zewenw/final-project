@@ -6,6 +6,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.web.reactive.config.EnableWebFlux;
+import reactor.tools.agent.ReactorDebugAgent;
 
 @EnableDiscoveryClient
 @SpringBootApplication
@@ -15,7 +16,7 @@ import org.springframework.web.reactive.config.EnableWebFlux;
 public class GateWayApplication {
 
     public static void main(String[] args) {
-
+        ReactorDebugAgent.init();
         SpringApplication.run(GateWayApplication.class, args);
     }
 

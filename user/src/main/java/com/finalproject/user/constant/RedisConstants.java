@@ -1,4 +1,4 @@
-package com.finalproject.gateway.constant;
+package com.finalproject.user.constant;
 
 public enum RedisConstants {
 

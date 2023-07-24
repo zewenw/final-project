@@ -1,5 +1,9 @@
 package com.finalproject.user.entity;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -14,7 +18,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-
+@ToString
 @Entity
 @Table(name = "users",
         schema = "public",
@@ -45,8 +49,13 @@ public class User {
     private boolean enabled;
 
     @CreationTimestamp
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime dateCreated;
+
     @UpdateTimestamp
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime lastUpdated;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -59,5 +68,26 @@ public class User {
                     name = "authority", referencedColumnName = "role_code"
             )
     )
+    @ToString.Exclude
     private Set<Role> roles = new HashSet<>();
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        User user = (User) o;
+
+        return username.equals(user.username);
+    }
+
+    @Override
+    public int hashCode() {
+        return username != null ? username.hashCode() : 0;
+    }
 }

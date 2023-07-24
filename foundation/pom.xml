@@ -154,6 +154,12 @@
             <artifactId>hutool-all</artifactId>
             <version>5.8.20</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>

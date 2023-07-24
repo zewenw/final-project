@@ -27,7 +27,6 @@
       <module name="photo" target="17" />
       <module name="resource" target="17" />
       <module name="user" target="17" />
-      <module name="usermodule" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

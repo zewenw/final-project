@@ -148,7 +148,7 @@ public class AuthServerConfig {
 
             } else if (context.getTokenType().getValue().equals(OidcParameterNames.ID_TOKEN)) {
                 // Customize headers/claims for id_token
-
+                System.out.println("ID_TOKEN");
             }
         };
     }
