@@ -112,7 +112,6 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
-
         <!--resilience4j-->
         <dependency>
             <groupId>io.github.resilience4j</groupId>
