@@ -1,6 +1,7 @@
 package com.finalproject.user.controller.user;
 
 
+import com.finalproject.foundation.utils.UserUtil;
 import com.finalproject.user.controller.demo.UserRest;
 import com.finalproject.user.service.UserService;
 import io.micrometer.core.annotation.Timed;
@@ -23,6 +24,8 @@ public class UserController {
     @Timed(value = "sayHello", description = "this is the sayHello method")
     public String sayHello() {
         logger.info("user component, say hello, method start");
+        String username = UserUtil.getCurrentUsername();
+        logger.info("=============current user is {}", username);
         String id = userService.getId();
         logger.info("user component, say hello, method end");
         return "user management....id is " + id;

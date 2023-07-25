@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -24,6 +23,9 @@ public class WebSecurity {
     @Autowired
     private DataSource dataSource;
 
+    @Autowired
+    private CustomizedAuthorizationManager customizedAuthorizationManager;
+
     @Bean
     SecurityFilterChain configure(HttpSecurity httpSecurity) throws Exception {
 
@@ -31,15 +33,16 @@ public class WebSecurity {
                 auth
                         .requestMatchers("/actuator/**").permitAll()
                         .requestMatchers("/swagger/api-docs/**").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/users/status/check")
+                        .requestMatchers("/feign/**").permitAll()
+//                        .requestMatchers(HttpMethod.GET, "/users/status/check")
                         //Scope need prefix
 //                        .hasAnyAuthority("SCOPE_profile")
 //                        don't attach 'ROLE_' prefix
 //                        for single role,
-                        .hasRole("USER")
+//                        .hasRole("USER")
 //                        for multiple roles
 //                        .hasAnyRole("developer", "user")
-                        .anyRequest().authenticated())
+                        .anyRequest().access(customizedAuthorizationManager))
                 .oauth2ResourceServer(oauth2 -> oauth2.jwt(jwt -> {
                     jwt.jwtAuthenticationConverter(jwtAuthenticationConverter());
                 }));

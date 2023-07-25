@@ -22,7 +22,7 @@
       <module name="configserver" target="17" />
       <module name="demomodule" target="17" />
       <module name="eurekaserver" target="17" />
-      <module name="foundation" target="1.6" />
+      <module name="foundation" target="17" />
       <module name="gateway" target="17" />
       <module name="photo" target="17" />
       <module name="resource" target="17" />

@@ -12,14 +12,13 @@ import org.springframework.security.authorization.ReactiveAuthorizationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.server.authorization.AuthorizationContext;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import reactor.core.publisher.Mono;
 
 import java.net.URI;
 import java.util.List;
 
-@Component
+//@Component
 public class CustomizedAuthorizationManager implements ReactiveAuthorizationManager<AuthorizationContext> {
 
     private static final Logger logger = LoggerFactory.getLogger(CustomizedAuthorizationManager.class);
