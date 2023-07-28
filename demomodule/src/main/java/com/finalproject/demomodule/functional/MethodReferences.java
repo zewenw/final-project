@@ -4,8 +4,18 @@ import java.util.List;
 
 public class MethodReferences {
 
-    public static void main(String[] args) {
-        List<Integer> numbers = List.of(12, 9, 13, 4, 6, 2, 4, 12, 15, 25);
+    private static void print(String str){
+        System.out.println(str);
+    }
 
+
+    @SuppressWarnings("unused")
+    public static void main(String[] args) {
+        List<String> courses = List.of("Spring", "Spring Boot", "API", "Microservices", "AWS", "PCF", "Azure", "Docker", "Kubernetes");
+
+        courses.stream()
+//                .map(str -> str.toUpperCase())
+                .map(String::toUpperCase)
+                .forEach(MethodReferences::print);
     }
 }
