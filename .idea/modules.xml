@@ -9,7 +9,11 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/final_project.iml" filepath="$PROJECT_DIR$/.idea/final_project.iml" />
       <module fileurl="file://$PROJECT_DIR$/foundation/foundation.iml" filepath="$PROJECT_DIR$/foundation/foundation.iml" />
       <module fileurl="file://$PROJECT_DIR$/gateway/gateway.iml" filepath="$PROJECT_DIR$/gateway/gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webflux/movieinfoservice/movieinfoservice.iml" filepath="$PROJECT_DIR$/webflux/movieinfoservice/movieinfoservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webflux/moviereviewservice/moviereviewservice.iml" filepath="$PROJECT_DIR$/webflux/moviereviewservice/moviereviewservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webflux/movieservice/movieservice.iml" filepath="$PROJECT_DIR$/webflux/movieservice/movieservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/photo/photo.iml" filepath="$PROJECT_DIR$/photo/photo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webflux/reactor/reactor.iml" filepath="$PROJECT_DIR$/webflux/reactor/reactor.iml" />
       <module fileurl="file://$PROJECT_DIR$/resource/resource.iml" filepath="$PROJECT_DIR$/resource/resource.iml" />
       <module fileurl="file://$PROJECT_DIR$/user/user.iml" filepath="$PROJECT_DIR$/user/user.iml" />
       <module fileurl="file://$PROJECT_DIR$/webflux/webflux.iml" filepath="$PROJECT_DIR$/webflux/webflux.iml" />

@@ -27,6 +27,10 @@
         <option value="$PROJECT_DIR$/foundation/pom.xml" />
         <option value="$PROJECT_DIR$/gateway/pom.xml" />
         <option value="$PROJECT_DIR$/webflux/pom.xml" />
+        <option value="$PROJECT_DIR$/webflux/movieinfoservice/pom.xml" />
+        <option value="$PROJECT_DIR$/webflux/moviereviewservice/pom.xml" />
+        <option value="$PROJECT_DIR$/webflux/movieservice/pom.xml" />
+        <option value="$PROJECT_DIR$/webflux/reactor/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

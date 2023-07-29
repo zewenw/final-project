@@ -9,9 +9,12 @@
         <outputRelativeToContentRoot value="true" />
         <module name="eurekaserver" />
         <module name="demomodule" />
+        <module name="movieinfoservice" />
+        <module name="moviereviewservice" />
         <module name="authserver" />
+        <module name="movieservice" />
+        <module name="reactor" />
         <module name="photo" />
-        <module name="webflux" />
         <module name="configserver" />
         <module name="foundation" />
         <module name="user" />
@@ -25,7 +28,11 @@
       <module name="eurekaserver" target="17" />
       <module name="foundation" target="17" />
       <module name="gateway" target="17" />
+      <module name="movieinfoservice" target="17" />
+      <module name="moviereviewservice" target="17" />
+      <module name="movieservice" target="17" />
       <module name="photo" target="17" />
+      <module name="reactor" target="17" />
       <module name="resource" target="17" />
       <module name="user" target="17" />
       <module name="webflux" target="17" />
@@ -38,9 +45,13 @@
       <module name="demomodule" options="-parameters" />
       <module name="eurekaserver" options="-parameters" />
       <module name="gateway" options="-parameters" />
+      <module name="movieinfoservice" options="" />
+      <module name="moviereviewservice" options="" />
+      <module name="movieservice" options="" />
       <module name="photo" options="-parameters" />
+      <module name="reactor" options="" />
       <module name="user" options="-parameters" />
-      <module name="webflux" options="-parameters" />
+      <module name="webflux" options="" />
     </option>
   </component>
 </project>
