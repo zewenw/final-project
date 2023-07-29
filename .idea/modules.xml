@@ -12,6 +12,7 @@
       <module fileurl="file://$PROJECT_DIR$/photo/photo.iml" filepath="$PROJECT_DIR$/photo/photo.iml" />
       <module fileurl="file://$PROJECT_DIR$/resource/resource.iml" filepath="$PROJECT_DIR$/resource/resource.iml" />
       <module fileurl="file://$PROJECT_DIR$/user/user.iml" filepath="$PROJECT_DIR$/user/user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webflux/webflux.iml" filepath="$PROJECT_DIR$/webflux/webflux.iml" />
     </modules>
   </component>
 </project>
