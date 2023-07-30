@@ -1,15 +1,32 @@
 package com.finalproject.demomodule.functional;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
 public class FunctionalExercise {
 
     public static void main(String[] args) {
-        List<String> courses = List.of("Spring", "Spring Boot", "API", "Microservices", "AWS", "PCF", "Azure", "Docker", "Kubernetes");
+//        List<String> courses = List.of("Spring", "Spring Boot", "API", "Microservices", "AWS", "PCF", "Azure", "Docker", "Kubernetes");
+        List<String> courses = List.of("Spring", "Spring Boot");
+
 //        printAllCourse(courses);
 //        printContainsSpring(courses);
 //        printNameGreaterThan4Letters(courses);
-        printNameCharactersNumber(courses);
+//        printNameCharactersNumber(courses);
+        Function<String, Stream<? extends String>> function = new Function<String, Stream<? extends String>>() {
+            @Override
+            public Stream<? extends String> apply(String item) {
+                return Arrays.stream(splitString(item));
+            }
+        };
+        courses.stream()
+                .flatMap(function)
+                .forEach(System.out::println);
+    }
+    public static String[] splitString(String name) {
+        return name.split("");
     }
 
     private static void printAllCourse(List<String> courses) {
