@@ -3,4 +3,15 @@ server:
 
 spring:
   profiles:
-    active: default
+    active: local
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: local

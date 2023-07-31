@@ -1,6 +1,5 @@
-package com.webflux.movieinfoservice.unit;
+package com.webflux.movieinfoservice.controller;
 
-import com.webflux.movieinfoservice.controller.FluxAndMonoController;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
