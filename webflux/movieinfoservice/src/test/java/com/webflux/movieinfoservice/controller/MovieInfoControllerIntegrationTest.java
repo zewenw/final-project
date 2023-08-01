@@ -17,7 +17,7 @@ import java.util.List;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
 @AutoConfigureWebTestClient
-class MovieInfoControllerTest {
+class MovieInfoControllerIntegrationTest {
 
     @Autowired
     private WebTestClient webTestClient;
