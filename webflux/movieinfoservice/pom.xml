@@ -18,8 +18,6 @@
 
     <properties>
         <java.version>17</java.version>
-        <testSourceDirectory>src/test/java/com/webflux/movieinfoservice/unit</testSourceDirectory>
-        <testSourceDirectory>src/test/java/com/webflux/movieinfoservice/integration</testSourceDirectory>
     </properties>
 
     <dependencies>
