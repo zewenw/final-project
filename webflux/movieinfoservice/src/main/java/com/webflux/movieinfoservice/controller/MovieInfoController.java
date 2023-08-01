@@ -3,15 +3,18 @@ package com.webflux.movieinfoservice.controller;
 import com.webflux.movieinfoservice.domain.MovieInfo;
 import com.webflux.movieinfoservice.service.impl.MovieInfoServiceImpl;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/v1")
+@Slf4j
 public class MovieInfoController {
 
     @Autowired
@@ -26,7 +29,16 @@ public class MovieInfoController {
 
     //get query
     @GetMapping("/movieinfos")
-    public Flux<MovieInfo> getAllMovieInfos() {
+    public Flux<MovieInfo> getAllMovieInfos(@RequestParam(value = "year", required = false) Integer year,
+                                            @RequestParam(value = "name", required = false) String name) {
+        log.info("com.webflux.movieinfoservice.controller.MovieInfoController.getAllMovieInfos, year:{}", year);
+        log.info("com.webflux.movieinfoservice.controller.MovieInfoController.getAllMovieInfos, name:{}", name);
+        if(!ObjectUtils.isEmpty(name)){
+            return movieInfoService.getMovieInfoByName(name);
+        }
+        if(year != null){
+            return movieInfoService.getMovieInfoByYear(year);
+        }
         return movieInfoService.getAllMovieInfos().log();
     }
 

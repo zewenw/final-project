@@ -61,6 +61,15 @@ class MovieInfoRepositoryTest {
     }
 
     @Test
+    void findByYear() {
+        Flux<MovieInfo> flux = movieInfoRepository.findByYear(2008).log();
+        StepVerifier.create(flux)
+//                .expectNextCount(1L)
+                .expectNextCount(1)
+                .verifyComplete();
+    }
+
+    @Test
     void saveMovieInfo() {
         var movieInfo = new MovieInfo(null, "Batman Begins1",
                 2005, List.of("Christian Bale", "Michael Cane"), LocalDate.parse("2005-06-15"));

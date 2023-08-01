@@ -15,4 +15,8 @@ public interface MovieInfoService {
     Mono<MovieInfo> updateMovieInfo(MovieInfo movieInfo, String id);
 
     Mono<Void> deleteMovieInfo(String id);
+
+    Flux<MovieInfo> getMovieInfoByYear(Integer year);
+
+    Flux<MovieInfo> getMovieInfoByName(String name);
 }

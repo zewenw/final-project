@@ -6,7 +6,7 @@ import reactor.core.publisher.Flux;
 
 public interface MovieInfoRepository extends ReactiveMongoRepository<MovieInfo, String> {
 
-    Flux<Object> findByYear(int year);
+    Flux<MovieInfo> findByYear(int year);
 
-    Flux<Object> findByName(String name);
+    Flux<MovieInfo> findByName(String name);
 }
