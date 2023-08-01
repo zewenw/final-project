@@ -59,7 +59,7 @@ public class ReviewHandler {
         } else {
             reviewFlux = reviewReactiveRepository.findAll();
         }
-        return ServerResponse.ok().body(reviewFlux, Review.class);
+        return ServerResponse.ok().body(reviewFlux, Review.class).log();
     }
 
     @Nonnull
