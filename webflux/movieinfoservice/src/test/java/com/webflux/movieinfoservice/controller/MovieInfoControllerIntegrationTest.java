@@ -11,10 +11,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.web.util.UriComponentsBuilder;
+import reactor.test.StepVerifier;
 
 import java.net.URI;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
@@ -157,5 +159,42 @@ class MovieInfoControllerIntegrationTest {
                 .exchange()
                 .expectStatus()
                 .isNoContent();
+    }
+
+    @Test
+    void getAllMovieInfosStream() {
+
+        var movieInfo = new MovieInfo(null, "Batman Begins",
+                2005, List.of("Christian Bale", "Michael Cane"), LocalDate.parse("2005-06-15"));
+
+        webTestClient
+                .post()
+                .uri(MOVIES_INFO_URL)
+                .bodyValue(movieInfo)
+                .exchange()
+                .expectStatus()
+                .isCreated()
+                .expectBody(MovieInfo.class)
+                .consumeWith(movieInfoEntityExchangeResult -> {
+                    var savedMovieInfo = movieInfoEntityExchangeResult.getResponseBody();
+                    assert Objects.requireNonNull(savedMovieInfo).getMovieInfoId() != null;
+
+                });
+
+        var moviesStreamFlux = webTestClient
+                .get()
+                .uri(MOVIES_INFO_URL + "/stream")
+                .exchange()
+                .expectStatus()
+                .is2xxSuccessful()
+                .returnResult(MovieInfo.class)
+                .getResponseBody();
+
+        StepVerifier.create(moviesStreamFlux)
+                .assertNext(movieInfo1 -> {
+                    assert movieInfo1.getMovieInfoId() != null;
+                })
+                .thenCancel()
+                .verify();
     }
 }

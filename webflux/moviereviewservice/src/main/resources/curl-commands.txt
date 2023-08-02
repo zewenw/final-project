@@ -17,6 +17,9 @@ curl -i ^
 -X POST http://localhost:8081/v1/reviews
 
 
+REM STREAM:
+curl -i http://localhost:8081/v1/reviews/stream
+
 REM GET-ALL-REVIEWS:
 curl -i http://localhost:8081/v1/reviews
 

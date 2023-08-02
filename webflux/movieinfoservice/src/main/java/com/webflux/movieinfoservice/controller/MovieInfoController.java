@@ -6,11 +6,13 @@ import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import reactor.core.publisher.Sinks;
 
 @RestController
 @RequestMapping("/v1")
@@ -20,11 +22,21 @@ public class MovieInfoController {
     @Autowired
     private MovieInfoServiceImpl movieInfoService;
 
+    Sinks.Many<MovieInfo> movieInfoSink = Sinks.many().replay().all();
+
     //add save
     @PostMapping("/movieinfos")
     @ResponseStatus(HttpStatus.CREATED)
     public Mono<MovieInfo> addMovieInfo(@RequestBody @Valid MovieInfo movieInfo) {
-        return movieInfoService.addMovieInfo(movieInfo).log();
+        return movieInfoService.addMovieInfo(movieInfo)
+                .doOnNext(savedInfo -> movieInfoSink.tryEmitNext(savedInfo))
+                .log();
+    }
+
+    //get query
+    @GetMapping(value = "/movieinfos/stream", produces = MediaType.APPLICATION_NDJSON_VALUE)
+    public Flux<MovieInfo> stream() {
+        return movieInfoSink.asFlux().log();
     }
 
     //get query

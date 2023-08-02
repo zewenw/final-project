@@ -17,6 +17,9 @@ curl -i ^
 -X POST http://localhost:8080/v1/movieinfos
 
 
+REM STREAM
+curl -i http://localhost:8080/v1/movieinfos/stream
+
 REM GET-ALL-MOVIE-INFO
 curl -i http://localhost:8080/v1/movieinfos
 
