@@ -4,6 +4,7 @@ package com.webflux.movieservice.client;
 import com.webflux.movieservice.dto.MovieInfo;
 import com.webflux.movieservice.exception.MoviesInfoClientException;
 import com.webflux.movieservice.exception.MoviesInfoServerException;
+import com.webflux.movieservice.util.RetryUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,6 +26,7 @@ public class MovieInfoRestClient {
 
     public Mono<MovieInfo> retrieveMovieInfo(String movieId) {
         var url = moviesInfoUrl.concat("/{id}");
+
         return webClient
                 .get()
                 .uri(url, movieId)
@@ -50,6 +52,8 @@ public class MovieInfoRestClient {
 
                 })
                 .bodyToMono(MovieInfo.class)
+//                .retry(3)
+                .retryWhen(RetryUtil.retrySpec())
                 .log();
     }
 }

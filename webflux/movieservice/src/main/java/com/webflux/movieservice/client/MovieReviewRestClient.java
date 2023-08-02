@@ -3,6 +3,7 @@ package com.webflux.movieservice.client;
 import com.webflux.movieservice.dto.Review;
 import com.webflux.movieservice.exception.ReviewsClientException;
 import com.webflux.movieservice.exception.ReviewsServerException;
+import com.webflux.movieservice.util.RetryUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -49,6 +50,8 @@ public class MovieReviewRestClient {
 
                 })
                 .bodyToFlux(Review.class)
+//                .retry(3)
+                .retryWhen(RetryUtil.retrySpec())
                 .log();
     }
 }

@@ -1,5 +1,6 @@
 package com.webflux.movieservice.controller;
 
+import com.github.tomakehurst.wiremock.client.WireMock;
 import com.webflux.movieservice.dto.Movie;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,6 +78,8 @@ class MovieControllerIntegrationTest {
                 .expectStatus().is4xxClientError()
                 .expectBody(String.class)
                 .isEqualTo("There is no MovieInfo available for the passed in Id : abc");
+
+        WireMock.verify(1, getRequestedFor(urlEqualTo("/v1/movieinfos" + "/" + movieId)));
     }
 
     @Test
@@ -128,5 +131,36 @@ class MovieControllerIntegrationTest {
                 .expectStatus().is5xxServerError()
                 .expectBody(String.class)
                 .isEqualTo("Sever Exception in Movie Info ServerMovieInfo Service Unavailable");
+
+        WireMock.verify(4, getRequestedFor(urlEqualTo("/v1/movieinfos" + "/" + movieId)));
+    }
+
+
+    @Test
+    void retrieveMovieByIdReview500() {
+        //given
+        var movieId = "abc";
+        stubFor(get(urlEqualTo("/v1/movieinfos" + "/" + movieId))
+                .willReturn(aResponse()
+                        .withHeader("Content-Type", "application/json")
+                        .withBodyFile("movieinfo.json")));
+        stubFor(get(urlPathEqualTo("/v1/reviews"))
+//                .withQueryParam("movieInfoId", equalTo(movieId))
+                .willReturn(aResponse()
+                        .withStatus(500)
+                        .withBody("Review Service Unavailable")));
+
+        //when
+        webTestClient
+                .get()
+                .uri("/v1/movies/{id}", movieId)
+                .exchange()
+                .expectStatus().is5xxServerError()
+                .expectBody(String.class)
+                .value(message -> {
+                    assertEquals("Sever Exception in Review ServerReview Service Unavailable", message);
+                });
+
+        WireMock.verify(4, getRequestedFor(urlPathMatching("/v1/reviews")));
     }
 }
