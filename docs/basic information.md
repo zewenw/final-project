@@ -1,4 +1,4 @@
-# basic information about project
+# Basic Information
 
 ## Local Environment
 
@@ -21,19 +21,15 @@ execute finalproject_local.bat
 
 #### Port:
 
-- Eureka: 8999
-  - Eureka should be deployed in a cluster mode
+- eurekaserver: 8999
   
-- ConfigServer: 9001
+- configserver: 9001
 
-- Authorization Server: 9000
-  - Gateway: 
+- authserver: 9000
   
-  - dev: 80
-  - test: 80
-  - prod: 80
+- gateway: 80
   
-- User: 10001
+- user: 10001
 
-- Photo: 10002
+- photo: 10002
 
