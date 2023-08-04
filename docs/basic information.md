@@ -4,7 +4,9 @@
 
 #### Pre-requirements
 
-execute finalproject_local.bat 
+- install PostgreSQL, Redis, ELK, Zipkin, docker
+- execute finalproject_local.bat 
+- use local profile
 
 ### Desktop k8s Environment
 
@@ -16,8 +18,6 @@ execute finalproject_local.bat
 4. change k8s namespace to **docker-desktop**
 5. start redis, postgresql, zipkin separately
 6. using `helm install desktop-deployment k8s-local` install all service components
-
-
 
 #### Port:
 
