@@ -1,10 +1,8 @@
 package com.finalproject.user.controller;
 
 import com.finalproject.foundation.utils.UserUtil;
-import com.finalproject.user.service.UserService;
 import io.micrometer.core.annotation.Timed;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -12,23 +10,19 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 public class DemoController {
 
-    @Autowired
-    private UserService userService;
-
     @GetMapping("/sayHello")
     @Timed(value = "sayHello", description = "this is the sayHello method")
     public String sayHello() {
         log.info("user component, say hello, method start");
         String username = UserUtil.getCurrentUsername();
         log.info("=============current user is {}", username);
-        String id = userService.getId();
         log.info("user component, say hello, method end");
-        return "user management....id is " + id;
+        return "user management....id is 1";
     }
 
     @PostMapping("/id")
     public String getId() {
-        return userService.getId();
+        return "1";
     }
 
     @GetMapping("/status/check")
