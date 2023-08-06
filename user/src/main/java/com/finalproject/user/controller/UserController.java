@@ -1,8 +1,7 @@
-package com.finalproject.user.controller.user;
+package com.finalproject.user.controller;
 
 
 import com.finalproject.foundation.utils.UserUtil;
-import com.finalproject.user.controller.demo.UserRest;
 import com.finalproject.user.service.UserService;
 import io.micrometer.core.annotation.Timed;
 import org.slf4j.Logger;
@@ -51,10 +50,10 @@ public class UserController {
 
 
     //    @PostAuthorize("returnObject.userId == 'aaa'")
-    @GetMapping(path = "/{id}")
-    public UserRest getUser(@PathVariable String id) {
-        System.out.println("has been executed");
-        return new UserRest("Sergey", "Kargopolov", id);
-    }
+//    @GetMapping(path = "/{id}")
+//    public UserRest getUser(@PathVariable String id) {
+//        System.out.println("has been executed");
+//        return new UserRest("Sergey", "Kargopolov", id);
+//    }
 
 }
