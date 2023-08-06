@@ -1,6 +1,6 @@
 package com.finalproject.user.service;
 
 
-public interface UserService {
+public interface RoleService {
 
 }
