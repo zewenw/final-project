@@ -9,6 +9,8 @@ Aim to develop a basic development platform so that the developer can leverage t
 
 When we build a new project from scratch, except for product requirements, we also need to pay much effort to take care of functional requirements, imaging some scenarios, we release product requirements, but some users complained they encountered some bugs, then what we will do to fix this issue, first we need to locate the problem, so we need a log collection platform, without it, locating problem will become ultra hard. also, due to some promotion campaign, we meet some request peak and our system needs to scale up, but we have never spent time on implementing this feature. also, there are many other kinds of scenarios. so if we have a basic platform and this platform integrates all these features, then things become easier, and this is the purpose of this project.
 
+## [Technical Description](Technical Description.md)
+
 ### The Challenges of Microservices Architecture and How to Solve It
 
 There are already many out-of-box solutions that can help us solve most of the challenges, but one of them we should deal with on our own, which is **How to make our system have availability, scalability** and **How to make every single component have high performance and low latency**. although the solution is various depending on the product requirement, there are still some common rules we can follow. there it is:
