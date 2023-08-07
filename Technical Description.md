@@ -2,7 +2,7 @@
 
 ### Architecture
 
-<img src="E:/personal_project/final_project/docs/architecture.jpg" alt="Alt Text" style="zoom:35%;" />
+<img src="./docs/architecture.jpg" alt="Alt Text" style="zoom:35%;" />
 
 ### What Tech Stack Used
 
