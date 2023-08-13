@@ -1,4 +1,4 @@
-package com.finalproject.demomodule.play;
+package com.finalproject.demomodule.play.primitive;
 
 
 public class StringTest {

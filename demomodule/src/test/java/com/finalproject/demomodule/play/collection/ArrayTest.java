@@ -1,4 +1,4 @@
-package com.finalproject.demomodule.play;
+package com.finalproject.demomodule.play.collection;
 
 public class ArrayTest {
 
