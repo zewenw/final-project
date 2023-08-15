@@ -41,6 +41,8 @@ public class CustomizedAuthorizationManager implements AuthorizationManager<Requ
 //        return newPath.toString();
 //    }
 
+
+    //Authorization
     @Override
     public AuthorizationDecision check(Supplier<Authentication> authenticationSupplier, RequestAuthorizationContext authorizationContext) {
         // get current request path
@@ -49,6 +51,9 @@ public class CustomizedAuthorizationManager implements AuthorizationManager<Requ
 
         // 获取可访问当前路径的所有角色
         Object roles = redisTemplate.opsForHash().get(RedisConstants.PERMISSION_ROLE.toString(), uri);
+        if(roles == null){
+            return new AuthorizationDecision(true);
+        }
         List<String> authorities = roles == null ? null : Convert.toList(String.class, roles);
         logger.info("current path authorities: {}", JSONUtil.toJsonStr(authorities));
         Authentication authentication = authenticationSupplier.get();
