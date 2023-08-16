@@ -46,6 +46,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteUser(long id) {
+        //todo delete role user mapping
         userRepository.deleteById(id);
     }
 }
