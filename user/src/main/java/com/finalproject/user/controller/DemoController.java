@@ -1,13 +1,16 @@
 package com.finalproject.user.controller;
 
-import com.finalproject.foundation.utils.UserUtil;
 import com.finalproject.user.service.UserService;
 import io.micrometer.core.annotation.Timed;
 import lombok.extern.slf4j.Slf4j;
+import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/demo")
 @Slf4j
 public class DemoController {
@@ -19,16 +22,19 @@ public class DemoController {
     @Timed(value = "sayHello", description = "this is the sayHello method")
     public String sayHello() {
         log.info("user component, say hello, method start");
-        String username = UserUtil.getCurrentUsername();
-        log.info("=============current user is {}", username);
-        String id = userService.getId();
+//        String username = UserUtil.getCurrentUsername();
+//        log.info("=============current user is {}", username);
+//        String id = userService.getId();
         log.info("user component, say hello, method end");
-        return "user management....id is " + id;
+        return "user management....id is 2";
     }
 
-    @PostMapping("/id")
+    @GetMapping("/currentuser")
     public String getId() {
-        return userService.getId();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        val principal = authentication.getPrincipal();
+        System.out.println(principal);
+        return "principal.getId()";
     }
 
     @GetMapping("/status/check")

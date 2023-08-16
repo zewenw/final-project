@@ -14,6 +14,10 @@ spring:
       enabled: true
   #route forwarding
     gateway:
+      default-filters:
+        - DedupeResponseHeader=Vary Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_UNIQUE
+      globalcors:
+        add-to-simple-url-handler-mapping: false #options request is intercepted
       routes:
         - id: user-service
           uri: lb://user
@@ -37,7 +41,7 @@ spring:
             - RewritePath=/swagger/api-docs/(?<path>.*), /$\{path}/swagger/api-docs
   session:
     redis:
-      flush-mode: on_save # session refresh mode
+      flush-mode: IMMEDIATE # session refresh mode
       namespace: gateway:session # namespace for keys used to store sessions
 
 management:

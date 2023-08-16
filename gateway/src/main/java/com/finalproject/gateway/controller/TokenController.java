@@ -23,4 +23,9 @@ public class TokenController {
         map.put("authorizedClient", oAuth2AuthorizedClient);
         return Mono.justOrEmpty(map);
     }
+
+    @GetMapping("/username")
+    public Mono<String> username(@RegisteredOAuth2AuthorizedClient OAuth2AuthorizedClient oAuth2AuthorizedClient) {
+        return Mono.justOrEmpty(oAuth2AuthorizedClient.getPrincipalName());
+    }
 }
