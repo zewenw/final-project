@@ -1,6 +1,7 @@
 package com.finalproject.user.convert;
 
 import com.finalproject.user.dto.request.UserRequest;
+import com.finalproject.user.dto.response.UserResponse;
 import com.finalproject.user.entity.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -12,6 +13,10 @@ public interface UserMapper {
 
     UserRequest userToUserRequest(User user);
 
+    UserResponse userToUserResponse(User user);
+
     User userRequestToUser(UserRequest userRequest);
+
+
 
 }

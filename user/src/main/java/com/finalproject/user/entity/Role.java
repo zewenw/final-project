@@ -83,7 +83,9 @@ public class Role {
 
         Role role = (Role) o;
 
-        return roleCode.equals(role.roleCode);
+        return id == role.id
+                && roleCode.equals(role.roleCode)
+                && roleName.equals(role.getRoleName());
     }
 
     @Override
