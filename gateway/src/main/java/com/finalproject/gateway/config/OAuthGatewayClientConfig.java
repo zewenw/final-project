@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.oauth2.client.ReactiveOAuth2AuthorizedClientManager;
@@ -41,6 +42,7 @@ public class OAuthGatewayClientConfig {
         http
                 .csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .authorizeExchange(authorize -> authorize
+                        .pathMatchers("/oauth2/authorization/**").permitAll()
 //                        .anyExchange().access(customizedAuthorizationManager)
                                 .anyExchange().authenticated()
                 )
@@ -84,7 +86,8 @@ public class OAuthGatewayClientConfig {
 
 
     @Bean
-    ReactiveOAuth2AuthorizedClientManager authorizedClientManager(
+    @Primary
+    public ReactiveOAuth2AuthorizedClientManager authorizedClientManager(
             ReactiveClientRegistrationRepository clientRegistrationRepository,
             ServerOAuth2AuthorizedClientRepository authorizedClientRepository) {
 
@@ -94,7 +97,6 @@ public class OAuthGatewayClientConfig {
                         .authorizationCode()
                         .refreshToken()
                         .clientCredentials()
-                        .password()
                         .build();
         // @formatter:on
         DefaultReactiveOAuth2AuthorizedClientManager authorizedClientManager = new DefaultReactiveOAuth2AuthorizedClientManager(
