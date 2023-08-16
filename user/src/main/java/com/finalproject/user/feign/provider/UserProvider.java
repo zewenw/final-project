@@ -15,6 +15,6 @@ public class UserProvider {
 
     @GetMapping("/id")
     public String getId(){
-        return userService.getId();
+        return "1";
     }
 }

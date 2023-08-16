@@ -1,12 +1,12 @@
 package com.finalproject.user.service;
 
-import org.springframework.stereotype.Service;
 
-@Service
-public class UserService {
+import com.finalproject.user.dto.request.UserRequest;
+import com.finalproject.user.dto.response.UserResponse;
 
+public interface UserService {
 
-    public String getId(){
-        return "1";
-    }
+    boolean checkDuplicateUsername(String username);
+
+    UserResponse addUser(UserRequest userRequest);
 }

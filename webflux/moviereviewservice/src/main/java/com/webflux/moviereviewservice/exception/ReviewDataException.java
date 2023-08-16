@@ -6,6 +6,6 @@ public class ReviewDataException extends RuntimeException {
 
     public ReviewDataException(String s) {
         super(s);
-        this.message=s;
+        this.message = s;
     }
 }
