@@ -5,10 +5,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class RoleRequest {
+public class RoleRequest implements Serializable {
 
     @NotBlank(message = "roleCode must be present")
     private String roleCode;

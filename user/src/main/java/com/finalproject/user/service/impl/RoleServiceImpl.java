@@ -38,7 +38,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public RoleResponse updateUser(RoleRequest roleRequest) {
+    public RoleResponse udpateRole(RoleRequest roleRequest) {
         Role currentRole = roleRepository.findByRoleCode(roleRequest.getRoleCode());
         currentRole.setRoleName(roleRequest.getRoleName());
         currentRole.setRoleDescription(roleRequest.getRoleDescription());

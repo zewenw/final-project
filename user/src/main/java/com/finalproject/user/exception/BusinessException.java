@@ -1,10 +1,10 @@
 package com.finalproject.user.exception;
 
-public class UserException extends RuntimeException {
+public class BusinessException extends RuntimeException {
 
     private String message;
 
-    public UserException(String s) {
+    public BusinessException(String s) {
         super(s);
         this.message = s;
     }

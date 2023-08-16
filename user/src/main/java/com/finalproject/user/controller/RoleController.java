@@ -2,7 +2,7 @@ package com.finalproject.user.controller;
 
 import com.finalproject.user.dto.request.RoleRequest;
 import com.finalproject.user.dto.response.RoleResponse;
-import com.finalproject.user.exception.UserException;
+import com.finalproject.user.exception.BusinessException;
 import com.finalproject.user.service.RoleService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
@@ -27,32 +27,32 @@ public class RoleController {
     public ResponseEntity<RoleResponse> addRole(@RequestBody @Valid RoleRequest roleRequest){
         String roleCode = roleRequest.getRoleCode();
         if(roleService.checkDuplicateRoleCode(roleCode)){
-            throw new UserException("DUPLICATE ROLENAME");
+            throw new BusinessException("DUPLICATE ROLENAME");
         }
         String roleName = roleRequest.getRoleName();
         if(roleService.checkDuplicateRoleName(roleName)){
-            throw new UserException("DUPLICATE ROLENAME");
+            throw new BusinessException("DUPLICATE ROLENAME");
         }
         return ResponseEntity.ok().body(roleService.addRole(roleRequest));
     }
 
-    @GetMapping("/user/{rolecode}")
+    @GetMapping("/role/{rolecode}")
     @ResponseStatus(HttpStatus.OK)
     @Operation(description = "get role by role code")
     public ResponseEntity<RoleResponse> getRole(@PathVariable @NotNull String rolecode){
         return ResponseEntity.ok().body(roleService.getRole(rolecode));
     }
 
-    @PutMapping("/user")
+    @PutMapping("/role")
     @ResponseStatus(HttpStatus.OK)
     @Operation(description = "update role")
     public ResponseEntity<RoleResponse> updateUser(@RequestBody @Valid RoleRequest roleRequest){
-        return ResponseEntity.ok().body(roleService.updateUser(roleRequest));
+        return ResponseEntity.ok().body(roleService.udpateRole(roleRequest));
     }
 
-    @DeleteMapping("/user/{id}")
+    @DeleteMapping("/role/{id}")
     @ResponseStatus(HttpStatus.OK)
-    @Operation(description = "delete role id")
+    @Operation(description = "delete role by id")
     public ResponseEntity<String> deleteUser(@PathVariable long id){
         roleService.deleteRoleById(id);
         return  ResponseEntity.ok().build();
