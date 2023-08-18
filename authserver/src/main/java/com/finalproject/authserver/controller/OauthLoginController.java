@@ -17,6 +17,7 @@ public class OauthLoginController {
 
     @RequestMapping("/custom_login_error")
     public String loginErrorRedirect() {
+        //TODO login error function
         return "redirect:" + redirectUrl + "?error=invalid username or password";
     }
 }

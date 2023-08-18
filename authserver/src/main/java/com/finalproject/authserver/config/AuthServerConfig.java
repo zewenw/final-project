@@ -5,7 +5,6 @@ import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -57,8 +56,6 @@ public class AuthServerConfig {
 
     @Value("${authorization.url}")
     private String authServerUrl;
-    @Autowired
-    private DataSource dataSource;
 
     /**
      * filter chain configuration
@@ -72,20 +69,13 @@ public class AuthServerConfig {
                 .oidc(Customizer.withDefaults());	// Enable OpenID Connect 1.0
 
         http
-                // Redirect to the login page when not authenticated from the
-                // authorization endpoint
-                .cors(Customizer.withDefaults())
-                .formLogin(formLogin -> {
-                    formLogin.loginPage("/custom_login")
-                            .failureForwardUrl("/custom_login_error");
-                })
                 .exceptionHandling((exceptions) -> exceptions
                         .defaultAuthenticationEntryPointFor(
-                                new LoginUrlAuthenticationEntryPoint("/login"),
+                                new LoginUrlAuthenticationEntryPoint("/custom_login"),
                                 new MediaTypeRequestMatcher(MediaType.TEXT_HTML)
                         )
                 )
-//                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .csrf(AbstractHttpConfigurer::disable)
                 // Accept access tokens for User Info and/or Client Registration
                 .oauth2ResourceServer((resourceServer) -> resourceServer
@@ -94,11 +84,10 @@ public class AuthServerConfig {
         return http.build();
     }
 
-    @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration corsConfig = new CorsConfiguration();
         corsConfig.setAllowCredentials(Boolean.FALSE);
-        corsConfig.setAllowedOrigins(Collections.singletonList("*"));
+        corsConfig.setAllowedOrigins(Collections.singletonList("http://localhost:5173/"));
         corsConfig.setAllowedHeaders(List.of("*"));
         corsConfig.setAllowedMethods(List.of("GET","POST","PUT", "OPTIONS","DELETE"));
 
