@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Please sign in</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous"/>
+</head>
+<body>
+<div class="container">
+    <form action="/user/login" method="post">
+        <ul>
+            <span class="l">LOGIN IN</span>
+            <li class="w">
+                Username:<input type="text" id="username" name="username"
+                                style="background-color:rgba(255,255,255,0.2);
+                border-radius: 3px;"></br>
+                Password:&nbsp<input type="password" id="password" name="password"
+                                     style="background-color:rgba(255,255,255,0.2);
+                border-radius: 3px;"></br>
+                <p id="ts"style="color: red;font-size: small;text-align: center"
+                   th:text="${msg}"></p>
+            </li>
+
+            <li class="q">
+
+                &nbsp;&nbsp; Rememberme: <input  type="checkbox" id="remember"
+                                                 style="position: relative;top:10px;color: white;
+                   "></br>
+                <input type="submit" value="Login up" id="login"
+                       style="background-color: rgba(38,127,232,0.6);
+                       border-radius: 3px;width:70px;color:white;">
+                <input type="submit" value="logon" id="logon"
+                       style="background-color: rgba(38,127,232,0.6);
+                       border-radius: 3px;width:70px;color:white;">
+                <a href="register.html" style="font-size:smaller">没有账号？点击注册</a>
+            </li>
+        </ul>
+    </form>
+</div>
+</body></html>

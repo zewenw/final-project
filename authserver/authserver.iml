@@ -47,6 +47,12 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-web:6.0.9" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:6.0.9" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:6.0.9" level="project" />
+    <orderEntry type="library" name="Maven: org.thymeleaf:thymeleaf:3.1.1.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: ognl:ognl:3.3.4" level="project" />
+    <orderEntry type="library" name="Maven: org.javassist:javassist:3.29.0-GA" level="project" />
+    <orderEntry type="library" name="Maven: org.attoparser:attoparser:2.0.6.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.unbescape:unbescape:1.1.6.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:2.0.7" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:3.1.0" level="project" />
@@ -208,7 +214,6 @@
     <orderEntry type="library" name="Maven: io.micrometer:micrometer-tracing:1.1.1" level="project" />
     <orderEntry type="library" name="Maven: io.micrometer:context-propagation:1.0.2" level="project" />
     <orderEntry type="library" name="Maven: aopalliance:aopalliance:1.0" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:2.0.7" level="project" />
     <orderEntry type="library" name="Maven: io.opentelemetry:opentelemetry-api:1.25.0" level="project" />
     <orderEntry type="library" name="Maven: io.opentelemetry:opentelemetry-context:1.25.0" level="project" />
     <orderEntry type="library" name="Maven: io.opentelemetry:opentelemetry-semconv:1.25.0-alpha" level="project" />
