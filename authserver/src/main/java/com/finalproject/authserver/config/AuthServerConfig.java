@@ -5,6 +5,7 @@ import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -56,6 +57,8 @@ public class AuthServerConfig {
 
     @Value("${authorization.url}")
     private String authServerUrl;
+    @Autowired
+    private DataSource dataSource;
 
     /**
      * filter chain configuration
@@ -71,6 +74,11 @@ public class AuthServerConfig {
         http
                 // Redirect to the login page when not authenticated from the
                 // authorization endpoint
+                .cors(Customizer.withDefaults())
+                .formLogin(formLogin -> {
+                    formLogin.loginPage("/custom_login")
+                            .failureForwardUrl("/custom_login_error");
+                })
                 .exceptionHandling((exceptions) -> exceptions
                         .defaultAuthenticationEntryPointFor(
                                 new LoginUrlAuthenticationEntryPoint("/login"),

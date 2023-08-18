@@ -37,6 +37,8 @@ public class WebSecurity {
                 .authorizeHttpRequests(auth ->
                 auth
 
+                        //TODO permit all api interface temporary
+                        .requestMatchers("/**").permitAll()
                         .requestMatchers("/actuator/**").permitAll()
                         .requestMatchers("/swagger/api-docs/**").permitAll()
                         .requestMatchers("/feign/**").permitAll()

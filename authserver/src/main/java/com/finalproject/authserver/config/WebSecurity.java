@@ -33,9 +33,15 @@ public class WebSecurity {
     public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http)
             throws Exception {
         http
-                .authorizeHttpRequests((authorize) -> authorize
-                        .anyRequest().authenticated()
-                )
+                .cors(Customizer.withDefaults())
+                .authorizeHttpRequests(request -> {
+                    request.requestMatchers("/custom_login").permitAll()
+                            .anyRequest().authenticated();
+                })
+                .formLogin(formLogin -> {
+                    formLogin.loginPage("/custom_login")
+                            .failureForwardUrl("/custom_login_error");
+                })
                 // Form login handles the redirect to the login page from the
                 // authorization server filter chain
                 .formLogin(Customizer.withDefaults());
