@@ -68,12 +68,18 @@ public class OAuthGatewayClientConfig {
         return new CorsWebFilter(source);
     }
 
+    /**
+     * todo logout login 400 bad request
+     * https://stackoverflow.com/questions/133925/javascript-post-request-like-a-form-submit/133997#133997
+     * https://stackoverflow.com/questions/71251098/logout-via-spring-cloud-gateway-does-not-work-with-spring-security-oidc-and-key
+     */
     private ServerLogoutSuccessHandler oidcLogoutSuccessHandler() {
         OidcClientInitiatedServerLogoutSuccessHandler oidcLogoutSuccessHandler =
                 new OidcClientInitiatedServerLogoutSuccessHandler(this.clientRegistrationRepository);
         // Sets the location that the End-User's User Agent will be redirected to
         // after the logout has been performed at the Provider
-//        oidcLogoutSuccessHandler.setPostLogoutRedirectUri("http://google.com");
+        log.info("===============================oidcLogoutSuccessHandler========================================");
+        oidcLogoutSuccessHandler.setPostLogoutRedirectUri("http://localhost:3000/home");
         return oidcLogoutSuccessHandler;
     }
 
