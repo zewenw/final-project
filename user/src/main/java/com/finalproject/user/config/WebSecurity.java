@@ -40,7 +40,7 @@ public class WebSecurity {
                         .requestMatchers("/actuator/**").permitAll()
                         .requestMatchers("/swagger/api-docs/**").permitAll()
                         .requestMatchers("/feign/**").permitAll()
-
+                        .requestMatchers("/webjar/**", "/swagger/**", "/v3/**").permitAll()
 //                        .requestMatchers(HttpMethod.GET, "/users/status/check")
                         //Scope need prefix
 //                        .hasAnyAuthority("SCOPE_profile")

@@ -9,6 +9,8 @@ import com.finalproject.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -48,5 +50,10 @@ public class UserServiceImpl implements UserService {
     public void deleteUser(long id) {
         //todo delete role user mapping
         userRepository.deleteById(id);
+    }
+
+    @Override
+    public List<UserResponse> getAllUser() {
+        return UserMapper.MAPPER.usersToUserReponses(userRepository.findAll());
     }
 }

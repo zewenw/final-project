@@ -4,6 +4,8 @@ package com.finalproject.user.service;
 import com.finalproject.user.dto.request.UserRequest;
 import com.finalproject.user.dto.response.UserResponse;
 
+import java.util.List;
+
 public interface UserService {
 
     boolean checkDuplicateUsername(String username);
@@ -15,4 +17,7 @@ public interface UserService {
     UserResponse updateUser(UserRequest userRequest);
 
     void deleteUser(long id);
+
+    List<UserResponse> getAllUser();
+
 }

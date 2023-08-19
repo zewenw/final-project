@@ -11,7 +11,7 @@ public class LoginController {
    @GetMapping("login")
     public String login(){
        log.info("login function");
-       return "redirect:http://localhost:3000/home";
+       return "redirect:http://localhost:5173/#/admin/user";
    }
 
 }

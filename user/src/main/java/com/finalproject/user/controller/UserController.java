@@ -14,6 +14,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/v1")
@@ -38,8 +40,14 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     @Operation(description = "get user by usename")
     public ResponseEntity<UserResponse> getUser(@PathVariable @NotNull String username){
-
         return ResponseEntity.ok().body(userService.getUser(username));
+    }
+
+    @GetMapping("/users")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(description = "get all users")
+    public ResponseEntity<List<UserResponse>> getAllUser(){
+        return ResponseEntity.ok().body(userService.getAllUser());
     }
 
     @PutMapping("/user")

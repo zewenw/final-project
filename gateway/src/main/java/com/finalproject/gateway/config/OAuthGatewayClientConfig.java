@@ -42,7 +42,8 @@ public class OAuthGatewayClientConfig {
         http
                 .csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .authorizeExchange(authorize -> authorize
-                        .pathMatchers("/oauth2/authorization/**").permitAll()
+                        .pathMatchers("/webjar/**", "/swagger/**", "/v3/**").permitAll()
+                        .pathMatchers("/oauth2/**").permitAll()
 //                        .anyExchange().access(customizedAuthorizationManager)
                                 .anyExchange().authenticated()
                 )
