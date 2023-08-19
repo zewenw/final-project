@@ -20,8 +20,11 @@ import org.springframework.security.web.server.authentication.logout.SecurityCon
 import org.springframework.security.web.server.authentication.logout.ServerLogoutSuccessHandler;
 import org.springframework.security.web.server.authentication.logout.WebSessionServerLogoutHandler;
 import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.reactive.CorsConfigurationSource;
 import org.springframework.web.cors.reactive.CorsWebFilter;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
+
+import java.util.List;
 
 @Slf4j
 @Configuration
@@ -49,9 +52,23 @@ public class OAuthGatewayClientConfig {
                 .logout(logoutSpec -> logoutSpec
                         .logoutHandler(logoutHandler())
                         .logoutSuccessHandler(oidcLogoutSuccessHandler()))
-                .cors(ServerHttpSecurity.CorsSpec::disable)
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .csrf(ServerHttpSecurity.CsrfSpec::disable);
         return http.build();
+    }
+
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration corsConfig = new CorsConfiguration();
+        corsConfig.setAllowCredentials(Boolean.TRUE);
+        corsConfig.addAllowedOrigin("http://localhost:5173");
+        corsConfig.setAllowedHeaders(List.of("*"));
+        corsConfig.setAllowedMethods(List.of("GET","POST","PUT", "OPTIONS","DELETE"));
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", corsConfig);
+
+        return source;
     }
 
     @Bean
