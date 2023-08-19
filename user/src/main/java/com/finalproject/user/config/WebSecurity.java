@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -36,21 +37,10 @@ public class WebSecurity {
         httpSecurity
                 .authorizeHttpRequests(auth ->
                 auth
-
                         .requestMatchers("/actuator/**").permitAll()
-                        .requestMatchers("/swagger/api-docs/**").permitAll()
                         .requestMatchers("/feign/**").permitAll()
-                        .requestMatchers("/webjar/**", "/swagger/**", "/v3/**").permitAll()
-//                        .requestMatchers(HttpMethod.GET, "/users/status/check")
-                        //Scope need prefix
-//                        .hasAnyAuthority("SCOPE_profile")
-//                        don't attach 'ROLE_' prefix
-//                        for single role,
-//                        .hasRole("USER")
-//                        for multiple roles
-//                        .hasAnyRole("developer", "user")
+                        .requestMatchers(HttpMethod.GET, "/users/status/check").permitAll()
                         .anyRequest().access(customizedAuthorizationManager))
-//                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .csrf(AbstractHttpConfigurer::disable)
                 .oauth2ResourceServer(oauth2 -> oauth2.jwt(jwt -> {
                     jwt.jwtAuthenticationConverter(jwtAuthenticationConverter());

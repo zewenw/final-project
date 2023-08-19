@@ -35,15 +35,13 @@ public class OAuthGatewayClientConfig {
     private ReactiveClientRegistrationRepository clientRegistrationRepository;
 
 
-
-
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
         http
-                .csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .authorizeExchange(authorize -> authorize
-                        .pathMatchers("/webjar/**", "/swagger/**", "/v3/**").permitAll()
-                        .pathMatchers("/oauth2/**").permitAll()
+                                //Todo check why there is a path leading by user then follow with swagger
+                                .pathMatchers( "/user/swagger/**", "/v3/**", "/v2/**", "/swagger/**", "/webjars/**").permitAll()
+                                .pathMatchers("/logout/**", "/login/**", "/oauth2/**").permitAll()
 //                        .anyExchange().access(customizedAuthorizationManager)
                                 .anyExchange().authenticated()
                 )
@@ -51,7 +49,8 @@ public class OAuthGatewayClientConfig {
                 .logout(logoutSpec -> logoutSpec
                         .logoutHandler(logoutHandler())
                         .logoutSuccessHandler(oidcLogoutSuccessHandler()))
-                .cors(ServerHttpSecurity.CorsSpec::disable);
+                .cors(ServerHttpSecurity.CorsSpec::disable)
+                .csrf(ServerHttpSecurity.CsrfSpec::disable);
         return http.build();
     }
 

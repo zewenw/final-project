@@ -2,12 +2,11 @@ package com.finalproject.gateway.filter;
 
 
 import org.springframework.http.HttpHeaders;
-import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 
 import java.util.List;
 
-@Component
+//@Component
 public class FilterUtility {
 
     public static final String CORRELATION_ID = "finalproject-correlation-id";

@@ -34,10 +34,12 @@ spring:
             - TokenRelay
             - StripPrefix=1
         - id: openapi
+#          TODO fixed configuration is not suitable
           uri: http://localhost:${server.port}
           predicates:
             - Path=/swagger/api-docs/**
           filters:
+#            - todo check this maybe can solve the user leading path issue
             - RewritePath=/swagger/api-docs/(?<path>.*), /$\{path}/swagger/api-docs
   session:
     redis:
