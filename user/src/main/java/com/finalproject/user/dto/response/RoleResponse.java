@@ -5,17 +5,23 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class RoleResponse implements Serializable {
 
-    private String username;
+    private long id;
 
-    private String email;
+    private String roleCode;
 
-    private String password;
+    private String roleName;
 
-    private boolean enabled;
+    private String roleDescription;
+
+    private LocalDateTime dateCreated;
+
+    private LocalDateTime lastUpdated;
+
 }

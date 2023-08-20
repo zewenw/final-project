@@ -4,6 +4,8 @@ package com.finalproject.user.service;
 import com.finalproject.user.dto.request.RoleRequest;
 import com.finalproject.user.dto.response.RoleResponse;
 
+import java.util.List;
+
 public interface RoleService {
 
     boolean checkDuplicateRoleCode(String roleCode);
@@ -17,4 +19,8 @@ public interface RoleService {
     RoleResponse udpateRole(RoleRequest roleRequest);
 
     void deleteRoleById(long id);
+
+    List<RoleResponse> getAll();
+
+    Boolean bindUserWithRole(long roleId, String username);
 }

@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -25,4 +27,6 @@ public class UserResponse implements Serializable {
     private LocalDateTime dateCreated;
 
     private LocalDateTime lastUpdated;
+
+    private Set<RoleResponse> roles = new HashSet<>();
 }

@@ -6,6 +6,8 @@ import com.finalproject.user.entity.Role;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @Mapper
 public interface RoleMapper {
 
@@ -14,4 +16,6 @@ public interface RoleMapper {
     RoleResponse roleToRoleResponse(Role role);
 
     Role RoleRequestToRole(RoleRequest roleRequest);
+
+    List<RoleResponse> rolesToRoleResponse(List<Role> roles);
 }
