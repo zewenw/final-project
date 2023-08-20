@@ -35,6 +35,19 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter-openfeign:4.0.3" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter:4.0.3" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-context:4.0.3" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-rsa:1.0.11.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-openfeign-core:4.0.3" level="project" />
+    <orderEntry type="library" name="Maven: io.github.openfeign.form:feign-form-spring:3.8.0" level="project" />
+    <orderEntry type="library" name="Maven: io.github.openfeign.form:feign-form:3.8.0" level="project" />
+    <orderEntry type="library" name="Maven: commons-fileupload:commons-fileupload:1.4" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-web:6.0.9" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-commons:4.0.3" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-crypto:6.1.0" level="project" />
+    <orderEntry type="library" name="Maven: io.github.openfeign:feign-core:12.3" level="project" />
+    <orderEntry type="library" name="Maven: io.github.openfeign:feign-slf4j:12.3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-web:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-json:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.15.0" level="project" />
@@ -44,7 +57,6 @@
     <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-core:10.1.8" level="project" />
     <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-el:10.1.8" level="project" />
     <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-websocket:10.1.8" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-web:6.0.9" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:6.0.9" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:6.0.9" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:3.1.0" level="project" />
@@ -97,7 +109,6 @@
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-oauth2-client:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-config:6.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-core:6.1.0" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-crypto:6.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-oauth2-client:6.1.0" level="project" />
     <orderEntry type="library" name="Maven: com.nimbusds:oauth2-oidc-sdk:9.43.2" level="project" />
     <orderEntry type="library" name="Maven: com.nimbusds:content-type:2.2" level="project" />
@@ -123,10 +134,6 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.hdrhistogram:HdrHistogram:2.1.12" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.latencyutils:LatencyUtils:2.0.3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:4.0.2" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter:4.0.3" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-context:4.0.3" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-commons:4.0.3" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-rsa:1.0.11.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-netflix-eureka-client:4.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents.client5:httpclient5:5.2.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents.core5:httpcore5:5.2.1" level="project" />
@@ -235,5 +242,6 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-common:1.8.21" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.jetbrains.kotlin:kotlin-stdlib:1.8.21" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.jetbrains:annotations:13.0" level="project" />
+    <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.26" level="project" />
   </component>
 </module>

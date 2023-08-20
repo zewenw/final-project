@@ -34,6 +34,7 @@ public class WebSecurity {
 
         httpSecurity.authorizeHttpRequests(auth ->
                 auth
+                        .requestMatchers("/retry/**").permitAll()
                         .requestMatchers("/actuator/**").permitAll()
                         .requestMatchers("/webjar/**", "/swagger/**", "/v3/**").permitAll()
                         .requestMatchers("/feign/**").permitAll()

@@ -1,4 +1,4 @@
-package com.finalproject.user.dto.response;
+package com.finalproject.authserver.feign.client.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
