@@ -5,12 +5,14 @@ import com.finalproject.user.entity.Role;
 import com.finalproject.user.entity.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Set;
 
-//@DataJpaTest
-//@AutoConfigureTestDatabase
+@DataJpaTest
+@AutoConfigureTestDatabase
 @SpringBootTest
 public class UsersRepositoryTest {
 

@@ -2,7 +2,7 @@ package com.finalproject.user.controller;
 
 import com.finalproject.user.dto.request.RoleRequest;
 import com.finalproject.user.dto.response.RoleResponse;
-import com.finalproject.user.exception.BusinessException;
+import com.finalproject.user.component.exception.BusinessException;
 import com.finalproject.user.service.RoleService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;

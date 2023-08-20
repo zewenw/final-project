@@ -1,6 +1,6 @@
-package com.finalproject.user.handler;
+package com.finalproject.user.component.handler;
 
-import com.finalproject.user.exception.BusinessException;
+import com.finalproject.user.component.exception.BusinessException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -3,6 +3,7 @@ package com.finalproject.user.service;
 
 import com.finalproject.user.dto.request.UserRequest;
 import com.finalproject.user.dto.response.UserResponse;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -20,4 +21,5 @@ public interface UserService {
 
     List<UserResponse> getAllUser();
 
+    Page<UserResponse> getUserByPage(UserRequest request);
 }

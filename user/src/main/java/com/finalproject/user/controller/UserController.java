@@ -3,17 +3,19 @@ package com.finalproject.user.controller;
 
 import com.finalproject.user.dto.request.UserRequest;
 import com.finalproject.user.dto.response.UserResponse;
-import com.finalproject.user.exception.BusinessException;
+import com.finalproject.user.component.exception.BusinessException;
 import com.finalproject.user.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -39,8 +41,10 @@ public class UserController {
     @GetMapping("/user/{username}")
     @ResponseStatus(HttpStatus.OK)
     @Operation(description = "get user by usename")
-    public ResponseEntity<UserResponse> getUser(@PathVariable @NotNull String username){
-        return ResponseEntity.ok().body(userService.getUser(username));
+    public ResponseEntity<List<UserResponse>> getUser(@PathVariable @NotNull String username){
+        List<UserResponse> list = new ArrayList<>();
+        list.add(userService.getUser(username));
+        return ResponseEntity.ok().body(list);
     }
 
     @GetMapping("/users")
@@ -48,6 +52,14 @@ public class UserController {
     @Operation(description = "get all users")
     public ResponseEntity<List<UserResponse>> getAllUser(){
         return ResponseEntity.ok().body(userService.getAllUser());
+    }
+
+    //TODO does this break the restful style
+    @PostMapping("/users/page")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(description = "get users by page")
+    public ResponseEntity<Page<UserResponse>> getUserByPage(@RequestBody @Valid UserRequest userRequest){
+        return ResponseEntity.ok().body(userService.getUserByPage(userRequest));
     }
 
     @PutMapping("/user")

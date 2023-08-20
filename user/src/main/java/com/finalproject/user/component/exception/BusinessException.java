@@ -1,4 +1,4 @@
-package com.finalproject.user.exception;
+package com.finalproject.user.component.exception;
 
 public class BusinessException extends RuntimeException {
 

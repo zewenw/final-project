@@ -28,6 +28,7 @@ public class PaginationAndSortingTest {
         // create pageable object
         Pageable pageable = PageRequest.of(pageNo, pageSize);
 
+
         // findAll method and pass pageable instance
         Page<Product> page = productRepository.findAll(pageable);
 

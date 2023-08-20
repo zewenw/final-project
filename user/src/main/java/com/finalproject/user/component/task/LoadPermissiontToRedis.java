@@ -1,4 +1,4 @@
-package com.finalproject.user.task;
+package com.finalproject.user.component.task;
 
 import com.finalproject.user.constant.RedisConstants;
 import com.finalproject.user.entity.Permission;

@@ -10,7 +10,7 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class RoleRequest implements Serializable {
+public class RoleRequest extends PagableRequest implements Serializable {
 
     @NotBlank(message = "roleCode must be present")
     private String roleCode;

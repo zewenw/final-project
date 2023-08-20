@@ -7,14 +7,16 @@ import com.finalproject.user.entity.User;
 import com.finalproject.user.repository.UserRepository;
 import com.finalproject.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
-
-
 
     @Autowired
     private UserRepository userRepository;
@@ -55,5 +57,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserResponse> getAllUser() {
         return UserMapper.MAPPER.usersToUserReponses(userRepository.findAll());
+    }
+
+    @Override
+    public Page<UserResponse> getUserByPage(UserRequest request) {
+        //TODO page sorting and find user by fields
+        Pageable pageable = PageRequest.of(request.getPageNo(), request.getPageSize());
+        Page<User> page = userRepository.findAll(pageable);
+        List<User> content = page.getContent();
+        List<UserResponse> userResponses = UserMapper.MAPPER.usersToUserReponses(content);
+        Page<UserResponse> responsePage = new PageImpl<>(userResponses, pageable, page.getTotalElements());
+        return responsePage;
     }
 }

@@ -1,4 +1,4 @@
-package com.finalproject.user.config;
+package com.finalproject.user.component.config;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;

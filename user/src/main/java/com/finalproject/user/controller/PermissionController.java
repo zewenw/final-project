@@ -2,7 +2,7 @@ package com.finalproject.user.controller;
 
 import com.finalproject.user.dto.request.PermissionRequest;
 import com.finalproject.user.dto.response.PermissionResponse;
-import com.finalproject.user.exception.BusinessException;
+import com.finalproject.user.component.exception.BusinessException;
 import com.finalproject.user.service.PermissionService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
