@@ -54,11 +54,10 @@ public class UserController {
         return ResponseEntity.ok().body(userService.getAllUser());
     }
 
-    //TODO does this break the restful style
-    @PostMapping("/users/page")
+    @GetMapping("/users/page")
     @ResponseStatus(HttpStatus.OK)
     @Operation(description = "get users by page")
-    public ResponseEntity<Page<UserResponse>> getUserByPage(@RequestBody @Valid UserRequest userRequest){
+    public ResponseEntity<Page<UserResponse>> getUserByPage( @Valid UserRequest userRequest){
         return ResponseEntity.ok().body(userService.getUserByPage(userRequest));
     }
 

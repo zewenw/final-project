@@ -12,6 +12,8 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class RoleRequest extends PagableRequest implements Serializable {
 
+    private long id;
+
     @NotBlank(message = "roleCode must be present")
     private String roleCode;
 

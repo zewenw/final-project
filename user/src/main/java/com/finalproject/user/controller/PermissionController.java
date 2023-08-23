@@ -1,14 +1,15 @@
 package com.finalproject.user.controller;
 
+import com.finalproject.user.component.exception.BusinessException;
 import com.finalproject.user.dto.request.PermissionRequest;
 import com.finalproject.user.dto.response.PermissionResponse;
-import com.finalproject.user.component.exception.BusinessException;
 import com.finalproject.user.service.PermissionService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,11 +35,18 @@ public class PermissionController {
         return ResponseEntity.ok().body(permissionService.addPermission(permissionRequest));
     }
 
-    @GetMapping("/permission/{rolecode}")
+    @GetMapping("/permission")
     @ResponseStatus(HttpStatus.OK)
     @Operation(description = "get permission by permission code")
-    public ResponseEntity<PermissionResponse> getPermission(@PathVariable @NotNull String permissionCode){
+    public ResponseEntity<PermissionResponse> getPermission(@RequestParam @NotNull String permissionCode){
         return ResponseEntity.ok().body(permissionService.getPermission(permissionCode));
+    }
+
+    @GetMapping("/permission/page")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(description = "get permission by page")
+    public ResponseEntity<Page<PermissionResponse>> getPermissions(PermissionRequest permissionRequest){
+        return ResponseEntity.ok().body(permissionService.getPermissionByPage(permissionRequest));
     }
 
     @PutMapping("/permission")

@@ -9,6 +9,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -38,11 +39,18 @@ public class RoleController {
         return ResponseEntity.ok().body(roleService.addRole(roleRequest));
     }
 
-    @GetMapping("/role/{rolecode}")
+    @GetMapping("/role/{roleCode}")
     @ResponseStatus(HttpStatus.OK)
     @Operation(description = "get role by role code")
-    public ResponseEntity<RoleResponse> getRole(@PathVariable @NotNull String rolecode) {
-        return ResponseEntity.ok().body(roleService.getRole(rolecode));
+    public ResponseEntity<RoleResponse> getRole(@PathVariable @NotNull String roleCode) {
+        return ResponseEntity.ok().body(roleService.getRole(roleCode));
+    }
+
+    @GetMapping("/role/page")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(description = "get role by page")
+    public ResponseEntity<Page<RoleResponse>> getRoleByPage(@Valid RoleRequest roleRequest) {
+        return ResponseEntity.ok().body(roleService.getRoleByPage(roleRequest));
     }
 
     @GetMapping("/roles")
@@ -57,6 +65,13 @@ public class RoleController {
     @Operation(description = "bind a new role with the user")
     public ResponseEntity<Boolean> updateRole(@PathVariable long roleId, @PathVariable String username) {
         return ResponseEntity.ok().body(roleService.bindUserWithRole(roleId, username));
+    }
+
+    @PutMapping("/role")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(description = "bind a new role with the user")
+    public ResponseEntity<RoleResponse> updateRole(@RequestBody @Valid RoleRequest roleRequest) {
+        return ResponseEntity.ok().body(roleService.udpateRole(roleRequest));
     }
 
     @DeleteMapping("/role/{id}")

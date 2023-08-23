@@ -9,6 +9,7 @@ import com.finalproject.user.repository.RoleRepository;
 import com.finalproject.user.repository.UserRepository;
 import com.finalproject.user.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -48,11 +49,15 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public RoleResponse udpateRole(RoleRequest roleRequest) {
-        Role currentRole = roleRepository.findByRoleCode(roleRequest.getRoleCode());
-        currentRole.setRoleName(roleRequest.getRoleName());
-        currentRole.setRoleDescription(roleRequest.getRoleDescription());
-        Role role = roleRepository.save(currentRole);
-        return RoleMapper.MAPPER.roleToRoleResponse(role);
+        Optional<Role> optional = roleRepository.findById(roleRequest.getId());
+        if(optional.isPresent()){
+            Role currentRole = optional.get();
+            currentRole.setRoleName(roleRequest.getRoleName());
+            currentRole.setRoleDescription(roleRequest.getRoleDescription());
+            Role role = roleRepository.save(currentRole);
+            return RoleMapper.MAPPER.roleToRoleResponse(role);
+        }
+        return null;
     }
 
 
@@ -79,5 +84,14 @@ public class RoleServiceImpl implements RoleService {
             userRepository.save(user);
         }
         return true;
+    }
+
+    @Override
+    public Page<RoleResponse> getRoleByPage(RoleRequest roleRequest) {
+        Pageable pageable = PageRequest.of(roleRequest.getPageNo(), roleRequest.getPageSize(), Sort.by(Sort.Direction.DESC, "id"));
+        Page<Role> page = roleRepository.findAll(pageable);
+        List<Role> content = page.getContent();
+        List<RoleResponse> userResponses = RoleMapper.MAPPER.rolesToRoleResponse(content);
+        return new PageImpl<>(userResponses, pageable, page.getTotalElements());
     }
 }

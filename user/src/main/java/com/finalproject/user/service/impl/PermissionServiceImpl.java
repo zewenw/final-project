@@ -7,9 +7,10 @@ import com.finalproject.user.entity.Permission;
 import com.finalproject.user.repository.PermissionRepository;
 import com.finalproject.user.service.PermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -42,17 +43,33 @@ public class PermissionServiceImpl implements PermissionService {
 
     @Override
     public PermissionResponse updatePermission(PermissionRequest permissionRequest) {
-        Permission currentPermission = permissionRepository.findByPermissionCode(permissionRequest.getPermissionCode());
-        currentPermission.setPermissionName(permissionRequest.getPermissionName());
-        currentPermission.setPermissionDescription(permissionRequest.getPermissionDescription());
-        currentPermission.setPermissionCode(permissionRequest.getPermissionCode());
-        Permission save = permissionRepository.save(currentPermission);
-        return PermissionMapper.MAPPER.permissionToPermissionResponse(save);
+        Optional<Permission> permission = permissionRepository.findById(permissionRequest.getId());
+        if(permission.isPresent()){
+            Permission currentPermission = permission.get();
+            currentPermission.setPermissionName(permissionRequest.getPermissionName());
+            currentPermission.setPermissionDescription(permissionRequest.getPermissionDescription());
+            currentPermission.setPermissionCode(permissionRequest.getPermissionCode());
+            Permission save = permissionRepository.save(currentPermission);
+            return PermissionMapper.MAPPER.permissionToPermissionResponse(save);
+        }
+        return null;
     }
 
     @Override
     public void deletePermissionById(long id) {
         //todo delete permission role mapping
         permissionRepository.deleteById(id);
+    }
+
+    @Override
+    public Page<PermissionResponse> getPermissionByPage(PermissionRequest request) {
+        //TODO page sorting and find user by fields
+        Pageable pageable = PageRequest.of(request.getPageNo(), request.getPageSize()
+                , Sort.by(Sort.Direction.DESC, "id"));
+        Page<Permission> page = permissionRepository.findAll(pageable);
+        List<Permission> content = page.getContent();
+        List<PermissionResponse> userResponses = PermissionMapper.MAPPER.permissionsToPermissionResponses(content);
+        Page<PermissionResponse> responsePage = new PageImpl<>(userResponses, pageable, page.getTotalElements());
+        return responsePage;
     }
 }

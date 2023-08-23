@@ -6,6 +6,8 @@ import com.finalproject.user.entity.Permission;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @Mapper
 public interface PermissionMapper {
 
@@ -14,4 +16,6 @@ public interface PermissionMapper {
     PermissionResponse permissionToPermissionResponse(Permission permission);
 
     Permission permissionRequestToPermission(PermissionRequest permissionRequest);
+
+    List<PermissionResponse> permissionsToPermissionResponses(List<Permission> content);
 }

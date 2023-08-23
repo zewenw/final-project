@@ -18,4 +18,5 @@ public interface RoleMapper {
     Role RoleRequestToRole(RoleRequest roleRequest);
 
     List<RoleResponse> rolesToRoleResponse(List<Role> roles);
+
 }

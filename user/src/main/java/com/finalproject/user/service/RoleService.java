@@ -3,6 +3,7 @@ package com.finalproject.user.service;
 
 import com.finalproject.user.dto.request.RoleRequest;
 import com.finalproject.user.dto.response.RoleResponse;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -23,4 +24,8 @@ public interface RoleService {
     List<RoleResponse> getAll();
 
     Boolean bindUserWithRole(long roleId, String username);
+
+    Page<RoleResponse> getRoleByPage(RoleRequest roleRequest);
 }
+
+
