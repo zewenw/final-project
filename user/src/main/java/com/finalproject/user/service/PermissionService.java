@@ -5,6 +5,8 @@ import com.finalproject.user.dto.request.PermissionRequest;
 import com.finalproject.user.dto.response.PermissionResponse;
 import org.springframework.data.domain.Page;
 
+import java.util.List;
+
 public interface PermissionService {
 
     boolean checkDuplicatePermission(String permissionCode, String permissionType);
@@ -18,6 +20,14 @@ public interface PermissionService {
     void deletePermissionById(long id);
 
     Page<PermissionResponse> getPermissionByPage(PermissionRequest permissionRequest);
+
+    List<PermissionResponse> getAllPermissions();
+
+    List<PermissionResponse> getPermissionByRoleId(Long roleId);
+
+    Boolean unbindPermissionWithRole(String roleId, String permissionId);
+
+    Boolean bindPermissionWithRole(String roleId, String permissionId);
 }
 
 
