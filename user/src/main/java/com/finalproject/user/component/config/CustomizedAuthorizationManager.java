@@ -58,6 +58,9 @@ public class CustomizedAuthorizationManager implements AuthorizationManager<Requ
             return new AuthorizationDecision(true);
         }
         List<String> authorities = roles == null ? null : Convert.toList(String.class, roles);
+        if(authorities.isEmpty()){
+            return new AuthorizationDecision(true);
+        }
         logger.info("current path authorities: {}", JSONUtil.toJsonStr(authorities));
         JwtAuthenticationToken token = (JwtAuthenticationToken) authenticationSupplier.get();
         boolean authenticated = token.isAuthenticated();
