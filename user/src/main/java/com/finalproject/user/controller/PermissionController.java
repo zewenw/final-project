@@ -29,6 +29,7 @@ public class PermissionController {
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(description = "add new permission")
     public ResponseEntity<PermissionResponse> addPermission(@RequestBody @Valid PermissionRequest permissionRequest) {
+        log.info("com.finalproject.user.controller.PermissionController.addPermission, param: {}", permissionRequest);
         String permissionCode = permissionRequest.getPermissionCode();
         String permissionType = permissionRequest.getPermissionType();
         if (permissionService.checkDuplicatePermission(permissionCode, permissionType)) {
@@ -40,48 +41,56 @@ public class PermissionController {
     @GetMapping("/permissions")
     @Operation(description = "get all permissions")
     public ResponseEntity<List<PermissionResponse>> getAllPermissions() {
+        log.info("com.finalproject.user.controller.PermissionController.getAllPermissions");
         return ResponseEntity.ok().body(permissionService.getAllPermissions());
     }
 
     @GetMapping("/permissions/{roleId}")
     @Operation(description = "get permissions by role id")
     public ResponseEntity<List<PermissionResponse>> getPermissionsByRoleId(@PathVariable String roleId) {
+        log.info("com.finalproject.user.controller.PermissionController.getPermissionsByRoleId, param: {}", roleId);
         return ResponseEntity.ok().body(permissionService.getPermissionByRoleId(Long.valueOf(roleId)));
     }
 
     @GetMapping("/permission")
     @Operation(description = "get permission by permission code")
     public ResponseEntity<PermissionResponse> getPermission(@RequestParam @NotNull String permissionCode) {
+        log.info("com.finalproject.user.controller.PermissionController.getPermission, param: {}", permissionCode);
         return ResponseEntity.ok().body(permissionService.getPermission(permissionCode));
     }
 
     @GetMapping("/permission/page")
     @Operation(description = "get permission by page")
     public ResponseEntity<Page<PermissionResponse>> getPermissions(PermissionRequest permissionRequest) {
+        log.info("com.finalproject.user.controller.PermissionController.getPermissions, param: {}", permissionRequest);
         return ResponseEntity.ok().body(permissionService.getPermissionByPage(permissionRequest));
     }
 
     @PutMapping("/permission")
     @Operation(description = "update permission")
     public ResponseEntity<PermissionResponse> updatePermission(@RequestBody @Valid PermissionRequest permissionRequest) {
+        log.info("com.finalproject.user.controller.PermissionController.updatePermission, param: {}", permissionRequest);
         return ResponseEntity.ok().body(permissionService.updatePermission(permissionRequest));
     }
 
     @PutMapping("/permissions/unbind/{roleId}/{permissionId}")
     @Operation(description = "unbind Permission With Role")
     public ResponseEntity<Boolean> unbindPermissionWithRole(@PathVariable String roleId, @PathVariable String permissionId) {
+        log.info("com.finalproject.user.controller.PermissionController.unbindPermissionWithRole, roleId: {}, permissionId:{}", roleId, permissionId);
         return ResponseEntity.ok().body(permissionService.unbindPermissionWithRole(roleId, permissionId));
     }
 
     @PutMapping("/permissions/bind/{roleId}/{permissionId}")
     @Operation(description = "bind Permission With Role")
     public ResponseEntity<Boolean> bindPermissionWithRole(@PathVariable String roleId, @PathVariable String permissionId) {
+        log.info("com.finalproject.user.controller.PermissionController.updatePermission, roleId: {}, permissionId:{}", roleId, permissionId);
         return ResponseEntity.ok().body(permissionService.bindPermissionWithRole(roleId, permissionId));
     }
 
     @DeleteMapping("/permission/{id}")
     @Operation(description = "delete permission by id")
     public ResponseEntity<String> deletePermission(@PathVariable long id) {
+        log.info("com.finalproject.user.controller.PermissionController.deletePermission, param: {}", id);
         //TODO check whether related with a role
         permissionService.deletePermissionById(id);
         return ResponseEntity.ok().build();

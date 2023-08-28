@@ -28,6 +28,7 @@ public class RoleController {
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(description = "add new role")
     public ResponseEntity<RoleResponse> addRole(@RequestBody @Valid RoleRequest roleRequest) {
+        log.info("com.finalproject.user.controller.RoleController.addRole, param: {}", roleRequest);
         String roleCode = roleRequest.getRoleCode();
         if (roleService.checkDuplicateRoleCode(roleCode)) {
             throw new BusinessException("DUPLICATE ROLENAME");
@@ -43,6 +44,7 @@ public class RoleController {
     @ResponseStatus(HttpStatus.OK)
     @Operation(description = "get role by role code")
     public ResponseEntity<RoleResponse> getRole(@PathVariable @NotNull String roleCode) {
+        log.info("com.finalproject.user.controller.RoleController.getRole, param: {}", roleCode);
         return ResponseEntity.ok().body(roleService.getRole(roleCode));
     }
 
@@ -50,6 +52,7 @@ public class RoleController {
     @ResponseStatus(HttpStatus.OK)
     @Operation(description = "get role by username")
     public ResponseEntity<List<RoleResponse>> getOwnedRoleByUsername(@PathVariable @NotNull String username) {
+        log.info("com.finalproject.user.controller.RoleController.getOwnedRoleByUsername, param: {}", username);
         return ResponseEntity.ok().body(roleService.getOwnedRoleByUsername(username));
     }
 
@@ -57,6 +60,7 @@ public class RoleController {
     @ResponseStatus(HttpStatus.OK)
     @Operation(description = "Get the current user does not own the role in")
     public ResponseEntity<List<RoleResponse>> getLackedRoleByUsername(@PathVariable @NotNull String username) {
+        log.info("com.finalproject.user.controller.RoleController.getLackedRoleByUsername, param: {}", username);
         return ResponseEntity.ok().body(roleService.getLackedRoleByUsername(username));
     }
 
@@ -64,6 +68,7 @@ public class RoleController {
     @ResponseStatus(HttpStatus.OK)
     @Operation(description = "get role by page")
     public ResponseEntity<Page<RoleResponse>> getRoleByPage(@Valid RoleRequest roleRequest) {
+        log.info("com.finalproject.user.controller.RoleController.getRoleByPage, param: {}", roleRequest);
         return ResponseEntity.ok().body(roleService.getRoleByPage(roleRequest));
     }
 
@@ -71,6 +76,7 @@ public class RoleController {
     @ResponseStatus(HttpStatus.OK)
     @Operation(description = "get role by role code")
     public ResponseEntity<List<RoleResponse>> getAllRoles() {
+        log.info("com.finalproject.user.controller.RoleController.getAllRoles");
         return ResponseEntity.ok().body(roleService.getAll());
     }
 
@@ -78,6 +84,7 @@ public class RoleController {
     @ResponseStatus(HttpStatus.OK)
     @Operation(description = "bind a new role with the user")
     public ResponseEntity<Boolean> bindUserWithRole(@PathVariable long roleId, @PathVariable String username) {
+        log.info("com.finalproject.user.controller.RoleController.bindUserWithRole, roleId: {}, username: {}", roleId, username);
         return ResponseEntity.ok().body(roleService.bindUserWithRole(roleId, username));
     }
 
@@ -85,6 +92,7 @@ public class RoleController {
     @ResponseStatus(HttpStatus.OK)
     @Operation(description = "bind a new role with the user")
     public ResponseEntity<Boolean> unbindUserWithRole(@PathVariable long roleId, @PathVariable String username) {
+        log.info("com.finalproject.user.controller.RoleController.unbindUserWithRole, roleId: {}, username: {}", roleId, username);
         return ResponseEntity.ok().body(roleService.unbindUserWithRole(roleId, username));
     }
 
@@ -92,6 +100,7 @@ public class RoleController {
     @ResponseStatus(HttpStatus.OK)
     @Operation(description = "bind a new role with the user")
     public ResponseEntity<RoleResponse> updateRole(@RequestBody @Valid RoleRequest roleRequest) {
+        log.info("com.finalproject.user.controller.RoleController.updateRole, param: {}", roleRequest);
         return ResponseEntity.ok().body(roleService.udpateRole(roleRequest));
     }
 
@@ -99,6 +108,7 @@ public class RoleController {
     @ResponseStatus(HttpStatus.OK)
     @Operation(description = "delete role by id")
     public ResponseEntity<String> deleteRole(@PathVariable long id) {
+        log.info("com.finalproject.user.controller.RoleController.deleteRole, param: {}", id);
         roleService.deleteRoleById(id);
         return ResponseEntity.ok().build();
     }

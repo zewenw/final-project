@@ -30,9 +30,9 @@ public class PhotoController {
     @ResponseStatus(HttpStatus.OK)
     @Operation(description = "interact with user component")
     public ResponseEntity<UserResponse> interact(@PathVariable String username) {
-        log.info("call user component API");
+        log.info("com.finalproject.photo.controller.photo.PhotoController.interact, param:{}", username);
         UserResponse userResponse = userFeignClient.getUserByUsername(username);
-        log.info("get result from user component");
+        log.info("get result from user component, result:{}", userResponse);
         return ResponseEntity.ok().body(userResponse);
     }
 }

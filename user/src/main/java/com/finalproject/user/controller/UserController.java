@@ -31,6 +31,7 @@ public class UserController {
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(description = "add new user")
     public ResponseEntity<UserResponse> addUser(@RequestBody @Valid UserRequest userRequest){
+        log.info("com.finalproject.user.controller.UserController.addUser, param: {}", userRequest);
         String username = userRequest.getUsername();
         if(userService.checkDuplicateUsername(username)){
             throw new BusinessException("DUPLICATE USERNAME");
@@ -42,6 +43,7 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     @Operation(description = "get user by usename")
     public ResponseEntity<List<UserResponse>> getUser(@PathVariable @NotNull String username){
+        log.info("com.finalproject.user.controller.UserController.getUser, param: {}", username);
         List<UserResponse> list = new ArrayList<>();
         list.add(userService.getUser(username));
         return ResponseEntity.ok().body(list);
@@ -51,6 +53,7 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     @Operation(description = "get all users")
     public ResponseEntity<List<UserResponse>> getAllUser(){
+        log.info("com.finalproject.user.controller.UserController.getAllUser");
         return ResponseEntity.ok().body(userService.getAllUser());
     }
 
@@ -58,6 +61,7 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     @Operation(description = "get users by page")
     public ResponseEntity<Page<UserResponse>> getUserByPage( @Valid UserRequest userRequest){
+        log.info("com.finalproject.user.controller.UserController.getUserByPage, param: {}", userRequest);
         return ResponseEntity.ok().body(userService.getUserByPage(userRequest));
     }
 
@@ -65,6 +69,7 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     @Operation(description = "update user info")
     public ResponseEntity<UserResponse> updateUser(@RequestBody @Valid UserRequest userRequest){
+        log.info("com.finalproject.user.controller.UserController.updateUser, param: {}", userRequest);
         return ResponseEntity.ok().body(userService.updateUser(userRequest));
     }
 
@@ -72,6 +77,7 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     @Operation(description = "delete user by user id")
     public ResponseEntity<String> deleteUser(@PathVariable long id){
+        log.info("com.finalproject.user.controller.UserController.deleteUser, param: {}", id);
         userService.deleteUser(id);
         return  ResponseEntity.ok().build();
     }
