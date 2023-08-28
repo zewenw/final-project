@@ -101,7 +101,7 @@ public class RoleController {
     @Operation(description = "bind a new role with the user")
     public ResponseEntity<RoleResponse> updateRole(@RequestBody @Valid RoleRequest roleRequest) {
         log.info("com.finalproject.user.controller.RoleController.updateRole, param: {}", roleRequest);
-        return ResponseEntity.ok().body(roleService.udpateRole(roleRequest));
+        return ResponseEntity.ok().body(roleService.updateRole(roleRequest));
     }
 
     @DeleteMapping("/role/{id}")

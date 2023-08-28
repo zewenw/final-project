@@ -17,7 +17,7 @@ public interface RoleService {
 
     RoleResponse getRole(String rolecode);
 
-    RoleResponse udpateRole(RoleRequest roleRequest);
+    RoleResponse updateRole(RoleRequest roleRequest);
 
     void deleteRoleById(long id);
 
@@ -32,6 +32,8 @@ public interface RoleService {
     List<RoleResponse> getLackedRoleByUsername(String username);
 
     Boolean unbindUserWithRole(long roleId, String username);
+
+    List<String> getRoleCodeByUsername(String username);
 }
 
 

@@ -1,5 +1,6 @@
 package com.finalproject.user.service.impl;
 
+import com.finalproject.user.component.task.LoadPermissionToRedis;
 import com.finalproject.user.convert.PermissionMapper;
 import com.finalproject.user.dto.request.PermissionRequest;
 import com.finalproject.user.dto.response.PermissionResponse;
@@ -8,6 +9,7 @@ import com.finalproject.user.entity.Role;
 import com.finalproject.user.repository.PermissionRepository;
 import com.finalproject.user.repository.RoleRepository;
 import com.finalproject.user.service.PermissionService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
@@ -21,6 +23,8 @@ public class PermissionServiceImpl implements PermissionService {
 
     @Autowired
     private PermissionRepository permissionRepository;
+    @Autowired
+    private LoadPermissionToRedis loadPermissionToRedis;
 
     @Autowired
     private RoleRepository roleRepository;
@@ -35,9 +39,11 @@ public class PermissionServiceImpl implements PermissionService {
     }
 
     @Override
+    @Transactional
     public PermissionResponse addPermission(PermissionRequest permissionRequest) {
         Permission permission = permissionRepository.save(PermissionMapper.MAPPER
                 .permissionRequestToPermission(permissionRequest));
+        loadPermissionToRedis.loadDataToRedis();
         return PermissionMapper.MAPPER.permissionToPermissionResponse(permission);
     }
 
@@ -48,6 +54,7 @@ public class PermissionServiceImpl implements PermissionService {
     }
 
     @Override
+    @Transactional
     public PermissionResponse updatePermission(PermissionRequest permissionRequest) {
         Optional<Permission> permission = permissionRepository.findById(permissionRequest.getId());
         if(permission.isPresent()){
@@ -56,6 +63,7 @@ public class PermissionServiceImpl implements PermissionService {
             currentPermission.setPermissionDescription(permissionRequest.getPermissionDescription());
             currentPermission.setPermissionCode(permissionRequest.getPermissionCode());
             Permission save = permissionRepository.save(currentPermission);
+            loadPermissionToRedis.loadDataToRedis();
             return PermissionMapper.MAPPER.permissionToPermissionResponse(save);
         }
         return null;
@@ -64,6 +72,7 @@ public class PermissionServiceImpl implements PermissionService {
     @Override
     public void deletePermissionById(long id) {
         //todo delete permission role mapping
+        loadPermissionToRedis.loadDataToRedis();
         permissionRepository.deleteById(id);
     }
 
@@ -100,6 +109,7 @@ public class PermissionServiceImpl implements PermissionService {
             Set<Permission> permissions = role.getPermissions();
             permissions.remove(permission);
             roleRepository.save(role);
+            loadPermissionToRedis.loadDataToRedis();
             return true;
         }
         return false;
@@ -113,6 +123,7 @@ public class PermissionServiceImpl implements PermissionService {
             Role role = optionalRole.get();
             role.getPermissions().add(optionalPermission.get());
             roleRepository.save(role);
+            loadPermissionToRedis.loadDataToRedis();
             return true;
         }
         return false;

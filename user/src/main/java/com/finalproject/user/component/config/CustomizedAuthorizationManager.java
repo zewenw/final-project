@@ -3,6 +3,7 @@ package com.finalproject.user.component.config;
 import cn.hutool.core.convert.Convert;
 import cn.hutool.json.JSONUtil;
 import com.finalproject.user.constant.RedisConstants;
+import com.finalproject.user.service.RoleService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.authorization.AuthorizationDecision;
 import org.springframework.security.authorization.AuthorizationManager;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.security.web.access.intercept.RequestAuthorizationContext;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +23,8 @@ public class CustomizedAuthorizationManager implements AuthorizationManager<Requ
 
     private static final Logger logger = LoggerFactory.getLogger(CustomizedAuthorizationManager.class);
 
+    @Autowired
+    private RoleService roleService;
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
 
@@ -56,12 +59,13 @@ public class CustomizedAuthorizationManager implements AuthorizationManager<Requ
         }
         List<String> authorities = roles == null ? null : Convert.toList(String.class, roles);
         logger.info("current path authorities: {}", JSONUtil.toJsonStr(authorities));
-        Authentication authentication = authenticationSupplier.get();
-        boolean authenticated = authentication.isAuthenticated();
+        JwtAuthenticationToken token = (JwtAuthenticationToken) authenticationSupplier.get();
+        boolean authenticated = token.isAuthenticated();
         if (authenticated) {
             assert authorities != null;
-            return new AuthorizationDecision(authentication.getAuthorities().stream()
-                    .map(GrantedAuthority::getAuthority)
+            String username = token.getName();
+            List<String> roleCodes = roleService.getRoleCodeByUsername(username);
+            return new AuthorizationDecision(roleCodes.stream()
                     .anyMatch(authorities::contains));
         }
         return new AuthorizationDecision(false);

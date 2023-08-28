@@ -17,7 +17,6 @@ public class PageFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        log.info("====================PageFilter=================");
         //TODO handle page param
         chain.doFilter(request, response);
     }

@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class RoleServiceImpl implements RoleService {
@@ -50,7 +51,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public RoleResponse udpateRole(RoleRequest roleRequest) {
+    public RoleResponse updateRole(RoleRequest roleRequest) {
         Optional<Role> optional = roleRepository.findById(roleRequest.getId());
         if(optional.isPresent()){
             Role currentRole = optional.get();
@@ -119,5 +120,11 @@ public class RoleServiceImpl implements RoleService {
             userRepository.save(user);
         }
         return true;
+    }
+
+    @Override
+    public List<String> getRoleCodeByUsername(String username) {
+        return roleRepository.findOwnedRolesByUsername(username)
+                .stream().map(Role::getRoleCode).collect(Collectors.toList());
     }
 }
