@@ -4,7 +4,6 @@ import com.finalproject.user.constant.RedisConstants;
 import com.finalproject.user.entity.Permission;
 import com.finalproject.user.entity.Role;
 import com.finalproject.user.repository.PermissionRepository;
-import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -12,6 +11,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -37,17 +37,17 @@ public class LoadPermissionToRedis implements ApplicationRunner {
         for (Permission permission : permissions) {
             Set<Role> roles = permission.getRoles();
             if (roles != null && !roles.isEmpty()) {
-                List<String> roleCodes = roles.stream().map(Role::getRoleCode).collect(Collectors.toList());
+                Set<String> roleCodes = roles.stream().map(Role::getRoleCode).collect(Collectors.toSet());
                 Object value = redisTemplate.opsForHash().get(RedisConstants.PERMISSION_ROLE.name(), permission.getPermissionCode());
                 if (value != null && value instanceof List) {
-                    List<String> roleList = (List<String>) value;
-                    roleList.addAll(roleCodes);
-                    redisTemplate.opsForHash().put(RedisConstants.PERMISSION_ROLE.name(), permission.getPermissionCode(), roleList);
+                    Set<String> roleSet = (Set<String>) value;
+                    roleSet.addAll(roleCodes);
+                    redisTemplate.opsForHash().put(RedisConstants.PERMISSION_ROLE.name(), permission.getPermissionCode(), roleSet);
                 } else {
                     redisTemplate.opsForHash().put(RedisConstants.PERMISSION_ROLE.name(), permission.getPermissionCode(), roleCodes);
                 }
             }else {
-                redisTemplate.opsForHash().put(RedisConstants.PERMISSION_ROLE.name(), permission.getPermissionCode(), Lists.newArrayList());
+                redisTemplate.opsForHash().put(RedisConstants.PERMISSION_ROLE.name(), permission.getPermissionCode(), new HashSet<>());
             }
         }
     }
