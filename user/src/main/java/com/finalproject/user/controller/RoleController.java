@@ -46,6 +46,20 @@ public class RoleController {
         return ResponseEntity.ok().body(roleService.getRole(roleCode));
     }
 
+    @GetMapping("/roles/{username}")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(description = "get role by username")
+    public ResponseEntity<List<RoleResponse>> getOwnedRoleByUsername(@PathVariable @NotNull String username) {
+        return ResponseEntity.ok().body(roleService.getOwnedRoleByUsername(username));
+    }
+
+    @GetMapping("/roles/lacked/{username}")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(description = "Get the current user does not own the role in")
+    public ResponseEntity<List<RoleResponse>> getLackedRoleByUsername(@PathVariable @NotNull String username) {
+        return ResponseEntity.ok().body(roleService.getLackedRoleByUsername(username));
+    }
+
     @GetMapping("/role/page")
     @ResponseStatus(HttpStatus.OK)
     @Operation(description = "get role by page")
@@ -60,11 +74,18 @@ public class RoleController {
         return ResponseEntity.ok().body(roleService.getAll());
     }
 
-    @PutMapping("/role/{roleId}/{username}")
+    @PutMapping("/role/bind/{roleId}/{username}")
     @ResponseStatus(HttpStatus.OK)
     @Operation(description = "bind a new role with the user")
-    public ResponseEntity<Boolean> updateRole(@PathVariable long roleId, @PathVariable String username) {
+    public ResponseEntity<Boolean> bindUserWithRole(@PathVariable long roleId, @PathVariable String username) {
         return ResponseEntity.ok().body(roleService.bindUserWithRole(roleId, username));
+    }
+
+    @PutMapping("/role/unbind/{roleId}/{username}")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(description = "bind a new role with the user")
+    public ResponseEntity<Boolean> unbindUserWithRole(@PathVariable long roleId, @PathVariable String username) {
+        return ResponseEntity.ok().body(roleService.unbindUserWithRole(roleId, username));
     }
 
     @PutMapping("/role")

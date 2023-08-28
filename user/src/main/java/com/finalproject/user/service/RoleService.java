@@ -26,6 +26,13 @@ public interface RoleService {
     Boolean bindUserWithRole(long roleId, String username);
 
     Page<RoleResponse> getRoleByPage(RoleRequest roleRequest);
+
+    List<RoleResponse> getOwnedRoleByUsername(String username);
+
+    List<RoleResponse> getLackedRoleByUsername(String username);
+
+    Boolean unbindUserWithRole(long roleId, String username);
 }
+
 
 

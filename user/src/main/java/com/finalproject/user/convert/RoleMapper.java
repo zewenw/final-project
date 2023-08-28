@@ -3,6 +3,7 @@ package com.finalproject.user.convert;
 import com.finalproject.user.dto.request.RoleRequest;
 import com.finalproject.user.dto.response.RoleResponse;
 import com.finalproject.user.entity.Role;
+import com.finalproject.user.entity.view.RoleView;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -18,5 +19,6 @@ public interface RoleMapper {
     Role RoleRequestToRole(RoleRequest roleRequest);
 
     List<RoleResponse> rolesToRoleResponse(List<Role> roles);
+    List<RoleResponse> roleViewsToRoleResponse(List<RoleView> roles);
 
 }

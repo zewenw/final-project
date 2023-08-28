@@ -72,6 +72,13 @@ public class Role {
     @ToString.Exclude
     private Set<Permission> permissions = new HashSet<>();
 
+    public Role(long id, String roleCode, String roleName, String roleDescription) {
+        this.id = id;
+        this.roleCode = roleCode;
+        this.roleName = roleName;
+        this.roleDescription = roleDescription;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -92,4 +99,7 @@ public class Role {
     public int hashCode() {
         return roleCode != null ? roleCode.hashCode() : 0;
     }
+
+
+
 }
