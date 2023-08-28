@@ -108,8 +108,11 @@ public class PermissionServiceImpl implements PermissionService {
             Permission permission = optionalPermission.get();
             Set<Permission> permissions = role.getPermissions();
             permissions.remove(permission);
+            role.setPermissions(permissions);
             roleRepository.save(role);
-            loadPermissionToRedis.loadDataToRedis();
+            new Thread(() -> {
+                loadPermissionToRedis.loadDataToRedis();
+            }).start();
             return true;
         }
         return false;
@@ -123,7 +126,10 @@ public class PermissionServiceImpl implements PermissionService {
             Role role = optionalRole.get();
             role.getPermissions().add(optionalPermission.get());
             roleRepository.save(role);
-            loadPermissionToRedis.loadDataToRedis();
+            //same thread use same data session, the transaction doesn't commit, so data will remain same
+            new Thread(() -> {
+                loadPermissionToRedis.loadDataToRedis();
+            }).start();
             return true;
         }
         return false;
