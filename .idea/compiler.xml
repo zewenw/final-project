@@ -7,16 +7,19 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="eurekaserver" />
         <module name="demomodule" />
         <module name="movieinfoservice" />
         <module name="moviereviewservice" />
         <module name="authserver" />
-        <module name="movieservice" />
         <module name="reactor" />
         <module name="photo" />
         <module name="configserver" />
+        <module name="eurekaserver" />
+        <module name="movieservice" />
+        <module name="kafka" />
+        <module name="producer" />
         <module name="gateway" />
+        <module name="consumer" />
       </profile>
       <profile name="Annotation profile for foundation" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -44,14 +47,17 @@
     <bytecodeTargetLevel target="17">
       <module name="authserver" target="17" />
       <module name="configserver" target="17" />
+      <module name="consumer" target="17" />
       <module name="demomodule" target="17" />
       <module name="eurekaserver" target="17" />
       <module name="foundation" target="17" />
       <module name="gateway" target="17" />
+      <module name="kafka" target="17" />
       <module name="movieinfoservice" target="17" />
       <module name="moviereviewservice" target="17" />
       <module name="movieservice" target="17" />
       <module name="photo" target="17" />
+      <module name="producer" target="17" />
       <module name="reactor" target="17" />
       <module name="resource" target="17" />
       <module name="user" target="17" />
@@ -62,6 +68,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="authserver" options="-parameters" />
       <module name="configserver" options="-parameters" />
+      <module name="consumer" options="-parameters" />
       <module name="demomodule" options="-parameters" />
       <module name="eurekaserver" options="-parameters" />
       <module name="gateway" options="-parameters" />
@@ -69,6 +76,7 @@
       <module name="moviereviewservice" options="" />
       <module name="movieservice" options="" />
       <module name="photo" options="-parameters" />
+      <module name="producer" options="-parameters" />
       <module name="reactor" options="" />
       <module name="user" options="-parameters" />
       <module name="webflux" options="" />
