@@ -31,6 +31,10 @@
         <option value="$PROJECT_DIR$/webflux/moviereviewservice/pom.xml" />
         <option value="$PROJECT_DIR$/webflux/movieservice/pom.xml" />
         <option value="$PROJECT_DIR$/webflux/reactor/pom.xml" />
+        <option value="$PROJECT_DIR$/kafka/demo/producer/pom.xml" />
+        <option value="$PROJECT_DIR$/kafka/pom.xml" />
+        <option value="$PROJECT_DIR$/kafka/producer/pom.xml" />
+        <option value="$PROJECT_DIR$/kafka/consumer/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

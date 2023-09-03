@@ -1,4 +1,4 @@
-package com.example.consumer;
+package com.finalproject.consumer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
