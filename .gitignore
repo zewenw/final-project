@@ -161,6 +161,6 @@ cython_debug/
 #/ConfigServer/src/main/resources/application.yml
 /gateway/gateway.iml
 /configserver/.mvn/
-
+.idea
 *.iml
 
