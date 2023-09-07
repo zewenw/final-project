@@ -11,6 +11,9 @@ When we build a new project from scratch, except for product requirements, we al
 
 ## [Technical Description](Technical Description.md)
 
+## Infrastructure
+<img src="./docs/infrastructure.jpg.jpg" alt="Alt Text" style="zoom:35%;" />
+
 ### The Challenges of Microservices Architecture and How to Solve It
 
 There are already many out-of-box solutions that can help us solve most of the challenges, but one of them we should deal with on our own, which is **How to make our system have availability, scalability** and **How to make every single component have high performance and low latency**. although the solution is various depending on the product requirement, there are still some common rules we can follow. there it is:
