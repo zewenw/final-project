@@ -12,7 +12,7 @@ When we build a new project from scratch, except for product requirements, we al
 ## [Technical Description](Technical Description.md)
 
 ## Infrastructure
-<img src="./docs/infrastructure.jpg.jpg" alt="Alt Text" style="zoom:35%;" />
+<img src="./docs/infrastructure.jpg" alt="Alt Text" style="zoom:35%;" />
 
 ### The Challenges of Microservices Architecture and How to Solve It
 
