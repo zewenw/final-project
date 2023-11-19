@@ -33,4 +33,28 @@ class UserControllerTest {
                 .expectStatus()
                 .isOk();
     }
+
+    @Test
+    void addUser() {
+    }
+
+    @Test
+    void getUser() {
+    }
+
+    @Test
+    void getAllUser() {
+    }
+
+    @Test
+    void testGetUserByPage() {
+    }
+
+    @Test
+    void updateUser() {
+    }
+
+    @Test
+    void deleteUser() {
+    }
 }

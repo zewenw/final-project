@@ -1,0 +1,3 @@
+spring:
+  kafka:
+    bootstrap-servers: cluster.playground.cdkt.io:9092
